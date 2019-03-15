@@ -38,8 +38,10 @@ html,body{
 /*==========================两侧的空白   end========== */
 
 #header{
-	height: 30px;
+	height: 50px;
 	background: #F8F8F8;
+	font-size: 20px;
+	line-height: 50px;
 	/*overflow: hidden;*/
 }
 #header .hd_login{
@@ -64,7 +66,6 @@ html,body{
 	display: inline-block;
     width: 16px;
     height: 18px;
-    background: url(../img/top_bg.png) 121px 133px;
 }
 #header .list>li{
 	float: left;
@@ -120,7 +121,6 @@ html,body{
 	display: inline-block;
 	width: 17px;
 	height: 14px;
-	background: url(../img/gwc.png);
 	position: relative;
     top: 4px;
 }
@@ -255,7 +255,6 @@ html,body{
     /* position: relative; */
     padding-right: 3px;
     vertical-align: middle;
-    background: url(../img/nav.png)no-repeat;
 }
 
 
@@ -352,6 +351,10 @@ html,body{
 	border-bottom: 2px #D93600 solid;
 	z-index: 99;
 }
+
+#main .top_layout .tittle h3{
+	text-align: center;
+}
 #main .top_layout .tittle h3 i{
     margin: 0;
     border: none;
@@ -360,7 +363,6 @@ html,body{
     width: 30px;
     height: 10px;
     margin: 8px 0px 0px 5px;
-    background: url(../img/classical.png);
     background-repeat: no-repeat;
 }
 #main .top_layout .tittle h3 a{
@@ -429,108 +431,54 @@ html,body{
     display: block;
     height: 14.5px;
     padding: 19px 15px;
-     position: relative; 
-    /*position: absolute;*/
-    /*z-index: 66;*/
-	/*background: #2C2C2C;*/
-    /*left: -1px;*/
-    /*top: -1px;*/
+     position: relative;
     border-color: transparent;
+
 }
-#main .menu ul li .ico{
-    float: left;
-    margin-right: 16px;
-    width: 16px;
-    height: 16px;
-    display: block;
-    text-align: center;
+
+#main .menu ul li h2{
+	text-align: center;
 }
 #main .menu ul li h2 a{
 	color: #fff;
-    font-size: 14px;
     text-decoration: none;
+
+	font-size: 16px;
 }
 
 #main .menu ul li:hover{
 	background: #000000;
 }
 
+.showtype{
+	background: #000000;
+}
+
 
 /*详细nav*/
-#main .menu ul li .sub_menu{
-    background-color: #FFF;
-    display: none;
-    width: 750px;
-    padding-left: 10px;
-    position: absolute !important;
-    top: 0px;
-    left: 211px;
-    border-right: 1px solid #D8D8D8;
-    max-height: 420px;
-    overflow: hidden;
-    background: #FFF;
-    left: 210px;
+#main .menu ul .sub_menu{
+
+	width: 750px;
+	height: 300px;
+	position: absolute;
+	top: 0px;
+	left: 210px;
+	background: #FFF;
+	display: none;
+
+
 }
 
-#main .menu ul li .sub_menu .sm_tle span{
-	display: inline-block;
-    width: 5px;
-    height: 20px;
-    background: #FF3B2F;
-    float: left;
-}
-#main .menu ul li .sub_menu .sm_tle{
-	padding: 15px 10px;
-	overflow: hidden;
-}
-#main .menu ul li .sub_menu .sm_tle h1{
-    float: left;
-    padding-left: 10px;
-    font-weight: bold;
-}
-#main .menu ul li .sub_menu .sm_tle h1 a{
-	text-decoration: none;
-    font-size: 15px;
-    line-height: 21px;
-    color: #555;
-    height: 20px;
-}
-#main .menu ul li .sub_menu .sm_details{
-	padding: 10px;
-	overflow: hidden;
-	float: left;
-}
-#main .menu ul li .sub_menu .sm_details h3{
-    color: #676767;
-    font-weight: bold;
-    float: left;
-    display: block;
-}
-#main .menu ul li .sub_menu .sm_details span.arrow{
-	display: inline-block; 
-	float: left;
-    font-family: "宋体";
-    line-height: 20px;
-    color: #AAA;
-    margin: 0 6px;
-    font-size: 12px;
-    letter-spacing: normal;
-    word-spacing: normal;
-    height: 20px;
-}
-#main .menu ul li .sub_menu .sm_details dd{
-	float: left;
-	display: block;
-	width: 263px;
-}
-#main .menu ul li .sub_menu .sm_details dd a{
-    display: inline-block;
-    height: 16px;
-    line-height: 16px;
-    border-left: 1px solid #e0e0e0;
-    padding: 0px 8px;
-    margin: 5px 0;
-    color: #555;
+#main .menu ul .sub_menu .fenlei .aa{
+	width: 100%;
+	height: 30px;
+	font-size: 20px;
+	line-height: 30px;
+	padding-left: 20px;
+	padding-top: 20px;
+
+
+
 }
 
 
@@ -583,13 +531,11 @@ html,body{
     -moz-transition: ease-out .5s;
     -webkit-transition: ease-out.5s;
     -o-transition: ease-out .5s;
-    background: url(../img/right_zhankai_bg.png);
     cursor: pointer;
 }
 #sidebar ul li span.ewm{
 	width: 150px;
     height: 150px;
-    background: url(../img/right_zhankai_erweima.png);
 }
 #sidebar ul li:hover span{
     opacity: 1;

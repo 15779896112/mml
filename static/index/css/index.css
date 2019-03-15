@@ -409,6 +409,9 @@
     overflow: hidden;
 }
 
+
+
+
 /*建楼了    坑...*/
 #main .floor {
     overflow: hidden;
@@ -449,6 +452,9 @@
 	color: #FFF;
 	font-weight: bold;
 }*/
+
+
+
 #main .floor .one_way_head ul span {
     cursor: pointer;
     float: left;
@@ -720,7 +726,6 @@
     font-weight: bold;
     font-size: 17px;
     position: relative;
-    top: /* -3*/ px;
     margin-right: 5px;
 }
 
@@ -849,10 +854,45 @@
 
     #lunbotu{
         /*background: red;*/
-        width: 700px;
-        height: 100%;
-        position: absolute;
-        left: 21%;
+        width:500px;
+        height: 300px;
+        position: relative;
+        left: 25%;
+        top: 250px;
         overflow:hidden;
 
     }
+    #main .showgoods {
+        width: 760px;
+        height: 710px;
+        position:relative;
+        left: 240px;
+        /*background: red;*/
+        /*display: none;*/
+    }
+    #main .showgoods .goods{
+        width: 300px;
+        height: 300px;
+        float: left;
+        font-size: 20px;
+        /*border: 1px solid black;*/
+        margin:30px 30px;
+
+    }
+    #main .showgoods .goods img{
+        width: 200px;
+    }
+
+    #main .showgoods .goods .title{
+        width: 260px;
+        padding-left:20px;
+        line-height: 20px;
+    }
+     #main .showgoods .goods .price{
+         color: red;
+         margin:20px 20px;
+     }
+
+
+
+

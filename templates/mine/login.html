@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>登录-米米乐商城</title>
+		<link rel="stylesheet" type="text/css" href={% static 'index/css/base.css' %}/>
+		<link rel="stylesheet" type="text/css" href={% static 'index/css/publicFooter.css' %}/>
+		<link rel="stylesheet" type="text/css" href={% static 'mine/css/login.css' %}/>
+
+		<script src={% static 'index/js/jquery-1.12.3.js' %}></script>
+{#		<script src="../js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>#}
+{#		<script src="../js/_public.js" type="text/javascript" charset="utf-8"></script>#}
+{#		<script src="../js/login.js" type="text/javascript" charset="utf-8"></script>#}
+	</head>
+	<body>
+		<!--登录--><!--广告-->
+		<div id="banner">
+			<!--以背景的方式-->
+			<a href={% url 'app:index' %}><div></div></a>
+		</div>
+
+		<div id="main">
+			<div class="mtop">
+				<img src="{% static 'img/05053060183653829.png' %}"/>
+			</div>
+            <form method="post" action={% url 'app:login' %}>
+                {% csrf_token %}
+			<div class="mbottom">
+				<div class="mb_left">
+					<img src={% static 'img/2.jpg' %}/>
+				</div>
+				<ul>
+					<li>
+						<h2>用户登录</h2>
+					</li>
+					<li class="urna">
+						<i></i><input type="text" name="username"  placeholder="手机号/会员名/邮箱"/>
+						<span>用户名不能为空</span>
+					</li>
+					<li class="pswd">
+						<i></i><input type="password"  name="password" />
+						<span>密码不能为空</span>
+					</li>
+					<li class="login_in">
+
+                        <input type="submit" value=" 登录"> <a href="#">忘记密码?</a>
+					</li>
+					<li class="tip">
+						<span>还不是本站会员？立即</span><a href="register.html">注册</a>
+					</li>
+					<li>
+						<span>你还可以用合作伙伴账号登录：</span>
+						<a href="#" class="mb_one"><img src={% static '/img/login.png' %}/></a>
+						<a href="#"><img src={% static '/img/login.png' %}/></a>
+						<a href="#"><img src={% static '/img/login.png' %}/></a>
+					</li>
+				</ul>
+			</div>
+            </form>
+		</div>
+
+
+
+		<div class="copyright">
+				<a href="#">电脑节 </a>|
+				<a href="#"> 年货节 </a>|
+				<a href="#"> 批发商城 </a>|
+				<a href="#"> 合作及洽谈 </a>|
+				<a href="#"> 联系我们 </a>|
+				<a href="#">  商家登录</a>|
+				<a href="#"> 开店协议</a>|
+				<a href="#"> 商家入驻</a>|
+				<a href="#"> 手机版</a>|
+				<a href="#"> 友情链接</a>|
+				<a href="#"> 招聘英才</a>|
+				<a href="#"> 米商</a>|
+				<a href="#"> 8.8包邮</a>|
+				<p>&copy; 2016 米米乐商城 www.mmloo.com 版权所有 蜀ICP备06015925号-1</p>
+				<p><img src="{% static 'img/cxlogo.png' %}"/></p>
+				<span class="backTop">返回顶部</span>
+			</div>
+		</div>
+
+	</body>
+</html>

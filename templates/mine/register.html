@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>注册-米米乐商城</title>
+    <link rel="stylesheet" type="text/css" href={% static 'index/css/base.css' %}/>
+    <link rel="stylesheet" type="text/css" href={% static 'index/css/publicFooter.css' %}/>
+    <link rel="stylesheet" type="text/css" href={% static 'mine/css/register.css' %}/>
+    <script src={% static 'index/js/jquery-1.12.3.js' %}></script>
+    <script src="{% static 'index/js/Swiper3.4.2.min.js' %}"></script>
+    <script src={% static 'index/js/index.js' %}></script>
+    <script src={% static 'mine/js/register.js' %}></script>
+
+</head>
+<body>
+<!--登录--><!--广告-->
+<div id="banner">
+    <!--以背景的方式-->
+    <a href={% url 'app:index' %}>
+        <div></div>
+    </a>
+</div>
+
+
+<form method="post" action={% url 'app:register' %}>
+    {% csrf_token %}
+    <div id="main">
+        <div class="logo">
+            <div class="logo_left">
+                <img src={% static 'img/05053060183653829.png' %}/>
+                <span>欢迎注册</span>
+            </div>
+            <div class="logo_right">
+                <span>已注册，<a href="login.html">登录&gt;</a></span>
+            </div>
+        </div>
+        <div class="shop">
+            <div class="shop_tle">
+                <h2>个人用户注册</h2>
+            </div>
+            <ul>
+                <!--用户名-->
+                <li class="un">
+                    <span class="msg">请输入用户名</span>
+                    <input type="text" name="username" id="user_name" placeholder="请输入用户名"/>
+                    <i></i>
+                    <span class="msg_red">用户名不正确</span>
+                </li>
+                <!--密码-->
+                <li class="pw">
+                    <span class="msg">6-20位字符，可由英文、数字及标点符号组成</span>
+                    <input type="password" name="password" id="user_pw" placeholder="设置密码"/>
+                    <i></i>
+                    <span class="msg_red">密码长度应在6-20个字符之间</span>
+
+                </li>
+                <li class="cd">
+                    <span class="msg msg_yzm">请输入验证码</span>
+                    <input type="text" name="captcha" id="captcha" value="" placeholder="验证码"/>
+                    <b class="code"></b>
+                    <i></i>
+                    <a href="#" class="code1">看不清，换一张</a>
+                    <span class="msg_red">验证码不正确</span>
+
+                </li>
+                <li>
+                    <span class="msg msg_hy">请输入好友邀请码</span>
+                    <input type="text" name="msgCaptcha" id="msgCaptcha" value="" placeholder="好友推荐码（非必填）"/>
+                </li>
+                <li>
+                    <input type="checkbox" name="sc" id="serviceContract" checked="checked"/>
+                    <label for="serviceContract">阅读并同意<a
+                            href="http://www.mmloo.com/shop/document-agreement.html">服务协议</a></label>
+                    <span class="msg_red"></span>
+                </li>
+                <li>
+                    <input type="submit" name="nowReg" id="nowReg" value="立即注册"/>
+                    <span class="msg_red">请先阅读并同意服务协议</span>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</form>
+
+<div class="copyright">
+    <a href="#">电脑节 </a>|
+    <a href="#"> 年货节 </a>|
+    <a href="#"> 批发商城 </a>|
+    <a href="#"> 合作及洽谈 </a>|
+    <a href="#"> 联系我们 </a>|
+    <a href="#"> 商家登录</a>|
+    <a href="#"> 开店协议</a>|
+    <a href="#"> 商家入驻</a>|
+    <a href="#"> 手机版</a>|
+    <a href="#"> 友情链接</a>|
+    <a href="#"> 招聘英才</a>|
+    <a href="#"> 米商</a>|
+    <a href="#"> 8.8包邮</a>|
+    <p>&copy; 2016 米米乐商城 www.mmloo.com 版权所有 蜀ICP备06015925号-1</p>
+    <p><img src={% static '/img/cxlogo.png' %}/></p>
+    <span class="backTop">返回顶部</span>
+</div>
+
+
+</body>
+</html>

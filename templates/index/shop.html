@@ -1,0 +1,479 @@
+{% extends 'index/index.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href={% static 'index/css/shop.css' %}
+
+{% endblock %}
+{% block js %}
+    {#    #}
+{% endblock %}
+{% block content %}
+
+
+
+    <!--商品详情-->
+    <div id="details">
+        <div class="details_main">
+            <div class="dm_title">
+                <i></i>&nbsp;<a href={% url 'app:index' %}>首页</a><span>&gt;</span><span id="dmt_tle"></span>
+            </div>
+            <div class="dm_img">
+                <!--大图-->
+                <div class="dmi_big">
+                    <img src={% static goods.bigimg %}>
+                    <p>{{ goods.title }}</p>
+
+
+                </div>
+                <!--小图-->
+                <div class="dmi_small">
+                    <ul>
+                        <!--<li><img src=""/></li>-->
+                    </ul>
+                </div>
+                <!--不知道是什么-->
+                <div class="dmi_btm">
+                    <ul>
+                        <li><i></i><a>开具真票</a></li>
+                        <li class="cnt"><i></i><a href="#">批发采购</a></li>
+                        <li><i></i><a>信用账期</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!--文字描述-->
+            <div class="dm_txt">
+                <div class="dmt_top">
+                </div>
+                <div class="dmtb">
+                    <div class="dmtb_left">
+                        <!--价格-->
+                        <div class="dmtbl">
+                            <div class="dmtbl_t">
+
+                            </div>
+                            <div class="dmtbl_by">
+									<span>&nbsp;&nbsp;&nbsp;&nbsp;至<a><b>全国</b>
+										<ul>
+											<li>北京</li><li>天津</li><li>河北</li><li>山西</li><li>内蒙古</li><li>辽宁</li><li>吉林</li>
+											<li>黑龙江</li><li>上海</li><li>江苏</li><li>浙江</li><li>安徽</li><li>福建</li><li>江西</li>
+											<li>山东</li><li>河南</li><li>湖北</li><li>湖南</li><li>广东</li><li>广西</li><li>海南</li>
+											<li>重庆</li><li>四川</li><li>贵州</li><li>云南</li><li>西藏</li><li>陕西</li><li>甘肃</li>
+											<li>青海</li><li>宁夏</li><li>新疆</li><li>台湾</li><li>香港</li><li>澳门</li><li>海外</li>
+										</ul>
+									</a>：运费：	6.00元 由 早买商城 发货 满 49.00 元，免运费！</span>
+                            </div>
+                        </div>
+
+                        <!--数量分享-->
+                        <div class="dmtbl_b">
+                            <div class="dmtblb_em">
+                                <dd>
+                                    <span>购买数量：</span>
+                                    <input type="text" id="count" value="1"/>
+                                    <span class="count_sum">
+											<a href="#">+</a>
+											<a href="#">-</a>
+										</span>
+                                </dd>
+                                <dd class="byStages">
+										<span>
+											<p>分期付款：</p>
+											<p><b>1-12</b><i>期</i></p>
+										</span>
+                                    <span>
+											<p>选择捷信分期付款，每月只需1.77元起</p>
+											<p>请在订单付款页面选择分期付款　<a href="#">关于捷信</a></p>
+										</span>
+                                </dd>
+                            </div>
+                            <p>单价:<span>{{ goods.price }}</span></p>
+                            <div class="dmtblb_btn">
+                                <a href="#" id="nowBuy">立即购买</a>
+                                <a href="#" id="addCart">添加到购物车</a>
+                                <a class="byStages_a" href="#">分期付款</a>
+                                <div class="shoppingCart">
+                                    <h2>成功添加到购物车</h2>
+                                    <span>购物车中共有&nbsp;<i class="num">0</i>&nbsp;件商品&nbsp;总金额为：<i
+                                            class="alwaysNum">¥0.00</i></span>
+                                    <div class="shoppingCart_btn">
+                                        <a href="cart.html">查看购物车</a>
+                                        <a class="close" href="#">继续购物</a>
+                                    </div>
+                                    <button class="close">x</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--分享-->
+                        <div class="share">
+                            <div class="share_btm">
+                                <span><i></i><a href="#">分享</a><b>3</b></span>
+                                <span><i></i><a href="#">收藏商品</a><b>0</b></span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="dmtb_right">
+                        <ul>
+                            <li>
+                                <h2>官方商城</h2>
+                            </li>
+                            <li>
+                                <span>综合评分：<i></i><b>4.8</b>分</span>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>
+                                        <h3>店铺动态评分</h3> <span>与行业相比</span>
+                                    </dt>
+                                    <dd>
+                                        描述相符<span class="credit">4.9分</span><span
+                                            class="high"><i>-</i>持平<em>---</em></span>
+                                    </dd>
+                                    <dd>
+                                        服务态度<span class="credit">4.9分</span><span
+                                            class="equal"><i>-</i>持平<em>---</em></span>
+                                    </dd>
+                                    <dd>
+                                        发货速度<span class="credit">4.9分</span><span
+                                            class="low"><i>-</i>持平<em>---</em></span>
+                                    </dd>
+                                </dl>
+                            </li>
+
+                            <li class="gs">
+                                公司名称：<span>米米乐商城</span>
+                                <br/>
+                                所 在 地：<span>四川 成都市 武侯区</span>
+                            </li>
+                            <li class="dp">
+                                <a href="#">进入商家店铺</a>
+                                <a href="#">收藏店铺<span>4</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--4推荐-->
+        <div class="randomGoods">
+            <ul>
+
+            </ul>
+        </div>
+        <!--商品详情-->
+        <div class="d_bottom">
+            <div class="db_left">
+                <!--二维码-->
+                <div class="dbl_ewm">
+                    <h2>商品二维码</h2>
+                    <p>
+                        <img src=""/>
+                    </p>
+
+                </div>
+                <!--官方店铺-->
+                <div class="dbl_official">
+                    <h2>官方店铺 <img src="" alt=""/></h2>
+                    <dl>
+                        <dt>工作时间：</dt>
+                        <dd>工作时间 AM 9:00 - PM 18:00</dd>
+                    </dl>
+                </div>
+
+                <!--商品分类-->
+                <div class="dbl_commodity">
+                    <h2>商品分类</h2>
+                    <dl>
+                        <h3><i>-</i>全部商品</h3>
+                        <dd>
+                            <i>+</i>【食品类】
+                            <ul>
+                                <li><a href="#">12345678</a></li>
+                                <li><a href="#">12345678</a></li>
+                                <li><a href="#">12345678</a></li>
+                            </ul>
+                        </dd>
+                        <dd>
+                            <i>+</i>【调味制品】
+                            <ul>
+                                <li><a href="#">12345678</a></li>
+                                <li><a href="#">12345678</a></li>
+                                <li><a href="#">12345678</a></li>
+                            </ul>
+                        </dd>
+                        <dd>
+                            <i>+</i>【酒饮冲调】
+                            <ul>
+                                <li><a href="#">12345678</a></li>
+                                <li><a href="#">12345678</a></li>
+                                <li><a href="#">12345678</a></li>
+                            </ul>
+                        </dd>
+                        <dd>
+                            <i>+</i>【地方特产】
+                            <ul>
+                                <li><a href="#">12345678</a></li>
+                                <li><a href="#">12345678</a></li>
+                                <li><a href="#">12345678</a></li>
+                            </ul>
+                        </dd>
+                        <dd>
+                            <i>+</i>【季节食品】
+                            <ul>
+                                <li><a href="#">12345678</a></li>
+                                <li><a href="#">12345678</a></li>
+                                <li><a href="#">12345678</a></li>
+                            </ul>
+                        </dd>
+                        <dd>
+                            <i>+</i>【茶制品】
+                            <ul>
+                                <li><a href="#">12345678</a></li>
+                                <li><a href="#">12345678</a></li>
+                                <li><a href="#">12345678</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+                <!--商品排行-->
+                <div class="dbl_list">
+                    <h2>商品排行</h2>
+                    <ul>
+                    </ul>
+                </div>
+                <!--浏览历史-->
+                <div class="dbl_history">
+                    <h2>浏览历史</h2>
+                    <ul>
+                        暂无...
+                    </ul>
+                </div>
+            </div>
+            <!--右-->
+            <div class="db_right">
+                <div id="dbr_top">
+                    <h2 class="curve"><a href="#dbrt_description">商品详情</a></h2>
+                    <h2><a href="#dbrt_img">商品参数</a></h2>
+                    <h2><a href="#dbrt_review">商品评价(0)</a></h2>
+                    <h2><a href="#purchaseConsulting">购买咨询</a></h2>
+                </div>
+                <!--商品详情-->
+                <div id="dbrt_description">
+                    <dd>商家货号：</dd>
+                    <dd>品牌：联想</dd>
+                    <dd>内存：8G</dd>
+                    <dd>价格：4700-6699</dd>
+                    <dd>尺寸：17英寸以上</dd>
+                    <dd>处理器：Intel i7</dd>
+                    <dd>显卡：不限</dd>
+                    <dd>触控：不限</dd>
+                    <dd>系统：Windows 7</dd>
+                </div>
+                <!--图片详情-->
+                <div id="dbrt_img">
+                    <dd>
+                        <img src="../img/1_05248467524947701_1280.png"/>
+                    </dd>
+                </div>
+                <!--评论-->
+                <div id="dbrt_review">
+                    <h2 class="curve">商品评价(0)</h2>
+                    <h2>好评(0)</h2>
+                    <h2>中评(0)</h2>
+                    <h2>差评(0)</h2>
+                    暂无符合条件的数据记录
+                </div>
+                <!--购买咨询-->
+                <div id="purchaseConsulting">
+                    <title>购买咨询</title>
+                    还没有咨询内容
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+{% block layout %}
+     <div class="top_layout">
+        <div class="box">
+            <ul>
+                <li><a href="#" class="current">首页</a></li>
+                <li><a href="#">米活动</a></li>
+                <li><a href="#">乐社区</a></li>
+                <li><a href="#">商家入驻</a></li>
+                <li><a href="#">8.8天天抢</a></li>
+                <li><a href="#">团购</a></li>
+                <li><a href="#">米金融</a></li>
+            </ul>
+        </div>
+
+    </div>
+{% endblock %}
+
+{##}
+{#<!DOCTYPE html>#}
+{#<html>#}
+{#	<head>#}
+{#		<meta charset="utf-8" />#}
+{#		<title>米米乐商城</title>#}
+{##}
+
+{#        <link rel="stylesheet" href="{% static 'index/css/Swiper3.4.2.min.css' %}">#}
+{#    <link rel="stylesheet" type="text/css" href={% static 'index/css/base.css' %}/>#}
+{#    <link rel="stylesheet" type="text/css" href={% static 'index/css/publicHead.css' %}/>#}
+{#    <link rel="stylesheet" type="text/css" href={% static 'index/css/publicFooter.css' %}/>#}
+{#    <link rel="stylesheet" type="text/css" href={% static 'index/css/index.css' %}/>#}
+{##}
+{#    <script src={% static 'index/js/jquery-1.12.3.js' %}></script>#}
+{#    <script src="{% static 'index/js/Swiper3.4.2.min.js' %}"></script>#}
+{#    <script src={% static 'index/js/index.js' %}></script>#}
+
+{#        <script src="../js/shop.js" type="text/javascript" charset="utf-8"></script>#}
+{#	</head>#}
+{#	<body>#}
+{#		<!--加载进度-->#}
+{#		<div id="loginbar"></div>#}
+{#		<!--头部-->#}
+{#		<div id="header">#}
+{#			<div class="box">#}
+{##}
+{##}
+{#				<ul class="list">#}
+{#				<li class="gwc"><a href="#"> <span id="shopNum" class="num">0</span>  <i class="gwc_bg"></i>购物车<em class="num">0</em>件	 <i class="spinner"></i></a>#}
+{#					<ul class="subNav">#}
+{#						<b>最新加入的商品</b>#}
+{#						<!--添加商品详情-->#}
+{#						<div id='product'>#}
+{#						</div>#}
+{#						<!--商品数量，总金额-->#}
+{#						<div class="gwc_bottom"><div>共<span class="num">0</span>件商品 &nbsp;总计金额:<span id="total">¥0.00</span></div>	#}
+{#							<a href="cart.html">结算购物车中的商品</a>#}
+{#						</div>#}
+{#					</ul>#}
+{#				</li>#}
+{#				#}
+{#				<li><a href="#">用户中心 <i class="spinner"></i></a>#}
+{#					<ul class="subNav">#}
+{#						<li><a href="#">商品收藏</a></li>#}
+{#						<li><a href="#">店铺收藏</a></li>#}
+{#						<li><a href="#">收藏米米乐</a></li>#}
+{#					</ul>#}
+{#				</li>#}
+{#				#}
+{#				<li><a href="#">我的订单 <i class="spinner"></i></a>#}
+{#					<ul class="subNav">#}
+{#						<li><a href="#">待付款订单</a></li>#}
+{#						<li><a href="#">待收货交易</a></li>#}
+{#						<li><a href="#">待评价交易	</a></li>#}
+{#					</ul>#}
+{#				</li>#}
+{#				#}
+{#				<li><a href="#">客户服务 <i class="spinner"></i></a>#}
+{#					<ul class="subNav">#}
+{#						<li><a href="#">帮助中心</a></li>#}
+{#						<li><a href="#">售后服务</a></li>#}
+{#						<li><a href="#">客服中心</a></li>#}
+{#						<li><a href="#">在线客服</a></li>#}
+{#						<li><a href="#">QQ客服</a></li>#}
+{#					</ul>#}
+{#				</li>#}
+{#				<li><a href="#"><i class="nav_menu"></i>网站导航<i class="spinner"></i></a>#}
+{#					<ul class="subNav">#}
+{#						<li><a href="#">导购频道</a></li>#}
+{#					</ul>#}
+{#				</li>#}
+{#			</ul>#}
+{#			</div>#}
+{#		</div>#}
+{#		#}
+{#		<!--广告-->#}
+{#		<div id="banner">#}
+{#			<!--以背景的方式-->#}
+{#			<div></div>#}
+{#		</div>#}
+{#	#}
+{#		#}
+{#<!--页面主体-->#}
+{#<div id="main">#}
+{#    <div class="main_top">#}
+{#        <!--logo-->#}
+{#        <div class="logo">#}
+{#            <a href="http://www.mmloo.com/"><img src="{% static 'img/05053060183653829.png' %}"></a>#}
+{#        </div>#}
+{#        <!--搜索-->#}
+{#        <div class="main_search">#}
+{#            <form action="#" method="get">#}
+{#                <input type="text" name="search_txt" id="search_txt" value="" placeholder=" 搜索 内部链接 试试^.^">#}
+{#                <input type="submit" name="" id="" value="搜索">#}
+{#            </form>#}
+{#            <ul id="recommend">#}
+{#                <!--示例-->#}
+{#                <!--<li><a href="">iPhone 7</a></li>-->#}
+{#            </ul>#}
+{#        </div>#}
+{#        <!--认证--招商--需求-->#}
+{#        <div class="top_menu">#}
+{#            <ul>#}
+{#                <li><img src="{% static 'img/baoyou.png' %}"><span>认证包邮</span></li>#}
+{#                <li><img src="{% static 'img/jiameng.png' %}"><span>招商加盟</span></li>#}
+{#                <li><img src="{% static 'img/xuqiu.png' %}"><span>需求发布</span></li>#}
+{#            </ul>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{##}
+{#    <div class="top_layout">#}
+{#        <div class="box">#}
+{##}
+{#            <ul>#}
+{#                <li><a href={% url 'app:index' %} class="current">首页</a></li>#}
+{#                <li><a href="#">米活动</a></li>#}
+{#                <li><a href="#">乐社区</a></li>#}
+{#                <li><a href="#">商家入驻</a></li>#}
+{#                <li><a href="#">8.8天天抢</a></li>#}
+{#                <li><a href="#">团购</a></li>#}
+{#                <li><a href="#">米金融</a></li>#}
+{#            </ul>#}
+{#        </div>#}
+{##}
+{#    </div>#}
+{##}
+{##}
+{##}
+{##}
+{#		#}
+{#		#}
+{#		<!--侧栏导航-->#}
+{#		<div id="sidebar">#}
+{#			<ul>#}
+{#				<li>#}
+{#					<img src="../img/right_sevice.png"/>#}
+{#					<span>联系客服</span>#}
+{#				</li>#}
+{#				#}
+{#				<li>#}
+{#					<a href="cart.html"><img src="../img/right_cart.png"/></a>#}
+{#				</li>#}
+{#				#}
+{#				<li>#}
+{#					<img src="../img/right_history.png"/>#}
+{#				</li>#}
+{#				#}
+{#				<li>#}
+{#					<img src="../img/right_erweima.png"/>#}
+{#					<span class="ewm"></span>#}
+{#				</li>#}
+{#				#}
+{#				<li>#}
+{#					<img src="../img/right_top.png"/>#}
+{#					<b>TOP</b>#}
+{#					<span class="backTop">回到顶部</span>#}
+{#				</li>#}
+{#			</ul>#}
+{#			#}
+{#		</div>#}
+{##}
+{#	</body>#}
+{#</html>#}

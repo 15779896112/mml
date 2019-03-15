@@ -1,0 +1,151 @@
+.copyright{
+	border: none;
+}
+#main{
+	min-height: 300px;
+	overflow: hidden;
+	width: 1000px;
+	margin: 30px auto;
+}
+.mtop{
+	margin: 30px 0 10px 0 ;
+}
+.mbottom{
+	overflow: hidden;
+}
+.mbottom .mb_left{
+	float: left;
+	overflow: hidden;
+}
+.mb_left img{
+	float: left;
+}
+.mbottom ul{
+	width: 350px;
+	overflow: hidden;
+	display: block;
+	float: right;
+	border-left: 1px #CCC solid;
+	border-right: 1px #CCC solid;
+	background: #F9F9F9;
+}
+.mbottom ul li{
+	margin: 0 auto;
+	width: 276px;
+	/*overflow: hidden;*/
+	/*border: 1px red solid;*/
+}
+.mbottom ul li h2{
+	margin: 20px;
+	font-size: 18px;
+	font-weight: bold;
+}
+.urna,.pswd{
+	margin:10px auto 20px auto!important;
+	border: 1px #CCC solid;
+	/*overflow: hidden;*/	
+	position: relative;
+	width: 36px;
+	height: 36px;
+}
+.urna i,.pswd i{
+	float: left;
+	display: inline-block;
+	width: 36px;
+	height: 36px;
+}
+.urna i{
+	background: url(../../img/user.png) center;
+}
+.pswd i{
+	background: url(../../img/pw.png) center;
+}
+.urna span,.pswd span{
+	display: none;
+	position: absolute;
+	left: 0;
+	bottom: -20px;
+	color: #D93600;
+	font-size: 15px;
+}
+.urna input,.pswd input{
+	float: left;
+	border: 0;
+	height: 36px;
+	width: 240px;
+	outline: none;
+	font-size: 16px;
+}
+.login_in input{
+	display: inline-block;
+	background: #F08300;
+	margin: 0 10px 0 40px;
+	width: 120px;
+	height: 33px;
+	color: #FFF;
+	border-radius: 5px;
+	border:0;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	line-height: 33px;
+	font-size: 16px;
+}
+.login_in a:first-child:hover{
+	background: #FF6600;
+}
+.login_in a{
+	color: blue;
+}
+.tip{
+	width: 100%!important;
+	border-bottom: 1px #CCC dotted;
+}
+.tip span{
+	display: inline-block;
+	margin: 10px 3px 15px 80px;
+}
+.tip a{
+	display: inline-block;
+	width: 42px;
+	height: 23px;
+	line-height: 23px;
+	text-align: center;
+	font-weight: bold;
+	border-radius: 4px;
+	border: #CCC 1px solid;
+}
+.mbottom ul li:last-child{
+	
+}
+.mbottom ul li:last-child span{
+	margin: 10px 0 10px 30px;
+	display: block;
+}
+.mbottom ul li:last-child a{
+	display: inline-block;
+	width: 88px;
+    height: 28px;
+	overflow: hidden;
+}
+
+.mbottom ul li:last-child a img{
+	position: relative;
+	left: -166px;
+}
+.mbottom ul li:last-child a img:hover{
+	top: -28px;
+}
+.mbottom ul li:last-child .mb_one{
+	width: 78px;
+}
+.mbottom ul li:last-child .mb_one img{
+	left: -88px;
+}
+.mbottom ul li:last-child a:last-child img{
+	top:-200px;
+	left: 0;
+}
+.mbottom ul li:last-child a:last-child img:hover{
+	top: -228px;
+}

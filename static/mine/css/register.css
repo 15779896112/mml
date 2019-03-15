@@ -1,0 +1,168 @@
+.copyright{
+	border: none;
+}
+#main{
+	width: 100%;
+	min-width: 1200px;
+	margin: 0 auto;
+}
+.logo{
+	width: 1000px;
+	overflow: hidden;
+	margin: 20px auto;
+	height: 75px;
+}
+.logo .logo_left{
+	float: left;
+}
+.logo_left img{
+	height: 100%;
+}
+.logo_left span{
+	vertical-align: text-bottom;
+	line-height: 75px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+
+.logo_right{
+	height: 100%;
+	position: relative;
+	width: 100px;
+	float: right;
+}
+.logo_right span{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+.logo_right span a{
+	color: blue;
+}
+.shop{
+	width: 1000px;
+	margin: 0 auto;
+	border: 1px #ECECEC solid;
+	text-align: center;
+}
+.shop_tle{
+	border-bottom: 1px #CCC solid;	
+}
+.shop h2{
+	display: block;
+	
+	padding: 10px  0;
+	margin: 0 auto;
+	color: #D93600;
+	font-size: 24px;
+	font-weight: bold;
+	width: 180px;
+	border-bottom: 2px #D93600 solid;
+}
+.shop ul{
+	overflow: hidden;
+	margin: 0 auto;
+	background: #F9F9F9;
+	width:402px;
+}
+.shop ul li{
+	margin: 23px 0;
+	/*height: px;*/
+	text-align: left;
+	display: block;
+	position: relative;
+}
+.shop input{
+
+	height: 35px;
+	border: 1px #CCCCCC solid;
+	font-size: 14px;
+}
+#user_name,#user_pw{
+	width: 390px;
+	padding-left: 10px;
+}
+#serviceContract{
+	vertical-align: middle;
+}
+.shop ul li label a{
+	color: #D93600;
+} 
+#captcha,#msgCaptcha{
+	padding-left: 10px;
+}
+.code{
+	display: inline-block;
+	margin: 0 15px;
+	width: 100px;
+	text-align: center;
+	height: 35px;
+	line-height: 35px;
+	font-size: 16px;
+    vertical-align: top;
+    background: #D93600;
+    color: #FFF;
+    /*font-family: "franklin gothic demi cond";*/
+}
+#msgCaptcha{
+	width: 390px;
+}
+#nowReg{
+	width: 400px;
+	background: #E02323;
+	height: 40px;
+	color: #FFF;
+	font-size: 20px;
+	cursor: pointer;
+}
+#nowReg:hover{
+	background: #D93600;
+}
+.shop ul li span{
+	position: absolute;
+	background: #FFF9C9;
+	padding: 3px 2px;
+	top: -35px;
+	border: 1px #CCC solid;
+	border-radius: 5px;
+	left: 0;
+}
+.un i,.pw i,.cd i{
+	display: none;
+	width: 16px;
+	height: 16px;
+	background: url(../../img/correct.png);
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+.cd i{
+	left: 140px;
+}
+.msg{
+	display: none;
+}
+.un .msg{
+	left: 40%;
+}
+.pw .msg{
+	left: 20%;
+}
+.msg_yzm{
+	left: 10%!important;	
+}
+.msg_hy{
+	left: 36%!important;	
+}
+.msg_red{
+	display: none;
+	color: #D93600;
+	font-size: 16px;
+	top: 35px!important;
+	border: 0!important;
+	background: none!important;
+}
+.active{
+	border: 1px #D93600 solid;
+}

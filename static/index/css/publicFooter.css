@@ -45,7 +45,7 @@
 #footer .help ul li a i{
     font-size: 0;
     line-height: 0;
-    background: url(../img/top_bg.png) no-repeat -80px -10px;
+
     vertical-align: middle;
     display: inline-block;
     width: 3px;
@@ -89,7 +89,6 @@
 .tel{
 	padding-left:5px ;
     line-height: 25px;
-    background: url(/shop/templates/default/images/littlebtn/call.gif) no-repeat scroll 0 5px rgba(0,0,0,0);
     color: #ff8a00;
     font-size: 22px;
 }

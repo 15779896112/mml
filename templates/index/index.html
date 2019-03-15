@@ -2,32 +2,49 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="utf-8"/>
-    <title>米米乐商城</title>
+    {% block title %}
+        <title>米米乐商城</title>
+    {% endblock %}
+
     <link rel="stylesheet" href="{% static 'index/css/Swiper3.4.2.min.css' %}">
     <link rel="stylesheet" type="text/css" href={% static 'index/css/base.css' %}/>
     <link rel="stylesheet" type="text/css" href={% static 'index/css/publicHead.css' %}/>
     <link rel="stylesheet" type="text/css" href={% static 'index/css/publicFooter.css' %}/>
     <link rel="stylesheet" type="text/css" href={% static 'index/css/index.css' %}/>
+    {% block css %}
 
+    {% endblock %}
     <script src={% static 'index/js/jquery-1.12.3.js' %}></script>
     <script src="{% static 'index/js/Swiper3.4.2.min.js' %}"></script>
-    {#		<script src="js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>#}
-    {#		<script src="js/move.js" type="text/javascript" charset="utf-8"></script>#}
-    {#		<script src="js/pack.js" type="text/javascript" charset="utf-8"></script>#}
     <script src={% static 'index/js/index.js' %}></script>
     <script src={% static 'index/js/goodslist.js' %}></script>
-    {#		<script src="js/_public.js" type="text/javascript" charset="utf-8"></script>#}
+
+    {% block js %}
+
+    {% endblock %}
+
 </head>
 
 
 <!--加载进度-->
-<div id="loginbar"></div>
+{#<div id="loginbar"></div>#}
 <!--头部-->
-<div id="header">
+{% block header %}
+    <div id="header">
     <div class="box">
         <!--登录----注册-->
         <div class="hd_login">
+            {% if user %}
+                <a href=‘#’><i>欢迎！{{ user.username }}</i></a>
+                <a href={% url 'app:logout' %}><i style="color:black"> 退出</i></a>
+                {% else %}
+                <a href={% url 'app:login' %}><i>登录</i></a>
+                <a href={% url 'app:register' %}><i> 注册</i></a>
+            {% endif %}
+
+
         </div>
         <!--右侧导航-->
         <ul class="list">
@@ -80,6 +97,8 @@
         </ul>
     </div>
 </div>
+{% endblock %}
+
 
 <!--广告-->
 <div id="banner">
@@ -116,8 +135,10 @@
         </div>
     </div>
 
+{#{% block goods %}#}
     <!--分类导航-->
-    <div class="top_layout">
+{% block layout %}
+     <div class="top_layout">
         <div class="box">
             <div class="tittle" id="goodstype" status="flase">
                 <h3><a href="#">所有商品分类</a></h3>
@@ -135,546 +156,30 @@
         </div>
 
     </div>
+{% endblock %}
+
 
     <!--菜单-->
     <div class="menu">
         <ul>
-            <li>
-                <span class="ico"><img src="{% static 'img/category-pic-1.jpg' %}" alt=""></span>
-                <h2><a href="#">手机/数码</a></h2>
-                <!--这个是划过显示的nav-->
-                <div class="sub_menu">
-                    <div class="sm_tle"><span></span>
-                        <h1><a href="#">手机数码</a></h1>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">手机通讯</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">iPhone</a>
-                            <a href="#">三星</a>
-                            <a href="#">小米</a>
-                            <a href="#">魅族</a>
-                            <a href="#">华为</a>
-                            <a href="#">诺基亚</a>
-                            <a href="#">联想</a>
-                            <a href="#">HTC</a>
-                            <a href="#">中兴</a>
-                            <a href="#">索尼</a>
-                            <a href="#">乐视</a>
-                            <a href="#">其他</a>
-                            <a href="#">微软</a>
-                            <a href="#">儿童定位手表</a>
-                        </dd>
-                    </div>
+            {% for classify in classifys %}
 
-                    <div class="sm_details">
-                        <h3><a href="#">手机通讯</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">贴膜</a>
-                            <a href="#">手机保护壳</a>
-                            <a href="#">电池</a>
-                            <a href="#">手机耳机</a>
-                            <a href="#">充电器/数据线</a>
-                            <a href="#">手机存储卡</a>
-                            <a href="#">移动电源</a>
-                            <a href="#">配件</a>
-                        </dd>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">摄影摄像</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">单反相机</a>
-                        </dd>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">数码配件</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">闪光灯</a>
-                        </dd>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">服务产品</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">服务产品</a>
-                        </dd>
+
+
+                <li typeid={{ classify.typeid }}>
+                    <h2><a href="#">{{ classify.typename }}</a></h2>
+
+                </li>
+
+            {% endfor %}
+            <div class="sub_menu">
+                <div class="sm_tle"><span></span>
+                    <div class="fenlei">
+                        <div class="aa"><a>手机数码</a></div>
                     </div>
                 </div>
-            </li>
 
-            <li>
-                <span class="ico"><img src="{% static 'img/category-pic-22.jpg' %}" alt=""></span>
-                <h2><a href="#">电脑/办公</a></h2>
-                <!--这个是划过显示的nav-->
-                <div class="sub_menu">
-                    <div class="sm_tle"><span></span>
-                        <h1><a href="#">手机数码</a></h1>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">手机通讯</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">iPhone</a>
-                            <a href="#">三星</a>
-                            <a href="#">小米</a>
-                            <a href="#">魅族</a>
-                            <a href="#">华为</a>
-                            <a href="#">诺基亚</a>
-                            <a href="#">联想</a>
-                            <a href="#">HTC</a>
-                            <a href="#">中兴</a>
-                            <a href="#">索尼</a>
-                            <a href="#">乐视</a>
-                            <a href="#">其他</a>
-                            <a href="#">微软</a>
-                            <a href="#">儿童定位手表</a>
-                        </dd>
-                    </div>
-
-                    <div class="sm_details">
-                        <h3><a href="#">手机通讯</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">贴膜</a>
-                            <a href="#">手机保护壳</a>
-                            <a href="#">电池</a>
-                            <a href="#">手机耳机</a>
-                            <a href="#">充电器/数据线</a>
-                            <a href="#">手机存储卡</a>
-                            <a href="#">移动电源</a>
-                            <a href="#">配件</a>
-                        </dd>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">摄影摄像</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">单反相机</a>
-                        </dd>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">数码配件</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">闪光灯</a>
-                        </dd>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">服务产品</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">服务产品</a>
-                        </dd>
-                    </div>
-                </div>
-            </li>
-
-            <li>
-                <span class="ico"><img src="{% static 'img/category-pic-22.jpg' %}" alt=""></span>
-                <h2><a href="#">电脑/办公</a></h2>
-                <!--这个是划过显示的nav-->
-                <div class="sub_menu">
-                    <div class="sm_tle"><span></span>
-                        <h1><a href="#">手机数码</a></h1>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">手机通讯</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">iPhone</a>
-                            <a href="#">三星</a>
-                            <a href="#">小米</a>
-                            <a href="#">魅族</a>
-                            <a href="#">华为</a>
-                            <a href="#">诺基亚</a>
-                            <a href="#">联想</a>
-                            <a href="#">HTC</a>
-                            <a href="#">中兴</a>
-                            <a href="#">索尼</a>
-                            <a href="#">乐视</a>
-                            <a href="#">其他</a>
-                            <a href="#">微软</a>
-                            <a href="#">儿童定位手表</a>
-                        </dd>
-                    </div>
-
-                    <div class="sm_details">
-                        <h3><a href="#">手机通讯</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">贴膜</a>
-                            <a href="#">手机保护壳</a>
-                            <a href="#">电池</a>
-                            <a href="#">手机耳机</a>
-                            <a href="#">充电器/数据线</a>
-                            <a href="#">手机存储卡</a>
-                            <a href="#">移动电源</a>
-                            <a href="#">配件</a>
-                        </dd>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">摄影摄像</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">单反相机</a>
-                        </dd>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">数码配件</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">闪光灯</a>
-                        </dd>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">服务产品</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">服务产品</a>
-                        </dd>
-                    </div>
-                </div>
-            </li>
-
-            <li>
-                <span class="ico"><img src="{% static 'img/category-pic-22.jpg' %}" alt=""></span>
-                <h2><a href="#">电脑/办公</a></h2>
-                <!--这个是划过显示的nav-->
-                <div class="sub_menu">
-                    <div class="sm_tle"><span></span>
-                        <h1><a href="#">手机数码</a></h1>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">手机通讯</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">iPhone</a>
-                            <a href="#">三星</a>
-                            <a href="#">小米</a>
-                            <a href="#">魅族</a>
-                            <a href="#">华为</a>
-                            <a href="#">诺基亚</a>
-                            <a href="#">联想</a>
-                            <a href="#">HTC</a>
-                            <a href="#">中兴</a>
-                            <a href="#">索尼</a>
-                            <a href="#">乐视</a>
-                            <a href="#">其他</a>
-                            <a href="#">微软</a>
-                            <a href="#">儿童定位手表</a>
-                        </dd>
-                    </div>
-
-                    <div class="sm_details">
-                        <h3><a href="#">手机通讯</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">贴膜</a>
-                            <a href="#">手机保护壳</a>
-                            <a href="#">电池</a>
-                            <a href="#">手机耳机</a>
-                            <a href="#">充电器/数据线</a>
-                            <a href="#">手机存储卡</a>
-                            <a href="#">移动电源</a>
-                            <a href="#">配件</a>
-                        </dd>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">摄影摄像</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">单反相机</a>
-                        </dd>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">数码配件</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">闪光灯</a>
-                        </dd>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">服务产品</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">服务产品</a>
-                        </dd>
-                    </div>
-                </div>
-            </li>
-
-            <li>
-                <span class="ico"><img src="{% static 'img/category-pic-22.jpg' %}" alt=""></span>
-                <h2><a href="#">电脑/办公</a></h2>
-                <!--这个是划过显示的nav-->
-                <div class="sub_menu">
-                    <div class="sm_tle"><span></span>
-                        <h1><a href="#">手机数码</a></h1>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">手机通讯</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">iPhone</a>
-                            <a href="#">三星</a>
-                            <a href="#">小米</a>
-                            <a href="#">魅族</a>
-                            <a href="#">华为</a>
-                            <a href="#">诺基亚</a>
-                            <a href="#">联想</a>
-                            <a href="#">HTC</a>
-                            <a href="#">中兴</a>
-                            <a href="#">索尼</a>
-                            <a href="#">乐视</a>
-                            <a href="#">其他</a>
-                            <a href="#">微软</a>
-                            <a href="#">儿童定位手表</a>
-                        </dd>
-                    </div>
-
-                    <div class="sm_details">
-                        <h3><a href="#">手机通讯</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">贴膜</a>
-                            <a href="#">手机保护壳</a>
-                            <a href="#">电池</a>
-                            <a href="#">手机耳机</a>
-                            <a href="#">充电器/数据线</a>
-                            <a href="#">手机存储卡</a>
-                            <a href="#">移动电源</a>
-                            <a href="#">配件</a>
-                        </dd>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">摄影摄像</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">单反相机</a>
-                        </dd>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">数码配件</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">闪光灯</a>
-                        </dd>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">服务产品</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">服务产品</a>
-                        </dd>
-                    </div>
-                </div>
-            </li>
-
-            <li>
-                <span class="ico"><img src="{% static 'img/category-pic-22.jpg' %}" alt=""></span>
-                <h2><a href="#">电脑/办公</a></h2>
-                <!--这个是划过显示的nav-->
-                <div class="sub_menu">
-                    <div class="sm_tle"><span></span>
-                        <h1><a href="#">手机数码</a></h1>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">手机通讯</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">iPhone</a>
-                            <a href="#">三星</a>
-                            <a href="#">小米</a>
-                            <a href="#">魅族</a>
-                            <a href="#">华为</a>
-                            <a href="#">诺基亚</a>
-                            <a href="#">联想</a>
-                            <a href="#">HTC</a>
-                            <a href="#">中兴</a>
-                            <a href="#">索尼</a>
-                            <a href="#">乐视</a>
-                            <a href="#">其他</a>
-                            <a href="#">微软</a>
-                            <a href="#">儿童定位手表</a>
-                        </dd>
-                    </div>
-
-                    <div class="sm_details">
-                        <h3><a href="#">手机通讯</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">贴膜</a>
-                            <a href="#">手机保护壳</a>
-                            <a href="#">电池</a>
-                            <a href="#">手机耳机</a>
-                            <a href="#">充电器/数据线</a>
-                            <a href="#">手机存储卡</a>
-                            <a href="#">移动电源</a>
-                            <a href="#">配件</a>
-                        </dd>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">摄影摄像</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">单反相机</a>
-                        </dd>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">数码配件</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">闪光灯</a>
-                        </dd>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">服务产品</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">服务产品</a>
-                        </dd>
-                    </div>
-                </div>
-            </li>
-
-            <li>
-                <span class="ico"><img src="{% static 'img/category-pic-22.jpg' %}" alt=""></span>
-                <h2><a href="#">电脑/办公</a></h2>
-                <!--这个是划过显示的nav-->
-                <div class="sub_menu">
-                    <div class="sm_tle"><span></span>
-                        <h1><a href="#">手机数码</a></h1>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">手机通讯</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">iPhone</a>
-                            <a href="#">三星</a>
-                            <a href="#">小米</a>
-                            <a href="#">魅族</a>
-                            <a href="#">华为</a>
-                            <a href="#">诺基亚</a>
-                            <a href="#">联想</a>
-                            <a href="#">HTC</a>
-                            <a href="#">中兴</a>
-                            <a href="#">索尼</a>
-                            <a href="#">乐视</a>
-                            <a href="#">其他</a>
-                            <a href="#">微软</a>
-                            <a href="#">儿童定位手表</a>
-                        </dd>
-                    </div>
-
-                    <div class="sm_details">
-                        <h3><a href="#">手机通讯</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">贴膜</a>
-                            <a href="#">手机保护壳</a>
-                            <a href="#">电池</a>
-                            <a href="#">手机耳机</a>
-                            <a href="#">充电器/数据线</a>
-                            <a href="#">手机存储卡</a>
-                            <a href="#">移动电源</a>
-                            <a href="#">配件</a>
-                        </dd>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">摄影摄像</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">单反相机</a>
-                        </dd>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">数码配件</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">闪光灯</a>
-                        </dd>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">服务产品</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">服务产品</a>
-                        </dd>
-                    </div>
-                </div>
-            </li>
-
-            <li>
-                <span class="ico"><img src="{% static 'img/category-pic-22.jpg' %}" alt=""></span>
-                <h2><a href="#">电脑/办公</a></h2>
-                <!--这个是划过显示的nav-->
-                <div class="sub_menu">
-                    <div class="sm_tle"><span></span>
-                        <h1><a href="#">手机数码</a></h1>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">手机通讯</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">iPhone</a>
-                            <a href="#">三星</a>
-                            <a href="#">小米</a>
-                            <a href="#">魅族</a>
-                            <a href="#">华为</a>
-                            <a href="#">诺基亚</a>
-                            <a href="#">联想</a>
-                            <a href="#">HTC</a>
-                            <a href="#">中兴</a>
-                            <a href="#">索尼</a>
-                            <a href="#">乐视</a>
-                            <a href="#">其他</a>
-                            <a href="#">微软</a>
-                            <a href="#">儿童定位手表</a>
-                        </dd>
-                    </div>
-
-                    <div class="sm_details">
-                        <h3><a href="#">手机通讯</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">贴膜</a>
-                            <a href="#">手机保护壳</a>
-                            <a href="#">电池</a>
-                            <a href="#">手机耳机</a>
-                            <a href="#">充电器/数据线</a>
-                            <a href="#">手机存储卡</a>
-                            <a href="#">移动电源</a>
-                            <a href="#">配件</a>
-                        </dd>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">摄影摄像</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">单反相机</a>
-                        </dd>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">数码配件</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">闪光灯</a>
-                        </dd>
-                    </div>
-                    <div class="sm_details">
-                        <h3><a href="#">服务产品</a></h3>
-                        <span class="arrow">&gt;</span>
-                        <dd>
-                            <a href="#">服务产品</a>
-                        </dd>
-                    </div>
-                </div>
-            </li>
-
+            </div>
         </ul>
 
 
@@ -682,8 +187,30 @@
     <!-------------------------------分隔线------------------------------------->
 
 
+
+{% block content %}
+
+
+
     <!--轮播区-->
-    <div class="carouselArea">
+    <div class="showgoods">
+        {% for goods in goods_list %}
+
+        <div class="goods">
+            <div class="img">
+
+                <img src={% static goods.img %} alt="">
+
+            </div>
+            <div class="title">{{ goods.title }}</div>
+        <div class="price">{{ goods.price }}&nbsp;&nbsp;</div>
+        <a href={% url 'app:shop' goods.id %}>详情</a>
+        </div>
+
+
+         {% endfor %}
+    </div>
+{#    <div class="carouselArea">#}
         <!--图-->
 
         <div id="lunbotu">
@@ -696,42 +223,50 @@
                 </div>
             </div>
 
-        </div>
+{#        </div>#}
     </div>
+
 
 
     <!-- 右侧nav -->
     <div class="rightNav">
 
         <!--广告-->
-        <div style="position: absolute; top: -62px; left: -11px;"><img src={% static 'img/05233582528889649.png' %}">
+        <div style="position: absolute; top: -62px; left: -11px;">
         </div>
         <div>
         </div>
-        <!--登录信息-->
+
         <div class="user_Status">
             <div id="user_Img">
                 <img src="{% static 'img/person.png' %}">
             </div>
             <div class="user_Name">
                 <span class="username">Hi,您好</span>
-                <!--<span class="username">15978028625</span>-->
+               <span class="username" style="color: red">{{ user.username }}</span>
                 <br>
                 <span class="memberinfo">欢迎来到米米乐商城</span>
-                <!--<span style="color: red;">银米会员</span>-->
+                <span style="color: red;">银米会员</span>
             </div>
             <div class="login">
-                <!--未登录-->
-                <!--<span class="not_Logged">
-                    <a href="">登录</a>
-                    <a href="">注册</a>
-                </span>-->
+
+
                 <!--已登录-->
-                <!--<span class="logged">
+                {% if user %}
+
+
+                <span class="logged">
                     <div class="strip-range" style="width:12%"></div>
                 </span>
-                <span>您还差<em class="integral">2000</em>积分，达到金牌会员</span>-->
+                <span>您还差<em class="integral">2000</em>积分，达到金牌会员</span>
+                    {% else %}
+                     <span class="not_Logged">
+                    <a href={% url 'app:login' %}>登录</a>
+                    <a href={% url 'app:register' %}>注册</a>
+                </span>
+                 {% endif %}
             </div>
+
         </div>
         <!--公告-->
         <ul class="proclamation">
@@ -775,6 +310,8 @@
             </li>-->
         </ul>
     </div>
+
+
 
     <!--特惠专区 行业新闻-->
     <div class="activity-list">
@@ -1321,141 +858,171 @@
             <li><img src="{% static 'img/web-607-221-2-2.jpg' %}"></li>
         </ul>
     </div>
-</div>
-<!--解决高度缺失-->
-<div style="height:40px; clear:both;"></div>
-<!--页尾-->
-<div id="footer">
-    <!--帮助-->
-    <div class="help">
-        <ul>
-            <li>
-                <h2>购物指南</h2>
-                <a href="#"><i></i>礼品卡的购买与使用</a>
-                <a href="#"><i></i>无法收到邮件？</a>
-                <a href="#"><i></i>关于捷信分期？</a>
-                <a href="#"><i></i>邮费制度</a>
-                <a href="#"><i></i>订单状态说明</a>
-            </li>
-            <li>
-                <h2>购物指南</h2>
-                <a href="#"><i></i>礼品卡的购买与使用</a>
-                <a href="#"><i></i>无法收到邮件？</a>
-                <a href="#"><i></i>关于捷信分期？</a>
-                <a href="#"><i></i>邮费制度</a>
-                <a href="#"><i></i>订单状态说明</a>
-            </li>
-            <li>
-                <h2>购物指南</h2>
-                <a href="#"><i></i>礼品卡的购买与使用</a>
-                <a href="#"><i></i>无法收到邮件？</a>
-                <a href="#"><i></i>关于捷信分期？</a>
-                <a href="#"><i></i>邮费制度</a>
-                <a href="#"><i></i>订单状态说明</a>
-            </li>
-            <li>
-                <h2>购物指南</h2>
-                <a href="#"><i></i>礼品卡的购买与使用</a>
-                <a href="#"><i></i>无法收到邮件？</a>
-                <a href="#"><i></i>关于捷信分期？</a>
-                <a href="#"><i></i>邮费制度</a>
-                <a href="#"><i></i>订单状态说明</a>
-            </li>
-        </ul>
-        <div class="kefu">
-            <dl>
-                <dt>客服中心</dt>
-                <dd class="tel"><img src="{% static 'img/bohao.png' %}">4006-780-781</dd>
-                <dd>E-mail：mmloo@mmloo.com</dd>
-                <dd>四川省成都市新南路亚华大厦六楼</dd>
-                <dd><img src="{% static 'img/qq_index.gif' %}">1398828642</dd>
-            </dl>
-            <dl>
-                <dt>关于米米乐商城</dt>
-                <dd class="wx"><img src="{% static 'img/scmmloo.png' %}"></dd>
-                <dd class="xd">手机下单更优惠<br>
-                    快乐网购 轻松拥有
-                </dd>
-            </dl>
+
+    <!--解决高度缺失-->
+    <div style="height:40px; clear:both;"></div>
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--页尾-->
+{% block footer %}
+    <div id="footer">
+        <!--帮助-->
+        <div class="help">
+            <ul>
+                <li>
+                    <h2>购物指南</h2>
+                    <a href="#"><i></i>礼品卡的购买与使用</a>
+                    <a href="#"><i></i>无法收到邮件？</a>
+                    <a href="#"><i></i>关于捷信分期？</a>
+                    <a href="#"><i></i>邮费制度</a>
+                    <a href="#"><i></i>订单状态说明</a>
+                </li>
+                <li>
+                    <h2>购物指南</h2>
+                    <a href="#"><i></i>礼品卡的购买与使用</a>
+                    <a href="#"><i></i>无法收到邮件？</a>
+                    <a href="#"><i></i>关于捷信分期？</a>
+                    <a href="#"><i></i>邮费制度</a>
+                    <a href="#"><i></i>订单状态说明</a>
+                </li>
+                <li>
+                    <h2>购物指南</h2>
+                    <a href="#"><i></i>礼品卡的购买与使用</a>
+                    <a href="#"><i></i>无法收到邮件？</a>
+                    <a href="#"><i></i>关于捷信分期？</a>
+                    <a href="#"><i></i>邮费制度</a>
+                    <a href="#"><i></i>订单状态说明</a>
+                </li>
+                <li>
+                    <h2>购物指南</h2>
+                    <a href="#"><i></i>礼品卡的购买与使用</a>
+                    <a href="#"><i></i>无法收到邮件？</a>
+                    <a href="#"><i></i>关于捷信分期？</a>
+                    <a href="#"><i></i>邮费制度</a>
+                    <a href="#"><i></i>订单状态说明</a>
+                </li>
+            </ul>
+            <div class="kefu">
+                <dl>
+                    <dt>客服中心</dt>
+                    <dd class="tel"><img src="{% static 'img/bohao.png' %}">4006-780-781</dd>
+                    <dd>E-mail：mmloo@mmloo.com</dd>
+                    <dd>四川省成都市新南路亚华大厦六楼</dd>
+                    <dd><img src="{% static 'img/qq_index.gif' %}">1398828642</dd>
+                </dl>
+                <dl>
+                    <dt>关于米米乐商城</dt>
+                    <dd class="wx"><img src="{% static 'img/scmmloo.png' %}"></dd>
+                    <dd class="xd">手机下单更优惠<br>
+                        快乐网购 轻松拥有
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <!--友情链接-->
+        <div class="friendlink">
+            <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a
+                href="#">吃喝玩乐</a><a href="#">网上数码商城</a> <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a
+                href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a href="#">吃喝玩乐</a><a href="#">网上数码商城</a>
+            <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a
+                href="#">吃喝玩乐</a><a href="#">网上数码商城</a> <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a
+                href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a href="#">吃喝玩乐</a><a href="#">网上数码商城</a>
+            <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a
+                href="#">吃喝玩乐</a><a href="#">网上数码商城</a> <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a
+                href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a href="#">吃喝玩乐</a><a href="#">网上数码商城</a>
+            <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a
+                href="#">吃喝玩乐</a><a href="#">网上数码商城</a> <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a
+                href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a href="#">吃喝玩乐</a><a href="#">网上数码商城</a>
+            <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a
+                href="#">吃喝玩乐</a><a href="#">网上数码商城</a> <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a
+                href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a href="#">吃喝玩乐</a><a href="#">网上数码商城</a>
+            <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a
+                href="#">吃喝玩乐</a><a href="#">网上数码商城</a> <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a
+                href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a href="#">吃喝玩乐</a><a href="#">网上数码商城</a>
+        </div>
+        <!--版权信息-->
+        <div class="copyright">
+            <a href="#">电脑节 </a>|
+            <a href="#"> 年货节 </a>|
+            <a href="#"> 批发商城 </a>|
+            <a href="#"> 合作及洽谈 </a>|
+            <a href="#"> 联系我们 </a>|
+            <a href="#"> 商家登录</a>|
+            <a href="#"> 开店协议</a>|
+            <a href="#"> 商家入驻</a>|
+            <a href="#"> 手机版</a>|
+            <a href="#"> 友情链接</a>|
+            <a href="#"> 招聘英才</a>|
+            <a href="#"> 米商</a>|
+            <a href="#"> 8.8包邮</a>|
+            <p>© 2016 米米乐商城 www.mmloo.com 版权所有 蜀ICP备06015925号-1</p>
+            <p><img src="{% static 'img/cxlogo.png' %}"></p>
+            <span class="backTop">返回顶部</span>
         </div>
     </div>
-    <!--友情链接-->
-    <div class="friendlink">
-        <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a
-            href="#">吃喝玩乐</a><a href="#">网上数码商城</a> <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a
-            href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a href="#">吃喝玩乐</a><a href="#">网上数码商城</a>
-        <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a
-            href="#">吃喝玩乐</a><a href="#">网上数码商城</a> <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a
-            href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a href="#">吃喝玩乐</a><a href="#">网上数码商城</a>
-        <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a
-            href="#">吃喝玩乐</a><a href="#">网上数码商城</a> <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a
-            href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a href="#">吃喝玩乐</a><a href="#">网上数码商城</a>
-        <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a
-            href="#">吃喝玩乐</a><a href="#">网上数码商城</a> <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a
-            href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a href="#">吃喝玩乐</a><a href="#">网上数码商城</a>
-        <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a
-            href="#">吃喝玩乐</a><a href="#">网上数码商城</a> <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a
-            href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a href="#">吃喝玩乐</a><a href="#">网上数码商城</a>
-        <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a
-            href="#">吃喝玩乐</a><a href="#">网上数码商城</a> <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a
-            href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a href="#">吃喝玩乐</a><a href="#">网上数码商城</a>
-    </div>
-    <!--版权信息-->
-    <div class="copyright">
-        <a href="#">电脑节 </a>|
-        <a href="#"> 年货节 </a>|
-        <a href="#"> 批发商城 </a>|
-        <a href="#"> 合作及洽谈 </a>|
-        <a href="#"> 联系我们 </a>|
-        <a href="#"> 商家登录</a>|
-        <a href="#"> 开店协议</a>|
-        <a href="#"> 商家入驻</a>|
-        <a href="#"> 手机版</a>|
-        <a href="#"> 友情链接</a>|
-        <a href="#"> 招聘英才</a>|
-        <a href="#"> 米商</a>|
-        <a href="#"> 8.8包邮</a>|
-        <p>© 2016 米米乐商城 www.mmloo.com 版权所有 蜀ICP备06015925号-1</p>
-        <p><img src="{% static 'img/cxlogo.png' %}"></p>
-        <span class="backTop">返回顶部</span>
-    </div>
-</div>
-
-
+{% endblock %}
+{% block sidebar %}
 <div id="sidebar">
-    <ul>
-        <li>
-            <img src="{% static 'img/right_sevice.png' %}">
-            <span>联系客服</span>
-        </li>
+        <ul>
+            <li>
+                <img src="{% static 'img/right_sevice.png' %}">
+                <span>联系客服</span>
+            </li>
 
-        <li>
-            <a href="page/cart.html"><img src="{% static 'img/right_cart.png' %}"></a>
-        </li>
+            <li>
+                <a href="page/cart.html"><img src="{% static 'img/right_cart.png' %}"></a>
+            </li>
 
-        <li>
-            <img src="{% static 'img/right_history.png' %}">
-        </li>
+            <li>
+                <img src="{% static 'img/right_history.png' %}">
+            </li>
 
-        <li>
-            <img src="{% static 'img/right_erweima.png' %}">
-            <span class="ewm"></span>
-        </li>
+            <li>
+                <img src="{% static 'img/right_erweima.png' %}">
+                <span class="ewm"></span>
+            </li>
 
-        <li>
-            <img src="{% static 'img/right_top.png' %}">
-            <b>TOP</b>
-            <span class="backTop">回到顶部</span>
-        </li>
-    </ul>
+            <li>
+                <img src="{% static 'img/right_top.png' %}">
+                <b>TOP</b>
+                <span class="backTop">回到顶部</span>
+            </li>
+        </ul>
 
-</div>
-
-
-<div style="height: 2px; background: #D93600;display: block;position: absolute;overflow:hidden;width:100%;top: 266px;left: 0;"></div>
+    </div>
+{% endblock %}
 
 
-​
+
+
+
+{#    <div style="height: 2px; background: #D93600;display: block;position: absolute;overflow:hidden;width:100%;top: 266px;left: 0;"></div>#}
+
+
+    ​
 
 
 </html>
