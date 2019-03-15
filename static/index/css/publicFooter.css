@@ -1,0 +1,138 @@
+
+/*页尾*/
+#footer{
+	overflow: hidden;
+}
+#footer .help{
+	overflow: hidden;
+	border:1px solid #F2F2F2;	
+	padding-left: 30px;
+    background: #FAFAFA;
+}
+
+#footer .help ul{
+	float: left;
+	border-right:1px solid #ECECEC;
+	background: #FAFAFA;
+	overflow: hidden;
+	padding-right: 20px;
+}
+#footer .help h2{
+	font-size: 20px;
+	width: 175px;
+	text-align: left;
+	height: 35px;
+	line-height: 40px;
+	margin-bottom: 10px;
+	border-bottom: 1px #CCC solid;
+	cursor: pointer;
+}
+#footer .help ul li{
+	float: left;
+	margin-right: 15px;
+	display: block;
+	overflow: hidden;
+}
+#footer .help ul li a{
+	height: 25px;
+	line-height: 25px;
+	text-align: left;
+	display: block;
+}
+#footer .help ul li a:hover{
+	text-decoration: none;
+}
+#footer .help ul li a i{
+    font-size: 0;
+    line-height: 0;
+    background: url(../img/top_bg.png) no-repeat -80px -10px;
+    vertical-align: middle;
+    display: inline-block;
+    width: 3px;
+    height: 3px;
+    margin-right: 5px;
+}
+#footer .help .kefu{
+	text-align: left;
+	float: left;
+	padding-left: 20px;
+	overflow: hidden; 
+}
+#footer .help .kefu dl{
+	float: left;
+}
+#footer .help .kefu dl:first-child{
+	height: 170px;
+	padding-right:20px ;
+	border-right: 1px #ccc solid;
+}
+#footer .help .kefu dl:first-child dt{
+	width: 200px;
+}
+#footer .help .kefu dl:last-child{
+	padding-left: 10px;
+}
+#footer .help .kefu dt{
+	height: 35px;
+	margin-bottom:10px ;
+	line-height: 40px;
+	font-size:20px;
+	font-weight: bold;
+	border-bottom:1px #ccc solid ;
+}
+#footer .help .kefu dd{
+	min-height: 25px;
+}
+#footer .help .kefu dd img{
+    vertical-align: top;
+}
+.tel{
+	padding-left:5px ;
+    line-height: 25px;
+    background: url(/shop/templates/default/images/littlebtn/call.gif) no-repeat scroll 0 5px rgba(0,0,0,0);
+    color: #ff8a00;
+    font-size: 22px;
+}
+.wx{
+	padding: 0 30px;
+	text-align: center;
+	width: 75px;
+	height: 75px!important;
+}
+.wx img{
+	width: 100%;
+	height: 100%;
+}
+.xd{
+	font-size: 16px;
+	text-align: center;
+	color: #999;
+}
+#footer .friendlink{
+	width: 1140px!important;
+	text-align: left;
+}
+#footer .friendlink a{
+	display: inline-block;
+	padding: 4px 0;
+	margin-right: 5px;
+	color: #666;
+}
+#footer .friendlink a:hover{
+	text-decoration: none;
+	color: red;
+}
+
+.copyright{
+	margin-top: 10px;
+	padding-top:10px  ;
+	border-top: 1px #ccc solid;
+	text-align: center;
+	position: relative;
+}
+.copyright span{
+	position: absolute;
+	right: 0;
+	top: 10px;
+	cursor: pointer;
+}

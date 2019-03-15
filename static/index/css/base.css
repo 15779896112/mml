@@ -1,0 +1,98 @@
+﻿/**
+ * 初始化HTML标签及常用类型
+ * @kivenhan
+ * www.shopnc.net
+ * Apr-01-2012
+ **/
+
+/* ===============
+ * 重新定义Html元素
+ * =============== */
+body{
+	 -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+/*.box{
+	width: 1280px!important;
+}*/
+/*广告*/
+#banner{
+	width:100% ;
+	height: 70px;
+	cursor: pointer;
+	background:#F3F3F3;
+}
+#banner div{
+	/*width:100% ;*/	
+	height: 70px;
+	background: url(../img/banner.jpg);
+	background-repeat:no-repeat ;
+	background-position: top center;
+}
+
+/* 链接 */
+a { color: #333; text-decoration: none; outline: medium none; -webkit-transition-property:color; -webkit-transition-duration: 0.3s; -webkit-transition-timing-function: ease;}
+a:link, a:visited, a:active { text-decoration: none;}
+a:hover { color: #D93600; text-decoration: none;}
+
+.box{
+	width: 1280px;
+	margin: 0 auto;
+}
+time { color: #777;}
+.f1_favor{background: #4595c6!important; color: #FFF!important;font-weight: bold;}
+
+
+
+/*楼层背景颜色*/
+.bg1{background-color: #4595C6!important;}
+.bg1_bor{border-top:2px #4595C6 solid !important;}
+.f2_favor{background: #4595c6!important; color: #FFF!important;font-weight: bold;}
+
+.bg2{background-color: #27AE61!important;}
+.bg2_bor{border-top:2px #27AE61 solid !important;}
+.f2_favor{background: #27AE61!important; color: #FFF!important;font-weight: bold;}
+
+.bg3{background-color: #2B3282!important;}
+.bg3_bor{border-top:2px #2B3282 solid !important;}
+.f3_favor{background: #2B3282!important; color: #FFF!important;font-weight: bold;}
+
+.bg4{background-color: #F7994A!important;}
+.bg4_bor{border-top:2px #F7994A solid !important;}
+.f4_favor{background: #F7994A!important; color: #FFF!important;font-weight: bold;}
+
+
+.one{
+	color: #fff;
+    background: #4896C7;
+}
+.two{
+	 color: #fff;
+    background: #56A7DC;
+}
+.thr{
+	 color: #fff;
+    background: #85C7EA;
+}
+
+html, body, div, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, fieldset, input { padding: 0; margin: 0;}
+h1, h2, h3, h4, h5, h6, pre, code, address, caption, cite, code, em, strong, table, th, td { font-size: 1em; font-style: normal; font-weight: normal;}
+strong { font-weight: bold;}
+ul, ol { list-style: none outside none;}
+fieldset, img { border: medium none;}
+caption, th {  text-align: left;}
+table { border-collapse: collapse; border-spacing: 0;}
+body { font: 12px/20px Arial,Verdana,"宋体","Lucida Grande","Lucida Sans Unicode",Helvetica,sans-serif; color: #666; background: #FFF none repeat scroll 0 0; min-width: 1200px;}
+input, select, textarea { font: 12px/20px Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;}
+i, cite, em { font-style: normal;}
+input,button,select,textarea{ outline:none}
+html {min-height:100%; }
+
+
+
+/* ==========================
+ * 为旧版本浏览器格式化Html5元素
+ * ========================== */
+title, article, aside, dialog, footer, header, section, footer, nav, figure,figcaption, menu { display:block; }

@@ -1,0 +1,858 @@
+﻿/*特惠专区 */
+.activity-list {
+    margin: 10px 10px 0 70px;
+}
+
+/*楼层*/
+#main .floor {
+    margin: 10px 30px;
+}
+
+/*大轮播的字*/
+#main .carouselArea .carousel li a, #main .carouselArea .small_Slider {
+    left: 240px;
+}
+
+
+/*轮播的两个css*/
+.active {
+    z-index: 8 !important;
+}
+
+.cur {
+    background: rgba(0, 0, 0, 0.5) !important;
+}
+
+
+/*轮播*/
+#main .carouselArea {
+    /*margin-left: 20%;*/
+    width: 100%;
+    height: 420px;
+    /*left: -5%;*/
+    position: relative;
+    /*top: -420px;*/
+    /*background: rgb(236, 215, 170);*/
+    /*padding-left: 290px;*/
+}
+
+#main .carouselArea .carousel {
+    width: 100%;
+    position: absolute;
+}
+
+#main .carouselArea .carousel li:first-child {
+    opacity: 1;
+}
+
+#main .carouselArea .carousel li {
+    position: absolute;
+    /*width: 100%;*/
+    height: 420px;
+    top: 0;
+    opacity: 0;
+
+}
+
+#main .carouselArea .carousel li #swiper-container {
+    position: absolute;
+    width: 762px;
+    height: 420px;
+}
+
+#main .carouselArea .carousel li a img {
+    float: left;
+    width: 100%;
+    height: 100%;
+}
+
+#main .carouselArea .carousel {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    line-height: 30px;
+    left: 0;
+}
+
+#main .carouselArea .small_Slider {
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
+}
+
+#main .carouselArea .small_Slider li {
+    float: left;
+    margin-right: 1px;
+    background-color: rgba(0, 0, 0, 0.2);
+    line-height: 30px;
+    width: 126px;
+    overflow: hidden;
+
+}
+
+#main .carouselArea .small_Slider li a {
+    display: block;
+    width: 100%;
+    color: #FFFFFF;
+    display: inline-block;
+    text-align: center;
+    padding: 5px 0px;
+    /*width: 96px;*/
+    text-decoration: none;
+}
+
+#main .carouselArea .btn {
+    position: absolute;
+    display: none;
+    top: 50%;
+    cursor: pointer;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    z-index: 20;
+    width: 30px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 20px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/*右侧用户信息*/
+#main .rightNav {
+    position: absolute;
+    left: 1002px;
+    top: 168px;
+    width: 210px;
+    height: 418px;
+    background: #FFF;
+    border: 1px solid #CCC;
+    z-index: 101;
+}
+
+/*用户状态*/
+#main .rightNav .user_Status {
+    width: 210px;
+    /*height: 120px;*/
+    background: #FFF;
+    border-bottom: 1px #CCC solid;
+}
+
+#main .rightNav .user_Status #user_Img {
+    float: left;
+    padding: 10px;
+}
+
+#main .rightNav .user_Status .user_Name {
+    padding: 16px 16px 6px 16px;
+    line-height: 20px;
+}
+
+/*登录状态*/
+#main .rightNav .user_Status .login {
+    width: 200px;
+    padding: 0 5px;
+    height: 40px;
+    overflow: hidden;
+}
+
+#main .rightNav .user_Status .login .strip-range {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: #FF3B2F;
+    width: 25%;
+    -webkit-border-radius: 7px 0 0 7px;
+    -moz-border-radius: 7px 0 0 7px;
+    border-radius: 7px 0 0 7px;
+}
+
+/*未登录*/
+#main .rightNav .user_Status .not_Logged {
+    display: inline-block;
+    width: 200px;
+    line-height: 30px;
+    border-top: 1px dashed #CCC;
+}
+
+#main .rightNav .user_Status .not_Logged a {
+    display: block;
+    float: left;
+    width: 99px;
+    line-height: 40px;
+    text-align: center;
+}
+
+#main .rightNav .user_Status .not_Logged a:first-child {
+    border-right: 1px solid #CCC;
+}
+
+/*已登录*/
+#main .rightNav .user_Status .logged {
+    display: inline-block;
+    background: #E8E8E8;
+    margin: auto;
+    border: none;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    width: 200px;
+    height: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+#main .rightNav .user_Status .login .integral {
+    color: red !important;
+}
+
+/*公告*/
+#main .rightNav .proclamation {
+    overflow: hidden;
+}
+
+#main .rightNav .proclamation li {
+    line-height: 31px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 31px;
+    padding: 1px 0;
+    overflow: hidden;
+    list-style: none;
+    /*超出省略号显示	*/
+    text-overflow: ellipsis;
+
+}
+
+#main .rightNav .proclamation li a {
+    color: #898989;
+
+}
+
+#main .rightNav .proclamation li time {
+    margin-left: 3px;
+}
+
+#main .rightNav .conve_bd_wrap {
+    transition-duration: 0.3s;
+    transition-property: margin;
+    height: 93px;
+    border: 1px solid #CDCDCD;
+    border-left: 0;
+    border-right: 0;
+    border-width: 1px 0px 0px 1px;
+}
+
+#main .rightNav .conve_bd_wrap li {
+    border-right: 1px solid #CDCDCD;
+    float: left;
+    width: 32.86%;
+    display: block;
+    border-bottom: 1px solid #CDCDCD;
+    height: 91px;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+#main .rightNav .conve_bd_wrap li a {
+    background: none repeat scroll 0 0 #fff;
+    border-radius: 3px;
+    color: #9c9c9c;
+    cursor: pointer;
+    float: left;
+    height: 53px;
+    padding: 18px 2px;
+    outline: 0 none;
+    overflow: hidden;
+    text-align: center;
+    width: 62px;
+}
+
+#main .rightNav .conve_bd_wrap .mi-iconfont {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    /*-moz-osx-font-smoothing: grayscale;*/
+    color: #D71D2A;
+    display: block;
+    font-size: 26px;
+    margin: 6px 0;
+    text-align: center;
+    position: relative;
+}
+
+#main .rightNav .conve_bd_wrap li:hover a {
+    border: 1px red solid;
+    color: #D93600;
+}
+
+/*li:hover时 .mi-iconfont 执行这段动画*/
+#main .rightNav .conve_bd_wrap li:hover a .mi-iconfont {
+    animation: frames 0.2s;
+}
+
+/*定义一个名为frames的动画*/
+@keyframes frames {
+    from {
+        top: -30px;
+    }
+    to {
+        top: 0;
+    }
+}
+
+#main .rightNav .sider_ad {
+    width: 210px;
+    height: 140px;
+}
+
+#main .rightNav .sider_ad img {
+    width: 100%;
+    height: 100%;
+}
+
+
+/*抢购*/
+#main .snapUp {
+    margin: 30px;
+    overflow: hidden;
+    /*background: red;*/
+}
+
+#main .snapUp ul li:first-child {
+    padding: 24px 40px;
+}
+
+#main .snapUp ul li {
+    display: block;
+    float: left;
+    border-right: 1px solid #CCC;
+    overflow: hidden;
+}
+
+#main .snapUp ul li h2 {
+    text-align: center;
+}
+
+#main .snapUp ul li img, #main .snapUp ul li a {
+    display: block;
+    float: left;
+}
+
+/*特惠专区*/
+#main .activity-list {
+    overflow: hidden;
+}
+
+#main .activity-list .left_list {
+    display: block;
+    float: left;
+
+}
+
+#main .activity-list .left_list h2 {
+    color: #333;
+    font-size: 25px;
+    width: 280px;
+    border-bottom: 1px dashed #DCDCDC;
+    line-height: 52px;
+    margin-bottom: 10px;
+}
+
+#main .activity-list .left_list li em {
+    color: #9B9B9B;
+    padding-left: 5px;
+}
+
+#main .activity-list li {
+    padding: 7px 0;
+    width: 280px;
+    height: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 18px;
+}
+
+#main .activity-list .left_list ul li span {
+    display: inline-block;
+    width: 45px;
+    height: 16px;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+    background-repeat: no-repeat;
+}
+
+#main .activity-list .right_list {
+    float: left;
+    margin-left: 60px;
+    width: 825px;
+}
+
+#main .activity-list .right_list ul:first-child li {
+    float: left;
+    width: 275px;
+    height: 320px;
+    display: table-cell;
+    text-align: center;
+    overflow: hidden;
+}
+
+#main .activity-list .right_list ul:last-child li {
+    float: left;
+    width: 275px;
+    height: 90px;
+    text-align: center;
+    display: table-cell;
+    overflow: hidden;
+}
+
+/*建楼了    坑...*/
+#main .floor {
+    overflow: hidden;
+}
+
+#main .floor .one_way {
+    padding-bottom: 20px;
+}
+
+#main .floor .one_way_head {
+    overflow: hidden;
+}
+
+#main .floor .one_way_head h2 {
+    display: block;
+    float: left;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 30px;
+    color: #231816;
+    font-family: "微软雅黑";
+}
+
+#main .floor .one_way_head ul {
+    float: right;
+}
+
+#main .floor .one_way_head ul li {
+    float: left;
+    font-size: 14px;
+    padding: 8px 9px;
+    color: #666;
+    background: #FFF;
+}
+
+/*#main .floor .one_way_head ul li:hover{
+	background: #4595c6; 
+	color: #FFF;
+	font-weight: bold;
+}*/
+#main .floor .one_way_head ul span {
+    cursor: pointer;
+    float: left;
+    font-size: 14px;
+    padding: 8px 9px;
+    color: #666;
+    background: #FFF;
+}
+
+#main .floor .one_way_main {
+    overflow: hidden;
+    border: 1px #CCC solid;
+
+}
+
+/*左侧楼层*/
+#main .floor .one_way_main .fm_left {
+    position: relative;
+    float: left;
+    width: 225px;
+    height: 590px;
+    border-color: #DDD;
+    border-style: solid;
+    border-width: 0px 1px 1px 0;
+}
+
+#main .floor .one_way_main .fm_left .floor_num {
+    width: 30px;
+    height: 35px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-align: center;
+    color: #FFF;
+    line-height: 26px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#main .floor .one_way_main .fm_left .floor_num span {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 10px solid #FFF;
+    position: absolute;
+    top: 25px;
+    left: 0px;
+}
+
+/*文字*/
+#main .floor .one_way_main .fm_left .left_classfy .left_text {
+    padding: 10px 25px;
+    margin-left: 30px;
+}
+
+#main .floor .one_way_main .fm_left .left_classfy .left_text li {
+    float: left;
+    display: block;
+    padding: 3px 20px 3px 0;
+}
+
+/*图片*/
+#main .floor .one_way_main .fm_left .left_classfy .left_img {
+    margin: 0 auto;
+}
+
+/*轮播图*/
+#main .floor .one_way_main .fm_left .left_classfy .tbCarousel {
+    position: absolute;
+    bottom: 0;
+    border-top: 1px #CCC solid;
+    /*background: red;*/
+    height: 179px;
+    width: 100%;
+    overflow: hidden;
+}
+
+#main .floor .one_way_main .fm_left .left_classfy .tbCarousel ul {
+    width: 150px;
+    position: absolute;
+    left: 47px;
+}
+
+#main .floor .one_way_main .fm_left .left_classfy .tbCarousel ul li {
+    display: block;
+    width: 130px;
+    height: 60px;
+
+}
+
+
+/*===============轮播公共样式================*/
+
+#main .tbCarousel ul li img {
+    width: 100%;
+    height: 100%;
+}
+
+#main .tbCarousel ul li a {
+    border-bottom: 1px solid #DFDFDF;
+    padding: 6px 0px;
+}
+
+#main .tbCarousel span {
+    display: block;
+    position: absolute;
+    top: 65px;
+    width: 25px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.1);
+    text-align: center;
+    line-height: 50px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #999 !important;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+#main .tbCarousel span:last-child {
+    right: 0px;
+}
+
+/*===============轮播公共样式end================*/
+
+
+/*右侧的一大堆*/
+#main .floor .one_way_main .right_show {
+    float: left;
+    width: 990px;
+    overflow: hidden;
+
+}
+
+/*右左一*/
+#main .floor .one_way_main .right_show .rw_top_left {
+    float: left;
+}
+
+#main .floor .one_way_main .right_show .rw_top_left ul {
+    overflow: hidden;
+}
+
+#main .floor .rw_top_3c li {
+    width: 195px;
+    height: 185px;
+    border-right: 1px #CCC solid;
+    border-bottom: 1px #CCC solid;
+    float: left;
+}
+
+#main .floor .rw_top_3c ul li img {
+    width: 100%;
+}
+
+/*==============上右侧轮播=======================*/
+#main .floor .rw_top_Carousel {
+    position: relative;
+    width: 392px;
+    height: 174px;
+    border-bottom: 1px #CCC solid;
+    overflow: hidden;
+}
+
+#main .floor .rw_top_Carousel ul {
+    position: absolute;
+    width: 3920px;
+    overflow: hidden;
+    height: 175px;
+}
+
+#main .floor .rw_top_Carousel ul li {
+    display: block;
+    float: left;
+    width: 392px;
+    height: 175px;
+    overflow: hidden;
+}
+
+#main .floor .rw_top_Carousel ul li img {
+    width: 100%;
+    height: 100%;
+    float: left;
+}
+
+/*==============上右侧轮播end===================*/
+/*上右中*/
+#main .floor .one_way_main .right_show .rw_top_phone {
+    float: left;
+    height: 360px;
+    width: 195px;
+    overflow: hidden;
+    border-right: 1px #CCC solid;
+    border-bottom: 1px #CCC solid;
+}
+
+#main .floor .one_way_main .right_show .rw_top_phone img {
+    float: left;
+    width: 100%;
+}
+
+#main .floor .one_way_main .right_show .rwtp li:first-child {
+    overflow: hidden;
+    border-bottom: 1px #CCC solid;
+}
+
+/*=======================百叶窗==========================*/
+#main .floor .window_shade {
+    float: left;
+    width: 190px;
+    height: 360px;
+    border-bottom: 1px #CCC solid;
+    overflow: hidden;
+}
+
+/*显示 ===== 隐藏*/
+#main .floor .window_shade ul li:first-child dl {
+    display: block;
+}
+
+#main .floor .window_shade ul li dl {
+    height: 120px;
+    padding-top: 20px;
+    overflow: hidden;
+    display: none;
+}
+
+#main .floor .window_shade h2 {
+    /*width: 193px;*/
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 30px;
+    height: 30px;
+}
+
+#main .floor .window_shade h3 {
+    color: #000;
+    font-size: 14px;
+    font-weight: bold;
+    background: #fff;
+    width: 100%;
+    /*position: relative;*/
+    padding: 21px 0;
+    text-align: center;
+    /*padding-left: 43px;*/
+}
+
+#main .floor .window_shade .window_shade_img {
+    float: left;
+    margin-left: 15px;
+}
+
+#main .floor .window_shade .window_shade_img img {
+    width: 80px;
+    height: 80px;
+}
+
+#main .floor .window_shade span {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    margin-left: 10px;
+    color: #656565;
+    display: inline-block;
+    text-align: center;
+    line-height: 20px;
+    font-weight: bold;
+    font-size: 17px;
+    position: relative;
+    top: /* -3*/ px;
+    margin-right: 5px;
+}
+
+#main .window_shade_title {
+    float: left;
+    width: 80px;
+    padding-left: 10px;
+    height: 100px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    overflow: hidden;
+    /*font-size: 90px;*/
+}
+
+#main .window_shade_title a p:first-child {
+    padding-top: 30px;
+    white-space: nowrap;
+}
+
+#main .window_shade_title a p:last-child {
+    color: red;
+}
+
+/*======================百叶窗end================*/
+/*下*/
+#main .rw_bottom {
+    float: left;
+    height: 230px;
+    overflow: hidden;
+}
+
+#main .rw_bottom ul {
+    border-right: 1px #ccc solid;
+    float: left;
+    width: 195px;
+    overflow: hidden;
+}
+
+#main .rw_bottom ul:last-child {
+    width: 191px;
+    border: 0;
+}
+
+#main .rw_bottom ul li {
+    text-align: center;
+    height: 36px;
+    padding: 0 10px;
+    overflow: hidden;
+}
+
+#main .rw_bottom ul li:first-child {
+    height: 170px;
+}
+
+#main .rw_bottom ul li img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: top 0.5s;
+    -moz-transition: top 0.5s;
+    -webkit-transition: top 0.5s;
+    top: 0;
+}
+
+#main .rw_bottom ul:hover img {
+    top: -6px;
+    /*animation: rwbh 0.5s forwards;*/
+}
+
+/*@keyframes rwbh{
+	0%{top: 0px;}
+	100%{top: -5px;}
+}*/
+#main .rw_bottom ul li em {
+    color: red;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
+#main .wrapper_groom h2 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #000000;
+    height: 30px;
+    border-bottom: 1px #cccddd dashed;
+    margin-bottom: 15px;
+}
+
+#main .wrapper_groom ul {
+    overflow: hidden;
+}
+
+#main .wrapper_groom ul li {
+    margin-right: 10px;
+    float: left;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+
+    #lunbotu{
+        /*background: red;*/
+        width: 700px;
+        height: 100%;
+        position: absolute;
+        left: 21%;
+        overflow:hidden;
+
+    }
