@@ -1,15 +1,144 @@
-{% extends 'index/index.html' %}
+<!DOCTYPE html>
 {% load static %}
-{% block css %}
-    <link rel="stylesheet" type="text/css" href={% static 'index/css/shop.css' %}
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>米米乐商城</title>
+    <link rel="stylesheet" type="text/css" href={% static 'index/css/base.css' %}>
+    <link rel="stylesheet" type="text/css" href={% static 'index/css/publicHead.css' %}>
+    <link rel="stylesheet" type="text/css" href="{% static 'index/css/publicFooter.css' %}"/>
+    <link rel="stylesheet" type="text/css" href={% static 'index/css/shop.css' %}/>
 
-{% endblock %}
-{% block js %}
-    {#    #}
-{% endblock %}
-{% block content %}
+    <script src={% static 'index/js/jquery-1.12.3.js' %}></script>
+    <script src="{% static 'index/js/Swiper3.4.2.min.js' %}"></script>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src={% static 'index/js/index.js' %}></script>
+    <script src={% static 'index/js/shop.js' %}></script>
+
+</head>
+<body>
+<!--加载进度-->
+<div id="loginbar"></div>
+<!--头部-->
+<div id="header">
+    <div class="box">
+        <!--登录----注册-->
+        <div class="hd_login">
+            {% if user %}
+                <span>您好<a href="#"><i>{{ user.username }}</i></a>，来到米米乐商城
+
+            {% else %}
+                <span><a href={% url 'app:login' %}>登录</a></span>
+                <span><a href={% url 'app:register' %}>注册</a></span>
+
+            {% endif %}
+        </div>
+    </div>
+    <!--右侧导航-->
+    <ul class="list">
+        <li class="gwc"><a href={% url 'app:cart' %}> <span id="shopNum" class="num">{{ num }}</span> <i class="gwc_bg"></i>购物车<em
+                class="num">{{ num }}</em>件 <i class="spinner"></i></a>
+            <ul class="subNav">
+                <b>最新加入的商品</b>
+                <!--添加商品详情-->
+                <div id='product'>
+                </div>
+                <!--商品数量，总金额-->
+                <div class="gwc_bottom">
+                    <div>共<span class="num">{{ num }}</span>件商品 &nbsp;总计金额:<span id="total">¥{{ sum }}</span></div>
+                    <a href="cart.html">结算购物车中的商品</a>
+                </div>
+            </ul>
+        </li>
+
+        <li><a href="#">用户中心 <i class="spinner"></i></a>
+            <ul class="subNav">
+                <li><a href="#">商品收藏</a></li>
+                <li><a href="#">店铺收藏</a></li>
+                <li><a href="#">收藏米米乐</a></li>
+            </ul>
+        </li>
+
+        <li><a href="#">我的订单 <i class="spinner"></i></a>
+            <ul class="subNav">
+                <li><a href="#">待付款订单</a></li>
+                <li><a href="#">待收货交易</a></li>
+                <li><a href="#">待评价交易 </a></li>
+            </ul>
+        </li>
+
+        <li><a href="#">客户服务 <i class="spinner"></i></a>
+            <ul class="subNav">
+                <li><a href="#">帮助中心</a></li>
+                <li><a href="#">售后服务</a></li>
+                <li><a href="#">客服中心</a></li>
+                <li><a href="#">在线客服</a></li>
+                <li><a href="#">QQ客服</a></li>
+            </ul>
+        </li>
+        <li><a href="#"><i class="nav_menu"></i>网站导航<i class="spinner"></i></a>
+            <ul class="subNav">
+                <li><a href="#">导购频道</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
 
 
+<!--广告-->
+<div id="banner">
+    <!--以背景的方式-->
+    <div></div>
+</div>
+
+
+<!--页面主体-->
+<div id="main">
+    <div class="main_top">
+        <!--logo-->
+        <div class="logo">
+            <a href="http://www.mmloo.com/"><img src={% static 'img/05053060183653829.png' %}/></a>
+        </div>
+        <!--搜索-->
+        <div class="main_search">
+            <form action="#" method="get">
+                <input type="text" name="search_txt" id="search_txt" value="" placeholder=" 搜索 内部链接 试试^.^"/>
+                <input type="submit" name="" id="" value="搜索"/>
+            </form>
+            <ul id="recommend">
+                <!--示例-->
+                <!--<li><a href="">iPhone 7</a></li>-->
+            </ul>
+        </div>
+        <!--认证--招商--需求-->
+        <div class="top_menu">
+            <ul>
+                <li><img src={% static 'img/baoyou.png' %}/><span>认证包邮</span></li>
+                <li><img src={% static 'img/jiameng.png' %}/><span>招商加盟</span></li>
+                <li><img src={% static 'img/xuqiu.png' %}/><span>需求发布</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <!--分类导航-->
+    <div class="top_layout">
+        <div class="box">
+
+            <ul>
+                <li><a href="#" class="current">首页</a></li>
+                <li><a href="#">米活动</a></li>
+                <li><a href="#">乐社区</a></li>
+                <li><a href="#">商家入驻</a></li>
+                <li><a href="#">8.8天天抢</a></li>
+                <li><a href="#">团购</a></li>
+                <li><a href="#">米金融</a></li>
+            </ul>
+        </div>
+
+        <!--菜单-->
+
+
+    </div>
 
     <!--商品详情-->
     <div id="details">
@@ -20,22 +149,25 @@
             <div class="dm_img">
                 <!--大图-->
                 <div class="dmi_big">
-                    <img src={% static goods.bigimg %}>
-                    <p>{{ goods.title }}</p>
+                    <ul>
 
-
+                        {#							<li></li>#}
+                        <img src={% static goods.bigimg %}/>
+                        <div>{{ goods.title }}</div>
+                    </ul>
                 </div>
                 <!--小图-->
                 <div class="dmi_small">
                     <ul>
                         <!--<li><img src=""/></li>-->
+                        {#                            <img src={% static goods.img %}/>#}
                     </ul>
                 </div>
                 <!--不知道是什么-->
                 <div class="dmi_btm">
                     <ul>
                         <li><i></i><a>开具真票</a></li>
-                        <li class="cnt"><i></i><a href="#">批发采购</a></li>
+                        <li class="cnt"><i></i><a>批发采购</a></li>
                         <li><i></i><a>信用账期</a></li>
                     </ul>
                 </div>
@@ -68,6 +200,7 @@
                         <div class="dmtbl_b">
                             <div class="dmtblb_em">
                                 <dd>
+                                    <p style="color: red">{{ goods.price }}</p>
                                     <span>购买数量：</span>
                                     <input type="text" id="count" value="1"/>
                                     <span class="count_sum">
@@ -86,17 +219,16 @@
 										</span>
                                 </dd>
                             </div>
-                            <p>单价:<span>{{ goods.price }}</span></p>
                             <div class="dmtblb_btn">
                                 <a href="#" id="nowBuy">立即购买</a>
-                                <a href="#" id="addCart">添加到购物车</a>
+                                <a href="#" id="addCart" class={{ goods.id }}><img src={% static 'img/cart.png' %}/>添加到购物车</a>
                                 <a class="byStages_a" href="#">分期付款</a>
                                 <div class="shoppingCart">
                                     <h2>成功添加到购物车</h2>
                                     <span>购物车中共有&nbsp;<i class="num">0</i>&nbsp;件商品&nbsp;总金额为：<i
                                             class="alwaysNum">¥0.00</i></span>
                                     <div class="shoppingCart_btn">
-                                        <a href="cart.html">查看购物车</a>
+                                        <a href={% url 'app:cart' %}>查看购物车</a>
                                         <a class="close" href="#">继续购物</a>
                                     </div>
                                     <button class="close">x</button>
@@ -110,7 +242,15 @@
                                 <span><i></i><a href="#">分享</a><b>3</b></span>
                                 <span><i></i><a href="#">收藏商品</a><b>0</b></span>
                             </div>
-
+                            <ul>
+                                <li><img src={% static 'img/jiathis_ico_24x24.png' %}></li>
+{#                                <li><img src={% static 'img/jiathis_ico_24x24.png' %}></li>#}
+{#                                <li><img src={% static 'img/jiathis_ico_24x24.png' %}></li>#}
+{#                                <li><img src={% static 'img/jiathis_ico_24x24.png' %}></li>#}
+{#                                <li><img src={% static 'img/jiathis_ico_24x24.png' %}></li>#}
+{#                                <li><img src={% static 'img/jiathis_ico_24x24.png' %}></li>#}
+{#                                <li><img src={% static 'img/jiathis_ico_24x24.png' %}></li>#}
+                            </ul>
                         </div>
                     </div>
                     <div class="dmtb_right">
@@ -140,7 +280,9 @@
                                     </dd>
                                 </dl>
                             </li>
-
+                            <li class="lxfs">
+                                联系方式：<img src={% static 'img/lxfs.png' %} alt=""/>
+                            </li>
                             <li class="gs">
                                 公司名称：<span>米米乐商城</span>
                                 <br/>
@@ -168,13 +310,13 @@
                 <div class="dbl_ewm">
                     <h2>商品二维码</h2>
                     <p>
-                        <img src=""/>
+                        <img src={% static 'img/152356.png' %}/>
                     </p>
 
                 </div>
                 <!--官方店铺-->
                 <div class="dbl_official">
-                    <h2>官方店铺 <img src="" alt=""/></h2>
+                    <h2>官方店铺 <img src={% static 'img/lxfs.png' %} alt=""/></h2>
                     <dl>
                         <dt>工作时间：</dt>
                         <dd>工作时间 AM 9:00 - PM 18:00</dd>
@@ -273,7 +415,7 @@
                 <!--图片详情-->
                 <div id="dbrt_img">
                     <dd>
-                        <img src="../img/1_05248467524947701_1280.png"/>
+                        <img src={% static 'img/1_05248467524947701_1280.png' %}>
                     </dd>
                 </div>
                 <!--评论-->
@@ -294,186 +436,111 @@
     </div>
 
 
-{% endblock %}
-{% block layout %}
-     <div class="top_layout">
-        <div class="box">
+    <!--底部-->
+    <div id="footer">
+        <!--帮助-->
+        <div class="help">
             <ul>
-                <li><a href="#" class="current">首页</a></li>
-                <li><a href="#">米活动</a></li>
-                <li><a href="#">乐社区</a></li>
-                <li><a href="#">商家入驻</a></li>
-                <li><a href="#">8.8天天抢</a></li>
-                <li><a href="#">团购</a></li>
-                <li><a href="#">米金融</a></li>
+                <li>
+                    <h2>购物指南</h2>
+                    <a href="#"><i></i>礼品卡的购买与使用</a>
+                    <a href="#"><i></i>无法收到邮件？</a>
+                    <a href="#"><i></i>关于捷信分期？</a>
+                    <a href="#"><i></i>邮费制度</a>
+                    <a href="#"><i></i>订单状态说明</a>
+                </li>
+                <li>
+                    <h2>购物指南</h2>
+                    <a href="#"><i></i>礼品卡的购买与使用</a>
+                    <a href="#"><i></i>无法收到邮件？</a>
+                    <a href="#"><i></i>关于捷信分期？</a>
+                    <a href="#"><i></i>邮费制度</a>
+                    <a href="#"><i></i>订单状态说明</a>
+                </li>
+                <li>
+                    <h2>购物指南</h2>
+                    <a href="#"><i></i>礼品卡的购买与使用</a>
+                    <a href="#"><i></i>无法收到邮件？</a>
+                    <a href="#"><i></i>关于捷信分期？</a>
+                    <a href="#"><i></i>邮费制度</a>
+                    <a href="#"><i></i>订单状态说明</a>
+                </li>
+                <li>
+                    <h2>购物指南</h2>
+                    <a href="#"><i></i>礼品卡的购买与使用</a>
+                    <a href="#"><i></i>无法收到邮件？</a>
+                    <a href="#"><i></i>关于捷信分期？</a>
+                    <a href="#"><i></i>邮费制度</a>
+                    <a href="#"><i></i>订单状态说明</a>
+                </li>
             </ul>
+            <div class="kefu">
+                <dl>
+                    <dt>客服中心</dt>
+                    <dd class="tel"><img src={% static 'img/bohao.png' %}/>4006-780-781</dd>
+                    <dd>E-mail：mmloo@mmloo.com</dd>
+                    <dd>四川省成都市新南路亚华大厦六楼</dd>
+                    <dd><img src='#'/>1398828642</dd>
+                </dl>
+                <dl>
+                    <dt>关于米米乐商城</dt>
+                    <dd class="wx"><img src={% static 'img/scmmloo.png' %}/></dd>
+                    <dd class="xd">手机下单更优惠<br/>
+                        快乐网购 轻松拥有
+                    </dd>
+                </dl>
+            </div>
         </div>
+        <!--版权信息-->
+        <div class="copyright">
+            <a href="#">电脑节 </a>|
+            <a href="#"> 年货节 </a>|
+            <a href="#"> 批发商城 </a>|
+            <a href="#"> 合作及洽谈 </a>|
+            <a href="#"> 联系我们 </a>|
+            <a href="#"> 商家登录</a>|
+            <a href="#"> 开店协议</a>|
+            <a href="#"> 商家入驻</a>|
+            <a href="#"> 手机版</a>|
+            <a href="#"> 友情链接</a>|
+            <a href="#"> 招聘英才</a>|
+            <a href="#"> 米商</a>|
+            <a href="#"> 8.8包邮</a>|
+            <p>&copy; 2016 米米乐商城 www.mmloo.com 版权所有 蜀ICP备06015925号-1</p>
+            <p><img src={% static 'img/cxlogo.png' %}/></p>
+            <span class="backTop">返回顶部</span>
+        </div>
+    </div>
+
+
+    <!--侧栏导航-->
+    <div id="sidebar">
+        <ul>
+            <li>
+                <img src={% static 'img/right_sevice.png' %}/>
+                <span>联系客服</span>
+            </li>
+
+            <li>
+                <a href="cart.html"><img src={% static 'img/right_cart.png' %}/></a>
+            </li>
+
+            <li>
+                <img src={% static 'img/right_history.png' %}/>
+            </li>
+
+            <li>
+                <img src={% static 'img/right_erweima.png' %}/>
+                <span class="ewm"></span>
+            </li>
+
+            <li>
+                <img src={% static 'img/right_top.png' %}/>
+                <b>TOP</b>
+                <span class="backTop">回到顶部</span>
+            </li>
+        </ul>
 
     </div>
-{% endblock %}
-
-{##}
-{#<!DOCTYPE html>#}
-{#<html>#}
-{#	<head>#}
-{#		<meta charset="utf-8" />#}
-{#		<title>米米乐商城</title>#}
-{##}
-
-{#        <link rel="stylesheet" href="{% static 'index/css/Swiper3.4.2.min.css' %}">#}
-{#    <link rel="stylesheet" type="text/css" href={% static 'index/css/base.css' %}/>#}
-{#    <link rel="stylesheet" type="text/css" href={% static 'index/css/publicHead.css' %}/>#}
-{#    <link rel="stylesheet" type="text/css" href={% static 'index/css/publicFooter.css' %}/>#}
-{#    <link rel="stylesheet" type="text/css" href={% static 'index/css/index.css' %}/>#}
-{##}
-{#    <script src={% static 'index/js/jquery-1.12.3.js' %}></script>#}
-{#    <script src="{% static 'index/js/Swiper3.4.2.min.js' %}"></script>#}
-{#    <script src={% static 'index/js/index.js' %}></script>#}
-
-{#        <script src="../js/shop.js" type="text/javascript" charset="utf-8"></script>#}
-{#	</head>#}
-{#	<body>#}
-{#		<!--加载进度-->#}
-{#		<div id="loginbar"></div>#}
-{#		<!--头部-->#}
-{#		<div id="header">#}
-{#			<div class="box">#}
-{##}
-{##}
-{#				<ul class="list">#}
-{#				<li class="gwc"><a href="#"> <span id="shopNum" class="num">0</span>  <i class="gwc_bg"></i>购物车<em class="num">0</em>件	 <i class="spinner"></i></a>#}
-{#					<ul class="subNav">#}
-{#						<b>最新加入的商品</b>#}
-{#						<!--添加商品详情-->#}
-{#						<div id='product'>#}
-{#						</div>#}
-{#						<!--商品数量，总金额-->#}
-{#						<div class="gwc_bottom"><div>共<span class="num">0</span>件商品 &nbsp;总计金额:<span id="total">¥0.00</span></div>	#}
-{#							<a href="cart.html">结算购物车中的商品</a>#}
-{#						</div>#}
-{#					</ul>#}
-{#				</li>#}
-{#				#}
-{#				<li><a href="#">用户中心 <i class="spinner"></i></a>#}
-{#					<ul class="subNav">#}
-{#						<li><a href="#">商品收藏</a></li>#}
-{#						<li><a href="#">店铺收藏</a></li>#}
-{#						<li><a href="#">收藏米米乐</a></li>#}
-{#					</ul>#}
-{#				</li>#}
-{#				#}
-{#				<li><a href="#">我的订单 <i class="spinner"></i></a>#}
-{#					<ul class="subNav">#}
-{#						<li><a href="#">待付款订单</a></li>#}
-{#						<li><a href="#">待收货交易</a></li>#}
-{#						<li><a href="#">待评价交易	</a></li>#}
-{#					</ul>#}
-{#				</li>#}
-{#				#}
-{#				<li><a href="#">客户服务 <i class="spinner"></i></a>#}
-{#					<ul class="subNav">#}
-{#						<li><a href="#">帮助中心</a></li>#}
-{#						<li><a href="#">售后服务</a></li>#}
-{#						<li><a href="#">客服中心</a></li>#}
-{#						<li><a href="#">在线客服</a></li>#}
-{#						<li><a href="#">QQ客服</a></li>#}
-{#					</ul>#}
-{#				</li>#}
-{#				<li><a href="#"><i class="nav_menu"></i>网站导航<i class="spinner"></i></a>#}
-{#					<ul class="subNav">#}
-{#						<li><a href="#">导购频道</a></li>#}
-{#					</ul>#}
-{#				</li>#}
-{#			</ul>#}
-{#			</div>#}
-{#		</div>#}
-{#		#}
-{#		<!--广告-->#}
-{#		<div id="banner">#}
-{#			<!--以背景的方式-->#}
-{#			<div></div>#}
-{#		</div>#}
-{#	#}
-{#		#}
-{#<!--页面主体-->#}
-{#<div id="main">#}
-{#    <div class="main_top">#}
-{#        <!--logo-->#}
-{#        <div class="logo">#}
-{#            <a href="http://www.mmloo.com/"><img src="{% static 'img/05053060183653829.png' %}"></a>#}
-{#        </div>#}
-{#        <!--搜索-->#}
-{#        <div class="main_search">#}
-{#            <form action="#" method="get">#}
-{#                <input type="text" name="search_txt" id="search_txt" value="" placeholder=" 搜索 内部链接 试试^.^">#}
-{#                <input type="submit" name="" id="" value="搜索">#}
-{#            </form>#}
-{#            <ul id="recommend">#}
-{#                <!--示例-->#}
-{#                <!--<li><a href="">iPhone 7</a></li>-->#}
-{#            </ul>#}
-{#        </div>#}
-{#        <!--认证--招商--需求-->#}
-{#        <div class="top_menu">#}
-{#            <ul>#}
-{#                <li><img src="{% static 'img/baoyou.png' %}"><span>认证包邮</span></li>#}
-{#                <li><img src="{% static 'img/jiameng.png' %}"><span>招商加盟</span></li>#}
-{#                <li><img src="{% static 'img/xuqiu.png' %}"><span>需求发布</span></li>#}
-{#            </ul>#}
-{#        </div>#}
-{#    </div>#}
-{##}
-{##}
-{#    <div class="top_layout">#}
-{#        <div class="box">#}
-{##}
-{#            <ul>#}
-{#                <li><a href={% url 'app:index' %} class="current">首页</a></li>#}
-{#                <li><a href="#">米活动</a></li>#}
-{#                <li><a href="#">乐社区</a></li>#}
-{#                <li><a href="#">商家入驻</a></li>#}
-{#                <li><a href="#">8.8天天抢</a></li>#}
-{#                <li><a href="#">团购</a></li>#}
-{#                <li><a href="#">米金融</a></li>#}
-{#            </ul>#}
-{#        </div>#}
-{##}
-{#    </div>#}
-{##}
-{##}
-{##}
-{##}
-{#		#}
-{#		#}
-{#		<!--侧栏导航-->#}
-{#		<div id="sidebar">#}
-{#			<ul>#}
-{#				<li>#}
-{#					<img src="../img/right_sevice.png"/>#}
-{#					<span>联系客服</span>#}
-{#				</li>#}
-{#				#}
-{#				<li>#}
-{#					<a href="cart.html"><img src="../img/right_cart.png"/></a>#}
-{#				</li>#}
-{#				#}
-{#				<li>#}
-{#					<img src="../img/right_history.png"/>#}
-{#				</li>#}
-{#				#}
-{#				<li>#}
-{#					<img src="../img/right_erweima.png"/>#}
-{#					<span class="ewm"></span>#}
-{#				</li>#}
-{#				#}
-{#				<li>#}
-{#					<img src="../img/right_top.png"/>#}
-{#					<b>TOP</b>#}
-{#					<span class="backTop">回到顶部</span>#}
-{#				</li>#}
-{#			</ul>#}
-{#			#}
-{#		</div>#}
-{##}
-{#	</body>#}
-{#</html>#}
+</body>
+</html>

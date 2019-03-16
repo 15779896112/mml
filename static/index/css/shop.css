@@ -176,7 +176,7 @@ html,body{
 	z-index: 9;
 }
 .dmtbl_by a:hover ul{
-	display: block!important;
+
 }
 .dmtbl_by ul{
 	display: none;

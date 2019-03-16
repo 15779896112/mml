@@ -32,7 +32,7 @@
                 <span>欢迎注册</span>
             </div>
             <div class="logo_right">
-                <span>已注册，<a href="login.html">登录&gt;</a></span>
+                <span>已注册，<a href={% url 'app:login' %}>登录&gt;</a></span>
             </div>
         </div>
         <div class="shop">
@@ -75,7 +75,7 @@
                     <span class="msg_red"></span>
                 </li>
                 <li>
-                    <input type="submit" name="nowReg" id="nowReg" value="立即注册"/>
+                    <input type="button"  name="nowReg" id="nowReg" value="立即注册"/>
                     <span class="msg_red">请先阅读并同意服务协议</span>
                 </li>
             </ul>

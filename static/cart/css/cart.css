@@ -1,0 +1,299 @@
+html,body{
+	background: #FFF;
+}
+#banner{
+	height: 100px;
+	width: 100%;
+	background: #FFF;
+}
+#banner div{
+	height: 100px;
+	width: 998px;
+	margin: 0 auto;
+	border-bottom:1px #EFEFEF solid ;
+}
+#myCart{
+	overflow: hidden;
+	width: 998px;
+	margin: 20px auto;
+}
+.mc_top h2{
+	font-size: 26px;
+	height: 30px;
+	line-height: 30px;
+}
+.mc_top i{
+	line-height: 30px;
+	color: #999;
+}
+.mcb_tittle{
+	border-top: 2px #CCC solid;
+	margin-top:10px ;
+	height: 35px;
+	line-height: 35px;
+	background: #F9F9F9;
+	border-left: 1px #CCC solid;
+	border-right: 1px #CCC solid;
+}
+.mcb_tittle ul li{
+	display: block;
+    float: left;
+    margin: 0px 45px;
+}
+.mcb_tittle ul li:first-child{
+	margin-left: 5px;
+}
+.mcb_tittle ul li:first-child input{
+	 vertical-align: middle;
+	 margin-right: 3px;
+}
+.mcb_tittle ul li.shopTle{
+	margin: 0px 200px;
+}
+.mcb_tittle ul li:last-child{
+	margin-right: 40px;
+}
+.mc_btm{
+	/*border-left: 1px #CCC solid;
+	border-right: 1px #CCC solid;
+	border-bottom: 1px #CCC solid;*/
+}
+
+.mc_btm dl{
+	overflow: hidden;
+}
+.mc_btm dt {
+	overflow: hidden;
+	border-top: 1px #CCC solid;
+	border-bottom: 1px #CCC solid;
+	border-left: 1px #CCC solid;
+	border-right: 1px #CCC solid;
+}
+.mc_btm dt img{
+	float: left;
+}
+.mc_btm dd{
+	height: 50px;
+	padding: 5px 15px;
+	line-height: 50px;
+	background: #FFFdee;
+	border-bottom: 1px #CCC solid;
+	border-left: 1px #CCC solid;
+	border-right: 1px #CCC solid;
+	overflow: hidden;
+}
+.mc_btm dd input.itemSelection{
+	margin-right: 10px;
+	margin-top: 15px;
+	float: left;
+}
+.mc_btm dd a{
+	float: left;
+	display: block;
+	margin: 4px 0;
+	width:40px;
+	height: 40px;
+	/*border: 1px #CCC solid;*/
+}
+.mc_btm dd a img{
+	width: 100%;
+	height: 100%;
+}
+.mc_btm dd title{
+	float: left;
+	margin: 0 10px;
+	width: 420px;
+	height: 50px;
+}
+.mc_btm dd span{
+	text-align: center;
+	display: block;
+	float: left;
+	width: 120px;
+}
+.mc_btm dd span a{
+	
+	display: block;
+	margin: 15px 3px;
+	width: 15px;
+	height: 15px;
+	line-height: 15px;
+}
+.mc_btm dd span input{
+	float: left;
+	display: block;
+	width: 30px;
+	height: 25px;
+	border: 1px #CCC solid;
+	cursor: pointer;
+	margin: 10px 0;
+	text-align: center;
+}
+.mc_btm dd span.sd_span{
+	width: 100px;
+	text-align: center;
+}
+.mc_btm dd span.sd_span a{
+	float: right;
+	margin: 0;
+	padding: 0 30px;
+	width: 30px;
+	height: 25px;
+	line-height: 25px;
+	border: 0;
+}
+
+
+
+
+/*<dd>
+	<input type="checkbox" class="itemSelection">
+	<a href="shop.html?39">
+		<img src="../img/1_05174898309521446_360.jpg">
+	</a>
+	<title>得力(deli)8553 32mm彩色长尾夹/长尾票夹 24只/筒</title>
+	<span>
+		￥<i>11.00</i>
+	</span>
+	<span>
+		<a class="cut" href="#"></a>
+		<input type="text" value="1">
+		<a class="add" href="#"></a>
+	</span>
+	<span>
+		￥<i>11.00</i>
+	</span>
+	<span>
+		<a href="#">收藏</a>
+		<a class="cart_del" href="#">删除</a>
+	</span>
+</dd>
+*/
+
+
+
+
+
+
+.summation{
+	height: 50px;
+	line-height: 50px;
+	text-align: right;
+	overflow: hidden;
+	border-bottom: 1px solid #CCC;
+	border-left: 1px #CCC solid;
+	border-right: 1px #CCC solid;
+}
+.summation em{
+	display: inline-block;
+	width: 85px;
+	margin: 0 30px;
+}
+.commodityPrice{
+	text-align: right;
+	height: 60px;
+	line-height: 60px;
+	background: #F9F9F9;
+	border-bottom:2px solid #ccc ;
+	border-left: 1px #CCC solid;
+	border-right: 1px #CCC solid;
+	font-size: 20px;
+}
+
+.commodityPrice .total{
+	color: #D93600;
+	padding: 0 5px;
+}
+.commodityPrice em{
+	padding: 0 6px;
+	margin-right: 10px;
+}
+.nextStep{
+	height: 150px;
+}
+.nextStep i{
+	display: inline-block;
+	width: 20px;
+	height: 40px;
+	background: url(../img/pointer.png) no-repeat center center;
+	vertical-align: middle;
+}
+.nextStep a{
+	margin: 60px 0;
+	padding: 0 13px;
+	font-size: 15px;
+	float: right;
+	display: block;
+	height: 40px;
+	background:#49AFCD;
+	color: #FFF;
+}
+.nextStep a:hover{
+	background: #2f96b4;
+}
+
+.possibleBuy{
+	width: 1000px;
+	
+}
+.possibleBuy h2{
+	height: 30px;
+	line-height: 30px;
+	padding-left:20px ;
+	font-weight: bold;
+	font-size: 13px;
+	border-bottom:2px #D93600 solid ;
+}
+
+
+
+.randomGoods ul {
+	overflow: hidden;
+	text-align: center;
+}
+.possibleBuy ul li{
+	width: 22%;
+	padding: 15px 1%;
+	overflow: hidden;
+	/*height: 150px;*/
+	text-align: center;
+		float: left;
+}
+.possibleBuy ul li>a{
+	display: block;
+	width: 110px;
+	margin: 20px 50px;
+	height: 110px;
+}
+.possibleBuy ul li>a img{
+	width: 100%;
+	height: 100%;
+}
+.possibleBuy ul li dl{
+	margin-top:20px ;
+}
+.possibleBuy ul li dl dt{
+	/*只支持webkit内核*/
+	display: -webkit-box;
+	-webkit-box-orient: block-axis;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 2;
+	height: 40px;
+	/*margin-bottom: 15px;*/
+}
+.possibleBuy ul li dl dd{
+	margin: 10px 0;
+}
+.possibleBuy ul li dl dd em{
+	color: red;
+	font-weight: bold;
+}
+.possibleBuy ul li dl dd a{
+	border: 1px #CCC solid;
+	padding: 10px 17px;
+	background: #D93600;
+	border-radius: 5px;
+	color: #FFF;
+	font-size: 16px;
+}

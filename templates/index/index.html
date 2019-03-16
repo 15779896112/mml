@@ -16,8 +16,12 @@
     {% block css %}
 
     {% endblock %}
+
+
     <script src={% static 'index/js/jquery-1.12.3.js' %}></script>
     <script src="{% static 'index/js/Swiper3.4.2.min.js' %}"></script>
+{#    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>#}
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.1/jquery.cookie.js"></script>
     <script src={% static 'index/js/index.js' %}></script>
     <script src={% static 'index/js/goodslist.js' %}></script>
 
@@ -33,70 +37,70 @@
 <!--头部-->
 {% block header %}
     <div id="header">
-    <div class="box">
-        <!--登录----注册-->
-        <div class="hd_login">
-            {% if user %}
-                <a href=‘#’><i>欢迎！{{ user.username }}</i></a>
-                <a href={% url 'app:logout' %}><i style="color:black"> 退出</i></a>
+        <div class="box">
+            <!--登录----注册-->
+            <div class="hd_login">
+                {% if user %}
+                    <a href=‘#’><i>欢迎！{{ user.username }}</i></a>
+                    <a href={% url 'app:logout' %}><i style="color:black"> 退出</i></a>
                 {% else %}
-                <a href={% url 'app:login' %}><i>登录</i></a>
-                <a href={% url 'app:register' %}><i> 注册</i></a>
-            {% endif %}
+                    <a href={% url 'app:login' %}><i>登录</i></a>
+                    <a href={% url 'app:register' %}><i> 注册</i></a>
+                {% endif %}
 
 
+            </div>
+            <!--右侧导航-->
+            <ul class="list">
+                <li class="gwc"><a href="#"> <span id="shopNum" class="num">{{ num }}</span> <i class="gwc_bg"></i>购物车<em
+                        class="num">{{ num }}</em>件 <i class="spinner"></i></a>
+                    <ul class="subNav">
+                        <b>最新加入的商品</b>
+                        <!--添加商品详情-->
+                        <div id="product">
+                            <!--<img src="img/loading.gif" style="margin-top:30px"/>-->
+                        </div>
+                        <!--商品数量，总金额-->
+                        <div class="gwc_bottom">
+                            <div>共<span class="num">{{ num }}</span>件商品 &nbsp;总计金额:<span id="total">¥{{ sum }}</span></div>
+                            <a href="page/cart.html">结算购物车中的商品</a>
+                        </div>
+                    </ul>
+                </li>
+
+                <li><a href="#">用户中心 <i class="spinner"></i></a>
+                    <ul class="subNav">
+                        <li><a href="#">商品收藏</a></li>
+                        <li><a href="#">店铺收藏</a></li>
+                        <li><a href="#">收藏米米乐</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#">我的订单 <i class="spinner"></i></a>
+                    <ul class="subNav">
+                        <li><a href="#">待付款订单</a></li>
+                        <li><a href="#">待收货交易</a></li>
+                        <li><a href="#">待评价交易 </a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#">客户服务 <i class="spinner"></i></a>
+                    <ul class="subNav">
+                        <li><a href="#">帮助中心</a></li>
+                        <li><a href="#">售后服务</a></li>
+                        <li><a href="#">客服中心</a></li>
+                        <li><a href="#">在线客服</a></li>
+                        <li><a href="#">QQ客服</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><i class="nav_menu"></i>网站导航<i class="spinner"></i></a>
+                    <ul class="subNav">
+                        <li><a href="#">导购频道</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
-        <!--右侧导航-->
-        <ul class="list">
-            <li class="gwc"><a href="#"> <span id="shopNum" class="num">0</span> <i class="gwc_bg"></i>购物车<em
-                    class="num">0</em>件 <i class="spinner"></i></a>
-                <ul class="subNav">
-                    <b>最新加入的商品</b>
-                    <!--添加商品详情-->
-                    <div id="product">
-                        <!--<img src="img/loading.gif" style="margin-top:30px"/>-->
-                    </div>
-                    <!--商品数量，总金额-->
-                    <div class="gwc_bottom">
-                        <div>共<span class="num">0</span>件商品 &nbsp;总计金额:<span id="total">¥0.00</span></div>
-                        <a href="page/cart.html">结算购物车中的商品</a>
-                    </div>
-                </ul>
-            </li>
-
-            <li><a href="#">用户中心 <i class="spinner"></i></a>
-                <ul class="subNav">
-                    <li><a href="#">商品收藏</a></li>
-                    <li><a href="#">店铺收藏</a></li>
-                    <li><a href="#">收藏米米乐</a></li>
-                </ul>
-            </li>
-
-            <li><a href="#">我的订单 <i class="spinner"></i></a>
-                <ul class="subNav">
-                    <li><a href="#">待付款订单</a></li>
-                    <li><a href="#">待收货交易</a></li>
-                    <li><a href="#">待评价交易 </a></li>
-                </ul>
-            </li>
-
-            <li><a href="#">客户服务 <i class="spinner"></i></a>
-                <ul class="subNav">
-                    <li><a href="#">帮助中心</a></li>
-                    <li><a href="#">售后服务</a></li>
-                    <li><a href="#">客服中心</a></li>
-                    <li><a href="#">在线客服</a></li>
-                    <li><a href="#">QQ客服</a></li>
-                </ul>
-            </li>
-            <li><a href="#"><i class="nav_menu"></i>网站导航<i class="spinner"></i></a>
-                <ul class="subNav">
-                    <li><a href="#">导购频道</a></li>
-                </ul>
-            </li>
-        </ul>
     </div>
-</div>
 {% endblock %}
 
 
@@ -135,28 +139,28 @@
         </div>
     </div>
 
-{#{% block goods %}#}
+    {#{% block goods %}#}
     <!--分类导航-->
-{% block layout %}
-     <div class="top_layout">
-        <div class="box">
-            <div class="tittle" id="goodstype" status="flase">
-                <h3><a href="#">所有商品分类</a></h3>
-                <i class="arrow"></i>
+    {% block layout %}
+        <div class="top_layout">
+            <div class="box">
+                <div class="tittle" id="goodstype" status="flase">
+                    <h3><a href="#">所有商品分类</a></h3>
+                    <i class="arrow"></i>
+                </div>
+                <ul>
+                    <li><a href="#" class="current">首页</a></li>
+                    <li><a href="#">米活动</a></li>
+                    <li><a href="#">乐社区</a></li>
+                    <li><a href="#">商家入驻</a></li>
+                    <li><a href="#">8.8天天抢</a></li>
+                    <li><a href="#">团购</a></li>
+                    <li><a href="#">米金融</a></li>
+                </ul>
             </div>
-            <ul>
-                <li><a href="#" class="current">首页</a></li>
-                <li><a href="#">米活动</a></li>
-                <li><a href="#">乐社区</a></li>
-                <li><a href="#">商家入驻</a></li>
-                <li><a href="#">8.8天天抢</a></li>
-                <li><a href="#">团购</a></li>
-                <li><a href="#">米金融</a></li>
-            </ul>
-        </div>
 
-    </div>
-{% endblock %}
+        </div>
+    {% endblock %}
 
 
     <!--菜单-->
@@ -165,17 +169,17 @@
             {% for classify in classifys %}
 
 
-
                 <li typeid={{ classify.typeid }}>
                     <h2><a href="#">{{ classify.typename }}</a></h2>
 
                 </li>
 
+
             {% endfor %}
             <div class="sub_menu">
                 <div class="sm_tle"><span></span>
                     <div class="fenlei">
-                        <div class="aa"><a>手机数码</a></div>
+                        <div class="aa"><a></a></div>
                     </div>
                 </div>
 
@@ -188,686 +192,686 @@
 
 
 
-{% block content %}
+    {% block content %}
 
 
 
-    <!--轮播区-->
-    <div class="showgoods">
-        {% for goods in goods_list %}
+        <!--轮播区-->
+        <div class="showgoods">
+            {% for goods in goods_list %}
 
-        <div class="goods">
-            <div class="img">
+                <div class="goods">
+                    <div class="img">
 
-                <img src={% static goods.img %} alt="">
+                        <img src={% static goods.img %} alt="">
 
-            </div>
-            <div class="title">{{ goods.title }}</div>
-        <div class="price">{{ goods.price }}&nbsp;&nbsp;</div>
-        <a href={% url 'app:shop' goods.id %}>详情</a>
+                    </div>
+                    <div class="title">{{ goods.title }}</div>
+                    <div class="price">{{ goods.price }}&nbsp;&nbsp;</div>
+                    <a href={% url 'app:shop' goods.id %}>详情</a>
+                </div>
+
+
+            {% endfor %}
         </div>
-
-
-         {% endfor %}
-    </div>
-{#    <div class="carouselArea">#}
+        {#    <div class="carouselArea">#}
         <!--图-->
 
-        <div id="lunbotu">
-            <div id="swiper-container">
 
-                <div class="swiper-wrapper">
-                    {% for wheel in wheels %}
-                        <a href="#" class="swiper-slide"><img src={% static wheel.img %}/></a>
-                    {% endfor %}
+
+
+        <!-- 右侧nav -->
+        <div class="rightNav">
+
+            <!--广告-->
+            <div style="position: absolute; top: -62px; left: -11px;">
+            </div>
+            <div>
+            </div>
+
+            <div class="user_Status">
+                <div id="user_Img">
+                    <img src="{% static 'img/person.png' %}">
                 </div>
-            </div>
-
-{#        </div>#}
-    </div>
-
-
-
-    <!-- 右侧nav -->
-    <div class="rightNav">
-
-        <!--广告-->
-        <div style="position: absolute; top: -62px; left: -11px;">
-        </div>
-        <div>
-        </div>
-
-        <div class="user_Status">
-            <div id="user_Img">
-                <img src="{% static 'img/person.png' %}">
-            </div>
-            <div class="user_Name">
-                <span class="username">Hi,您好</span>
-               <span class="username" style="color: red">{{ user.username }}</span>
-                <br>
-                <span class="memberinfo">欢迎来到米米乐商城</span>
-                <span style="color: red;">银米会员</span>
-            </div>
-            <div class="login">
+                <div class="user_Name">
+                    <span class="username">Hi,您好</span>
+                    <span class="username" style="color: red">{{ user.username }}</span>
+                    <br>
+                    <span class="memberinfo">欢迎来到米米乐商城</span>
+                    <span style="color: red;">银米会员</span>
+                </div>
+                <div class="login">
 
 
-                <!--已登录-->
-                {% if user %}
+                    <!--已登录-->
+                    {% if user %}
 
 
-                <span class="logged">
+                        <span class="logged">
                     <div class="strip-range" style="width:12%"></div>
                 </span>
-                <span>您还差<em class="integral">2000</em>积分，达到金牌会员</span>
+                        <span>您还差<em class="integral">2000</em>积分，达到金牌会员</span>
                     {% else %}
-                     <span class="not_Logged">
+                        <span class="not_Logged">
                     <a href={% url 'app:login' %}>登录</a>
                     <a href={% url 'app:register' %}>注册</a>
                 </span>
-                 {% endif %}
-            </div>
-
-        </div>
-        <!--公告-->
-        <ul class="proclamation">
-            <li>
-                <a href="#">【通知】签到红包活动取消</a>
-                <time>(2016-08-16)</time>
-            </li>
-            <li>
-                <a href="#">【通知】签到红包活动取消</a>
-                <time>(2016-08-31)</time>
-            </li>
-        </ul>
-        <!--生活充值-->
-        <ul class="conve_bd_wrap">
-            <li>
-                <a href="#"><i class="mi-iconfont"><img src="{% static 'img/phone.png' %}"></i>话费</a>
-            </li>
-            <li>
-                <a href="#"><i class="mi-iconfont"><img src="{% static 'img/plane.png' %}"></i>机票</a>
-            </li>
-            <li>
-                <a href="#"><i class="mi-iconfont"><img src="{% static 'img/gift.png' %}"></i>礼品卡</a>
-            </li>
-        </ul>
-
-        <div class="sider_ad">
-            <a href="#"><img src="{% static 'img/05207092778389479.jpg' %}"></a>
-        </div>
-
-    </div>
-
-    <!--抢购 -广告位-->
-    <div class="snapUp">
-        <ul>
-            <li>
-                <h2>手机app免费下载</h2>
-                <img src="{% static 'img/banner-bottom.png' %}" alt="">
-            </li>
-            <!--<li>
-                <a href="#"><img src="img/web-122-122-2-4.jpg"/></a>
-            </li>-->
-        </ul>
-    </div>
-
-
-
-    <!--特惠专区 行业新闻-->
-    <div class="activity-list">
-        <div class="left_list">
-            <ul>
-                <h2>特惠专区</h2>
-
-                <li>
-                    <span><img src="{% static 'img/cut price.png' %}"></span>
-                    <a href="#">美食特惠<em>低至两折</em></a>
-                </li>
-                <li>
-                    <span><img src="{% static 'img/special.png' %}"></span>
-                    <a href="#">果粉专场<em>5s月供197元</em></a>
-                </li>
-                <li>
-                    <span><img src="{% static 'img/cut price.png' %}"></span>
-                    <a href="#">联想笔记本电脑商务超薄本 <em>新品上市</em></a>
-                </li>
-                <li>
-                    <span><img src="{% static 'img/special.png' %}"></span>
-                    <a href="#">企业聚惠 <em>立领千元现金券</em></a>
-                </li>
-                <li>
-                    <span><img src="{% static 'img/cut price.png' %}"></span>
-                    <a href="#">iphone6上新 <em>嘿，苹果手机看这里！</em></a>
-                </li>
-                <li>
-                    <span><img src="{% static 'img/special.png' %}"></span>
-                    <a href="#">办公文具专场 <em>你的办公好帮手</em></a>
-                </li>
-                <li>
-                    <span><img src="{% static 'img/cut price.png' %}"></span>
-                    <a href="#">联想电脑专场 <em>立返100预采金</em></a>
-                </li>
-            </ul>
-            <ul>
-                <h2>行业新闻</h2>
-
-                <li>
-                    <span>【最新】</span>
-                    <a href="#">贵=好？买贵的不如选合适的！分享几招吸尘器选购技巧</a>
-                </li>
-                <li>
-                    <span>【最新】</span>
-                    <a href="#">米米乐发展农业电子商务精准扶贫果农</a>
-                </li>
-                <li>
-                    <span>【最新】</span>
-                    <a href="#">感动武侯十大人物米米乐董事长刘文太上榜</a>
-                </li>
-                <li>
-                    <span>【最新】</span>
-                    <a href="#">德芙黑巧克力减肥吗 德芙黑巧克力多少钱/价格</a>
-                </li>
-                <li>
-                    <span>【最新】</span>
-                    <a href="#">卜珂松露巧克力怎么样 卜珂松露巧克力价格</a>
-                </li>
-                <li>
-                    <span>【最新】</span>
-                    <a href="#">白巧克力代表什么？白巧克力品牌介绍</a>
-                </li>
-            </ul>
-        </div>
-        <!--特惠商品-->
-        <div class="right_list">
-            <ul>
-                <!--<li><a href="page/shop.html?1"><img src="img/web-605-219-0-1.png"/></a></li>-->
-            </ul>
-            <ul>
-                <!--<li><img src="img/web-605-219-1-1.jpg"/></li>-->
-            </ul>
-        </div>
-    </div>
-
-    <!--广告-->
-    <div style="height:20px;"></div>
-    <div style="width: 1200px;margin: 0 auto;">
-        <img src="{% static 'img/05231162249653745.jpg' %}">
-    </div>
-    <!--广告end-->
-
-    <!--楼楼-->
-    <div class="floor">
-        <!--===============================一楼=============================-->
-        <div class="one_way">
-            <!--标题-->
-            <div class="one_way_head">
-                <h2>企业办公</h2>
-                <ul>
-                    <li class="f1_favor">商品推荐</li>
-                    <li>商品推荐</li>
-                    <li>商品推荐</li>
-                    <li>商品推荐</li>
-                    <span>查看更多&gt;</span>
-                </ul>
-            </div>
-            <!--主内容-->
-            <div class="bg1_bor one_way_main">
-                <!--左侧内容-->
-                <div class="fm_left">
-                    <!--楼层标示-->
-                    <div class="bg1 floor_num">
-                        1F
-                        <span></span>
-                    </div>
-                    <!--商品分类-->
-                    <div class="left_classfy">
-                        <!--文字top-->
-                        <div class="left_text">
-                            <ul>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                            </ul>
-                        </div>
-                        <!--中间图-->
-                        <div class="left_img">
-                            <img src="{% static 'img/web-601-196.jpg' %}">
-                        </div>
-                        <!--上下轮播图-->
-                        <div class="tcf tbCarousel ">
-                            <ul>
-                                <!--<li><a href="#"><img src="img/04540869910713027_sm.jpg"/></a></li>-->
-                            </ul>
-                            <span>&lt;</span>
-                            <span>&gt;</span>
-                        </div>
-                    </div>
+                    {% endif %}
                 </div>
 
-                <!--右-->
-                <div class="right_show">
-                    <!--乱七八糟的一堆-->
-                    <div class="rw_top">
-                        <!--轮播-->
-                        <div class="rw_top_left">
-                            <div class="lcf rw_top_Carousel tbCarousel">
+            </div>
+            <!--公告-->
+            <ul class="proclamation">
+                <li>
+                    <a href="#">【通知】签到红包活动取消</a>
+                    <time>(2016-08-16)</time>
+                </li>
+                <li>
+                    <a href="#">【通知】签到红包活动取消</a>
+                    <time>(2016-08-31)</time>
+                </li>
+            </ul>
+            <!--生活充值-->
+            <ul class="conve_bd_wrap">
+                <li>
+                    <a href="#"><i class="mi-iconfont"><img src="{% static 'img/phone.png' %}"></i>话费</a>
+                </li>
+                <li>
+                    <a href="#"><i class="mi-iconfont"><img src="{% static 'img/plane.png' %}"></i>机票</a>
+                </li>
+                <li>
+                    <a href="#"><i class="mi-iconfont"><img src="{% static 'img/gift.png' %}"></i>礼品卡</a>
+                </li>
+            </ul>
+
+            <div class="sider_ad">
+                <a href="#"><img src="{% static 'img/05207092778389479.jpg' %}"></a>
+            </div>
+
+        </div>
+
+        <!--抢购 -广告位-->
+        <div class="snapUp">
+            <ul>
+                <li>
+                    <h2>手机app免费下载</h2>
+                    <img src="{% static 'img/banner-bottom.png' %}" alt="">
+                </li>
+                <!--<li>
+                    <a href="#"><img src="img/web-122-122-2-4.jpg"/></a>
+                </li>-->
+            </ul>
+        </div>
+
+
+
+        <!--特惠专区 行业新闻-->
+        <div class="activity-list">
+            <div class="left_list">
+                <ul>
+                    <h2>特惠专区</h2>
+
+                    <li>
+                        <span><img src="{% static 'img/cut price.png' %}"></span>
+                        <a href="#">美食特惠<em>低至两折</em></a>
+                    </li>
+                    <li>
+                        <span><img src="{% static 'img/special.png' %}"></span>
+                        <a href="#">果粉专场<em>5s月供197元</em></a>
+                    </li>
+                    <li>
+                        <span><img src="{% static 'img/cut price.png' %}"></span>
+                        <a href="#">联想笔记本电脑商务超薄本 <em>新品上市</em></a>
+                    </li>
+                    <li>
+                        <span><img src="{% static 'img/special.png' %}"></span>
+                        <a href="#">企业聚惠 <em>立领千元现金券</em></a>
+                    </li>
+                    <li>
+                        <span><img src="{% static 'img/cut price.png' %}"></span>
+                        <a href="#">iphone6上新 <em>嘿，苹果手机看这里！</em></a>
+                    </li>
+                    <li>
+                        <span><img src="{% static 'img/special.png' %}"></span>
+                        <a href="#">办公文具专场 <em>你的办公好帮手</em></a>
+                    </li>
+                    <li>
+                        <span><img src="{% static 'img/cut price.png' %}"></span>
+                        <a href="#">联想电脑专场 <em>立返100预采金</em></a>
+                    </li>
+                </ul>
+                <ul>
+                    <h2>行业新闻</h2>
+
+                    <li>
+                        <span>【最新】</span>
+                        <a href="#">贵=好？买贵的不如选合适的！分享几招吸尘器选购技巧</a>
+                    </li>
+                    <li>
+                        <span>【最新】</span>
+                        <a href="#">米米乐发展农业电子商务精准扶贫果农</a>
+                    </li>
+                    <li>
+                        <span>【最新】</span>
+                        <a href="#">感动武侯十大人物米米乐董事长刘文太上榜</a>
+                    </li>
+                    <li>
+                        <span>【最新】</span>
+                        <a href="#">德芙黑巧克力减肥吗 德芙黑巧克力多少钱/价格</a>
+                    </li>
+                    <li>
+                        <span>【最新】</span>
+                        <a href="#">卜珂松露巧克力怎么样 卜珂松露巧克力价格</a>
+                    </li>
+                    <li>
+                        <span>【最新】</span>
+                        <a href="#">白巧克力代表什么？白巧克力品牌介绍</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!--特惠商品-->
+            <div class="right_list">
+                <ul>
+                    <div id="lunbotu">
+                        <div id="swiper-container">
+
+                            <div class="swiper-wrapper">
+                                {% for wheel in wheels %}
+                                    <a href="#" class="swiper-slide"><img src={% static wheel.img %}/></a>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                    </div>
+                </ul>
+
+            </div>
+        </div>
+
+        <!--广告-->
+        <div style="height:20px;"></div>
+        <div style="width: 1200px;margin: 0 auto;">
+            <img src="{% static 'img/05231162249653745.jpg' %}">
+        </div>
+        <!--广告end-->
+
+        <!--楼楼-->
+        <div class="floor">
+            <!--===============================一楼=============================-->
+            <div class="one_way">
+                <!--标题-->
+                <div class="one_way_head">
+                    <h2>企业办公</h2>
+                    <ul>
+                        <li class="f1_favor">商品推荐</li>
+                        <li>商品推荐</li>
+                        <li>商品推荐</li>
+                        <li>商品推荐</li>
+                        <span>查看更多&gt;</span>
+                    </ul>
+                </div>
+                <!--主内容-->
+                <div class="bg1_bor one_way_main">
+                    <!--左侧内容-->
+                    <div class="fm_left">
+                        <!--楼层标示-->
+                        <div class="bg1 floor_num">
+                            1F
+                            <span></span>
+                        </div>
+                        <!--商品分类-->
+                        <div class="left_classfy">
+                            <!--文字top-->
+                            <div class="left_text">
                                 <ul>
-                                    <!--<li><a href="#"><img src="img/web-601-197-1-1.jpg"/></a></li>-->
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                </ul>
+                            </div>
+                            <!--中间图-->
+                            <div class="left_img">
+                                <img src="{% static 'img/web-601-196.jpg' %}">
+                            </div>
+                            <!--上下轮播图-->
+                            <div class="tcf tbCarousel ">
+                                <ul>
+                                    <!--<li><a href="#"><img src="img/04540869910713027_sm.jpg"/></a></li>-->
                                 </ul>
                                 <span>&lt;</span>
                                 <span>&gt;</span>
                             </div>
-                            <!--轮播下边两个-->
-                            <div class="rw_top_3c">
-                                <ul>
-                                    <!--												<li><a href="#"><img src="img/web-601-197-1-5.jpg"/></a></li>-->
-                                </ul>
-                            </div>
-                        </div>
-                        <!--phone-->
-                        <!--一个不写了json了-->
-                        <div class="rw_top_phone">
-                            <img src="{% static 'img/web-601-197-1-7.jpg' %}">
-                        </div>
-                        <!--再来两个什么鬼-->
-                        <div class="rw_top_phone rwtp">
-                            <ul>
-                                <li><a href="#"><img src="{% static 'img/web-601-197-1-8.jpg' %}"></a></li>
-                                <li><a href="#"><img src="{% static 'img/web-601-197-1-8.jpg' %}"></a></li>
-                            </ul>
-                        </div>
-                        <!--百叶窗-->
-                        <div class="window_shade">
-                            <h3>本月总排行榜</h3>
-                            <ul>
-                                <!--<li>
-                                    <h2><span class="">5</span>得力(deli)7083 安全石墨铅芯素描 绘图HB铅笔/学生铅笔 12支/盒</h2>
-                                    <dl>
-                                        <dd class="window_shade_img"><img src="img/558_05197496362874067_240.jpg"/></dd>
-                                        <dd class="window_shade_title">
-                                            <a href="#">
-                                                <p>得力</p>
-                                                <p>￥3.90</p>
-                                            </a>
-                                        </dd>
-                                    </dl>
-                                </li>-->
-                            </ul>
                         </div>
                     </div>
-                    <!--下边一排-->
-                    <!--用到css3 的 transition 属性 1147行 -->
-                    <div class="rw_bottom">
-                        <!--<ul>
-                            <li><a href="#"><img src="img/138_05097149322678475_240.jpg"/></a></li>
-                            <li><a href="#">联想Lenovo C5030  I35005U4G1TGRW-10(W)(E)</a></li>
-                            <li><em>￥4229.00</em><del>￥4800.00</del></li>
-                        </ul>-->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--===============================二楼=============================-->
-        <div class="one_way">
-            <!--标题-->
-            <div class="one_way_head">
-                <h2>员工福利</h2>
-                <ul>
-                    <li class="f2_favor">商品推荐</li>
-                    <li>商品推荐</li>
-                    <li>商品推荐</li>
-                    <li>商品推荐</li>
-                    <span>查看更多&gt;</span>
-                </ul>
-            </div>
-            <!--主内容-->
-            <div class="bg2_bor one_way_main">
-                <!--左侧内容-->
-                <div class="fm_left">
-                    <!--楼层标示-->
-                    <div class="bg2 floor_num">
-                        2F
-                        <span></span>
-                    </div>
-                    <!--商品分类-->
-                    <div class="left_classfy">
-                        <!--文字top-->
-                        <div class="left_text">
-                            <ul>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                            </ul>
-                        </div>
-                        <!--中间图-->
-                        <div class="left_img">
-                            <img src="{% static 'img/web-602-203.jpg' %}">
-                        </div>
-                        <!--上下轮播图-->
-                        <div class="tcf tbCarousel">
-                            <ul>
-                                <!--<li><a href="#"><img src="img/04540869910713027_sm.jpg"/></a></li>-->
-                            </ul>
-                            <span>&lt;</span>
-                            <span>&gt;</span>
-                        </div>
-                    </div>
-                </div>
 
-                <!--右-->
-                <div class="right_show">
-                    <!--乱七八糟的一堆-->
-                    <div class="rw_top">
-                        <!--轮播-->
-                        <div class="rw_top_left">
-                            <div class="lcf rw_top_Carousel tbCarousel">
-                                <ul>
-                                    <!--<li><a href="#"><img src="img/web-601-197-1-4.jpg"/></a></li>-->
-                                </ul>
-                                <span>&lt;</span>
-                                <span>&gt;</span>
-                            </div>
-                            <div class="rw_top_3c">
-                                <ul>
-                                    <!--<li><a href="#"><img src="img/web-601-197-1-5.jpg"/></a></li>-->
-                                </ul>
-                            </div>
-                        </div>
-                        <!--phone-->
-                        <div class="rw_top_phone">
-                            <img src="{% static 'img/web-602-204-1-7.png' %}">
-                        </div>
-                        <!--再来两个什么鬼-->
-                        <div class="rw_top_phone rwtp">
-                            <ul>
-                                <li><a href="#"><img src="{% static 'img/web-601-197-1-8.jpg' %}"></a></li>
-                                <li><a href="#"><img src="{% static 'img/web-601-197-1-8.jpg' %}"></a></li>
-                            </ul>
-                        </div>
-                        <!--百叶窗-->
-                        <div class="window_shade">
-                            <h3>本月总排行榜</h3>
-                            <ul>
-                                <!--<li>
-                                    <h2><span class="">5</span>得力(deli)7083 安全石墨铅芯素描 绘图HB铅笔/学生铅笔 12支/盒</h2>
-                                    <dl>
-                                        <dd class="window_shade_img"><img src="img/558_05197496362874067_240.jpg"/></dd>
-                                        <dd class="window_shade_title">
-                                            <a href="#">
-                                                <p>得力</p>
-                                                <p>￥3.90</p>
-                                            </a>
-                                        </dd>
-                                    </dl>
-                                </li>-->
-                            </ul>
-                        </div>
-                    </div>
-                    <!--下边一排-->
-                    <div class="rw_bottom">
-                        <!--<ul>
-                            <li><a href="#"><img src="img/138_05097149322678475_240.jpg"/></a></li>
-                            <li><a href="#">联想Lenovo C5030  I35005U4G1TGRW-10(W)(E)</a></li>
-                            <li><em>￥4229.00</em><del>￥4800.00</del></li>
-                        </ul>-->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--===============================三楼=============================-->
-        <div class="one_way">
-            <!--标题-->
-            <div class="one_way_head">
-                <h2>商务礼赠</h2>
-                <ul>
-                    <li class="f3_favor">商品推荐</li>
-                    <li>商品推荐</li>
-                    <li>商品推荐</li>
-                    <li>商品推荐</li>
-                    <span>查看更多&gt;</span>
-                </ul>
-            </div>
-            <!--主内容-->
-            <div class="bg3_bor one_way_main">
-                <!--左侧内容-->
-                <div class="fm_left">
-                    <!--楼层标示-->
-                    <div class="bg3 floor_num">
-                        3F
-                        <span></span>
-                    </div>
-                    <!--商品分类-->
-                    <div class="left_classfy">
-                        <!--文字top-->
-                        <div class="left_text">
-                            <ul>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                            </ul>
-                        </div>
-                        <!--中间图-->
-                        <div class="left_img">
-                            <img src="{% static 'img/web-603-209.png' %}">
-                        </div>
-                        <!--上下轮播图-->
-                        <div class="tcf tbCarousel">
-                            <ul>
-                                <!--<li><a href="#"><img src="img/04540869910713027_sm.jpg"/></a></li>-->
-                            </ul>
-                            <span>&lt;</span>
-                            <span>&gt;</span>
-                        </div>
-                    </div>
-                </div>
+                    <!--右-->
+                    <div class="right_show">
+                        <!--乱七八糟的一堆-->
+                        <div class="rw_top">
+                            <!--轮播-->
+                            <div class="rw_top_left">
+                                <div class="lcf rw_top_Carousel tbCarousel">
+                                    <ul>
+                                        {#                                    <li><a href="#"><img src="img/web-601-197-1-1.jpg"/></a></li>-#}
+                                    </ul>
+                                    <span>&lt;</span>
+                                    <span>&gt;</span>
+                                </div>
+                                <!--轮播下边两个-->
 
-                <!--右-->
-                <div class="right_show">
-                    <!--乱七八糟的一堆-->
-                    <div class="rw_top">
-                        <!--轮播-->
-                        <div class="rw_top_left">
-                            <div class="lcf rw_top_Carousel tbCarousel">
+
+                                <div class="rw_top_3c">
+                                    <ul>
+                                        <li><a href="#"><img src={% static "img/web-601-197-1-5.jpg" %}/></a></li>
+                                        -->
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--phone-->
+                            <!--一个不写了json了-->
+                            <div class="rw_top_phone">
+                                <img src="{% static 'img/web-601-197-1-7.jpg' %}">
+                            </div>
+                            <!--再来两个什么鬼-->
+                            <div class="rw_top_phone rwtp">
                                 <ul>
-                                    <!--<li><a href="#"><img src="img/web-601-197-1-4.jpg"/></a></li>-->
+                                    <li><a href="#"><img src="{% static 'img/web-601-197-1-8.jpg' %}"></a></li>
+                                    <li><a href="#"><img src="{% static 'img/web-601-197-1-8.jpg' %}"></a></li>
+                                </ul>
+                            </div>
+                            <!--百叶窗-->
+                            <div class="window_shade">
+                                <h3>本月总排行榜</h3>
+                                <ul>
+                                    <!--<li>
+                                        <h2><span class="">5</span>得力(deli)7083 安全石墨铅芯素描 绘图HB铅笔/学生铅笔 12支/盒</h2>
+                                        <dl>
+                                            <dd class="window_shade_img"><img src="img/558_05197496362874067_240.jpg"/></dd>
+                                            <dd class="window_shade_title">
+                                                <a href="#">
+                                                    <p>得力</p>
+                                                    <p>￥3.90</p>
+                                                </a>
+                                            </dd>
+                                        </dl>
+                                    </li>-->
+                                </ul>
+                            </div>
+                        </div>
+                        <!--下边一排-->
+                        <!--用到css3 的 transition 属性 1147行 -->
+                        <div class="rw_bottom">
+                            <!--<ul>
+                                <li><a href="#"><img src="img/138_05097149322678475_240.jpg"/></a></li>
+                                <li><a href="#">联想Lenovo C5030  I35005U4G1TGRW-10(W)(E)</a></li>
+                                <li><em>￥4229.00</em><del>￥4800.00</del></li>
+                            </ul>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--===============================二楼=============================-->
+            <div class="one_way">
+                <!--标题-->
+                <div class="one_way_head">
+                    <h2>员工福利</h2>
+                    <ul>
+                        <li class="f2_favor">商品推荐</li>
+                        <li>商品推荐</li>
+                        <li>商品推荐</li>
+                        <li>商品推荐</li>
+                        <span>查看更多&gt;</span>
+                    </ul>
+                </div>
+                <!--主内容-->
+                <div class="bg2_bor one_way_main">
+                    <!--左侧内容-->
+                    <div class="fm_left">
+                        <!--楼层标示-->
+                        <div class="bg2 floor_num">
+                            2F
+                            <span></span>
+                        </div>
+                        <!--商品分类-->
+                        <div class="left_classfy">
+                            <!--文字top-->
+                            <div class="left_text">
+                                <ul>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                </ul>
+                            </div>
+                            <!--中间图-->
+                            <div class="left_img">
+                                <img src="{% static 'img/web-602-203.jpg' %}">
+                            </div>
+                            <!--上下轮播图-->
+                            <div class="tcf tbCarousel">
+                                <ul>
+                                    <!--<li><a href="#"><img src="img/04540869910713027_sm.jpg"/></a></li>-->
                                 </ul>
                                 <span>&lt;</span>
                                 <span>&gt;</span>
                             </div>
-                            <div class="rw_top_3c">
+                        </div>
+                    </div>
+
+                    <!--右-->
+                    <div class="right_show">
+                        <!--乱七八糟的一堆-->
+                        <div class="rw_top">
+                            <!--轮播-->
+                            <div class="rw_top_left">
+                                <div class="lcf rw_top_Carousel tbCarousel">
+                                    <ul>
+                                        <!--<li><a href="#"><img src="img/web-601-197-1-4.jpg"/></a></li>-->
+                                    </ul>
+                                    <span>&lt;</span>
+                                    <span>&gt;</span>
+                                </div>
+                                <div class="rw_top_3c">
+                                    <ul>
+                                        <!--<li><a href="#"><img src="img/web-601-197-1-5.jpg"/></a></li>-->
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--phone-->
+                            <div class="rw_top_phone">
+                                <img src="{% static 'img/web-602-204-1-7.png' %}">
+                            </div>
+                            <!--再来两个什么鬼-->
+                            <div class="rw_top_phone rwtp">
                                 <ul>
-                                    <!--<li><a href="#"><img src="img/web-601-197-1-6.jpg"/></a></li>-->
+                                    <li><a href="#"><img src="{% static 'img/web-601-197-1-8.jpg' %}"></a></li>
+                                    <li><a href="#"><img src="{% static 'img/web-601-197-1-8.jpg' %}"></a></li>
+                                </ul>
+                            </div>
+                            <!--百叶窗-->
+                            <div class="window_shade">
+                                <h3>本月总排行榜</h3>
+                                <ul>
+                                    <!--<li>
+                                        <h2><span class="">5</span>得力(deli)7083 安全石墨铅芯素描 绘图HB铅笔/学生铅笔 12支/盒</h2>
+                                        <dl>
+                                            <dd class="window_shade_img"><img src="img/558_05197496362874067_240.jpg"/></dd>
+                                            <dd class="window_shade_title">
+                                                <a href="#">
+                                                    <p>得力</p>
+                                                    <p>￥3.90</p>
+                                                </a>
+                                            </dd>
+                                        </dl>
+                                    </li>-->
                                 </ul>
                             </div>
                         </div>
-                        <!--phone-->
-                        <div class="rw_top_phone">
-                            <img src="{% static 'img/web-603-210-1-7.jpg' %}">
-                        </div>
-                        <!--再来两个什么鬼-->
-                        <div class="rw_top_phone rwtp">
-                            <ul>
-                                <li><a href="#"><img src="{% static 'img/web-601-197-1-8.jpg' %}"></a></li>
-                                <li><a href="#"><img src="{% static 'img/web-601-197-1-8.jpg' %}"></a></li>
-                            </ul>
-                        </div>
-                        <!--百叶窗-->
-                        <div class="window_shade">
-                            <h3>本月总排行榜</h3>
-                            <ul>
-                                <!--<li>
-                                    <h2><span class="">5</span>得力(deli)7083 安全石墨铅芯素描 绘图HB铅笔/学生铅笔 12支/盒</h2>
-                                    <dl>
-                                        <dd class="window_shade_img"><img src="img/558_05197496362874067_240.jpg"/></dd>
-                                        <dd class="window_shade_title">
-                                            <a href="#">
-                                                <p>得力</p>
-                                                <p>￥3.90</p>
-                                            </a>
-                                        </dd>
-                                    </dl>
-                                </li>-->
-                            </ul>
-                        </div>
-                    </div>
-                    <!--下边一排-->
-                    <div class="rw_bottom">
-                        <!--<ul>
-                            <li><a href="#"><img src="img/138_05097149322678475_240.jpg"/></a></li>
-                            <li><a href="#">联想Lenovo C5030  I35005U4G1TGRW-10(W)(E)</a></li>
-                            <li><em>￥4229.00</em><del>￥4800.00</del></li>
-                        </ul>-->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--===============================四楼=============================-->
-        <div class="one_way">
-            <!--标题-->
-            <div class="one_way_head">
-                <h2>促销推荐</h2>
-                <ul>
-                    <li class="f4_favor">商品推荐</li>
-                    <li>商品推荐</li>
-                    <li>商品推荐</li>
-                    <li>商品推荐</li>
-                    <span>查看更多&gt;</span>
-                </ul>
-            </div>
-            <!--主内容-->
-            <div class="bg4_bor one_way_main">
-                <!--左侧内容-->
-                <div class="fm_left">
-                    <!--楼层标示-->
-                    <div class="bg4 floor_num">
-                        4F
-                        <span></span>
-                    </div>
-                    <!--商品分类-->
-                    <div class="left_classfy">
-                        <!--文字top-->
-                        <div class="left_text">
-                            <ul>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                                <li><a href="#">电脑整机</a></li>
-                            </ul>
-                        </div>
-                        <!--中间图-->
-                        <div class="left_img">
-                            <img src="{% static 'img/web-604-215.jpg' %}">
-                        </div>
-                        <!--上下轮播图-->
-                        <div class="tcf tbCarousel">
-                            <ul>
-                                <!--<li><a href="#"><img src="img/04540869910713027_sm.jpg"/></a></li>-->
-                            </ul>
-                            <span>&lt;</span>
-                            <span>&gt;</span>
+                        <!--下边一排-->
+                        <div class="rw_bottom">
+                            <!--<ul>
+                                <li><a href="#"><img src="img/138_05097149322678475_240.jpg"/></a></li>
+                                <li><a href="#">联想Lenovo C5030  I35005U4G1TGRW-10(W)(E)</a></li>
+                                <li><em>￥4229.00</em><del>￥4800.00</del></li>
+                            </ul>-->
                         </div>
                     </div>
                 </div>
-
-                <!--右-->
-                <div class="right_show">
-                    <!--乱七八糟的一堆-->
-                    <div class="rw_top">
-                        <!--轮播-->
-                        <div class="rw_top_left">
-                            <div class="lcf rw_top_Carousel tbCarousel">
+            </div>
+            <!--===============================三楼=============================-->
+            <div class="one_way">
+                <!--标题-->
+                <div class="one_way_head">
+                    <h2>商务礼赠</h2>
+                    <ul>
+                        <li class="f3_favor">商品推荐</li>
+                        <li>商品推荐</li>
+                        <li>商品推荐</li>
+                        <li>商品推荐</li>
+                        <span>查看更多&gt;</span>
+                    </ul>
+                </div>
+                <!--主内容-->
+                <div class="bg3_bor one_way_main">
+                    <!--左侧内容-->
+                    <div class="fm_left">
+                        <!--楼层标示-->
+                        <div class="bg3 floor_num">
+                            3F
+                            <span></span>
+                        </div>
+                        <!--商品分类-->
+                        <div class="left_classfy">
+                            <!--文字top-->
+                            <div class="left_text">
                                 <ul>
-                                    <!--<li><a href="#"><img src="img/web-601-197-1-1.jpg"/></a></li>-->
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                </ul>
+                            </div>
+                            <!--中间图-->
+                            <div class="left_img">
+                                <img src="{% static 'img/web-603-209.png' %}">
+                            </div>
+                            <!--上下轮播图-->
+                            <div class="tcf tbCarousel">
+                                <ul>
+                                    <!--<li><a href="#"><img src="img/04540869910713027_sm.jpg"/></a></li>-->
                                 </ul>
                                 <span>&lt;</span>
                                 <span>&gt;</span>
                             </div>
-                            <div class="rw_top_3c">
+                        </div>
+                    </div>
+
+                    <!--右-->
+                    <div class="right_show">
+                        <!--乱七八糟的一堆-->
+                        <div class="rw_top">
+                            <!--轮播-->
+                            <div class="rw_top_left">
+                                <div class="lcf rw_top_Carousel tbCarousel">
+                                    <ul>
+                                        <!--<li><a href="#"><img src="img/web-601-197-1-4.jpg"/></a></li>-->
+                                    </ul>
+                                    <span>&lt;</span>
+                                    <span>&gt;</span>
+                                </div>
+                                <div class="rw_top_3c">
+                                    <ul>
+                                        <!--<li><a href="#"><img src="img/web-601-197-1-6.jpg"/></a></li>-->
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--phone-->
+                            <div class="rw_top_phone">
+                                <img src="{% static 'img/web-603-210-1-7.jpg' %}">
+                            </div>
+                            <!--再来两个什么鬼-->
+                            <div class="rw_top_phone rwtp">
                                 <ul>
-                                    <!--<li><a href="#"><img src="img/web-601-197-1-5.jpg"/></a></li>-->
+                                    <li><a href="#"><img src="{% static 'img/web-601-197-1-8.jpg' %}"></a></li>
+                                    <li><a href="#"><img src="{% static 'img/web-601-197-1-8.jpg' %}"></a></li>
+                                </ul>
+                            </div>
+                            <!--百叶窗-->
+                            <div class="window_shade">
+                                <h3>本月总排行榜</h3>
+                                <ul>
+                                    <!--<li>
+                                        <h2><span class="">5</span>得力(deli)7083 安全石墨铅芯素描 绘图HB铅笔/学生铅笔 12支/盒</h2>
+                                        <dl>
+                                            <dd class="window_shade_img"><img src="img/558_05197496362874067_240.jpg"/></dd>
+                                            <dd class="window_shade_title">
+                                                <a href="#">
+                                                    <p>得力</p>
+                                                    <p>￥3.90</p>
+                                                </a>
+                                            </dd>
+                                        </dl>
+                                    </li>-->
                                 </ul>
                             </div>
                         </div>
-                        <!--phone-->
-                        <div class="rw_top_phone">
-                            <img src="{% static 'img/web-604-216-1-7.jpg' %}">
-                        </div>
-                        <!--再来两个什么鬼-->
-                        <div class="rw_top_phone rwtp">
-                            <ul>
-                                <li><a href="#"><img src="{% static 'img/web-601-197-1-8.jpg' %}"></a></li>
-                                <li><a href="#"><img src="{% static 'img/web-601-197-1-8.jpg' %}"></a></li>
-                            </ul>
-                        </div>
-                        <!--百叶窗-->
-                        <div class="window_shade">
-                            <h3>本月总排行榜</h3>
-                            <ul>
-                                <!--百叶窗-->
-                            </ul>
+                        <!--下边一排-->
+                        <div class="rw_bottom">
+                            <!--<ul>
+                                <li><a href="#"><img src="img/138_05097149322678475_240.jpg"/></a></li>
+                                <li><a href="#">联想Lenovo C5030  I35005U4G1TGRW-10(W)(E)</a></li>
+                                <li><em>￥4229.00</em><del>￥4800.00</del></li>
+                            </ul>-->
                         </div>
                     </div>
-                    <!--下边一排-->
-                    <div class="rw_bottom">
-                        <!--<ul>
-                            <li><a href="#"><img src="img/138_05097149322678475_240.jpg"/></a></li>
-                            <li><a href="#">联想Lenovo C5030  I35005U4G1TGRW-10(W)(E)</a></li>
-                            <li><em>￥4229.00</em><del>￥4800.00</del></li>
-                        </ul>-->
+                </div>
+            </div>
+            <!--===============================四楼=============================-->
+            <div class="one_way">
+                <!--标题-->
+                <div class="one_way_head">
+                    <h2>促销推荐</h2>
+                    <ul>
+                        <li class="f4_favor">商品推荐</li>
+                        <li>商品推荐</li>
+                        <li>商品推荐</li>
+                        <li>商品推荐</li>
+                        <span>查看更多&gt;</span>
+                    </ul>
+                </div>
+                <!--主内容-->
+                <div class="bg4_bor one_way_main">
+                    <!--左侧内容-->
+                    <div class="fm_left">
+                        <!--楼层标示-->
+                        <div class="bg4 floor_num">
+                            4F
+                            <span></span>
+                        </div>
+                        <!--商品分类-->
+                        <div class="left_classfy">
+                            <!--文字top-->
+                            <div class="left_text">
+                                <ul>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                    <li><a href="#">电脑整机</a></li>
+                                </ul>
+                            </div>
+                            <!--中间图-->
+                            <div class="left_img">
+                                <img src="{% static 'img/web-604-215.jpg' %}">
+                            </div>
+                            <!--上下轮播图-->
+                            <div class="tcf tbCarousel">
+                                <ul>
+                                    <!--<li><a href="#"><img src="img/04540869910713027_sm.jpg"/></a></li>-->
+                                </ul>
+                                <span>&lt;</span>
+                                <span>&gt;</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--右-->
+                    <div class="right_show">
+                        <!--乱七八糟的一堆-->
+                        <div class="rw_top">
+                            <!--轮播-->
+                            <div class="rw_top_left">
+                                <div class="lcf rw_top_Carousel tbCarousel">
+                                    <ul>
+                                        <!--<li><a href="#"><img src="img/web-601-197-1-1.jpg"/></a></li>-->
+                                    </ul>
+                                    <span>&lt;</span>
+                                    <span>&gt;</span>
+                                </div>
+                                <div class="rw_top_3c">
+                                    <ul>
+                                        <!--<li><a href="#"><img src="img/web-601-197-1-5.jpg"/></a></li>-->
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--phone-->
+                            <div class="rw_top_phone">
+                                <img src="{% static 'img/web-604-216-1-7.jpg' %}">
+                            </div>
+                            <!--再来两个什么鬼-->
+                            <div class="rw_top_phone rwtp">
+                                <ul>
+                                    <li><a href="#"><img src="{% static 'img/web-601-197-1-8.jpg' %}"></a></li>
+                                    <li><a href="#"><img src="{% static 'img/web-601-197-1-8.jpg' %}"></a></li>
+                                </ul>
+                            </div>
+                            <!--百叶窗-->
+                            <div class="window_shade">
+                                <h3>本月总排行榜</h3>
+                                <ul>
+                                    <!--百叶窗-->
+                                </ul>
+                            </div>
+                        </div>
+                        <!--下边一排-->
+                        <div class="rw_bottom">
+                            <!--<ul>
+                                <li><a href="#"><img src="img/138_05097149322678475_240.jpg"/></a></li>
+                                <li><a href="#">联想Lenovo C5030  I35005U4G1TGRW-10(W)(E)</a></li>
+                                <li><em>￥4229.00</em><del>￥4800.00</del></li>
+                            </ul>-->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!--楼层完-->
-    <!--广告来了-->
-    <div style="height:40px; clear:both;"></div>
-    <!--优店推荐-->
-    <div class="wrapper_groom">
-        <h2>优店推荐</h2>
-        <ul>
-            <li><img src="{% static 'img/web-607-221-0-0.jpg' %}"></li>
-            <li><img src="{% static 'img/web-607-221-1-1.jpg' %}"></li>
-            <li><img src="{% static 'img/web-607-221-2-2.jpg' %}"></li>
-        </ul>
-    </div>
+        <!--楼层完-->
+        <!--广告来了-->
+        <div style="height:40px; clear:both;"></div>
+        <!--优店推荐-->
+        <div class="wrapper_groom">
+            <h2>优店推荐</h2>
+            <ul>
+                <li><img src="{% static 'img/web-607-221-0-0.jpg' %}"></li>
+                <li><img src="{% static 'img/web-607-221-1-1.jpg' %}"></li>
+                <li><img src="{% static 'img/web-607-221-2-2.jpg' %}"></li>
+            </ul>
+        </div>
 
-    <!--解决高度缺失-->
-    <div style="height:40px; clear:both;"></div>
-
+        <!--解决高度缺失-->
+        <div style="height:40px; clear:both;"></div>
 
 
 
 
 
-{% endblock %}
+
+    {% endblock %}
 
 
 
@@ -887,139 +891,151 @@
 
 
     <!--页尾-->
-{% block footer %}
-    <div id="footer">
-        <!--帮助-->
-        <div class="help">
-            <ul>
-                <li>
-                    <h2>购物指南</h2>
-                    <a href="#"><i></i>礼品卡的购买与使用</a>
-                    <a href="#"><i></i>无法收到邮件？</a>
-                    <a href="#"><i></i>关于捷信分期？</a>
-                    <a href="#"><i></i>邮费制度</a>
-                    <a href="#"><i></i>订单状态说明</a>
-                </li>
-                <li>
-                    <h2>购物指南</h2>
-                    <a href="#"><i></i>礼品卡的购买与使用</a>
-                    <a href="#"><i></i>无法收到邮件？</a>
-                    <a href="#"><i></i>关于捷信分期？</a>
-                    <a href="#"><i></i>邮费制度</a>
-                    <a href="#"><i></i>订单状态说明</a>
-                </li>
-                <li>
-                    <h2>购物指南</h2>
-                    <a href="#"><i></i>礼品卡的购买与使用</a>
-                    <a href="#"><i></i>无法收到邮件？</a>
-                    <a href="#"><i></i>关于捷信分期？</a>
-                    <a href="#"><i></i>邮费制度</a>
-                    <a href="#"><i></i>订单状态说明</a>
-                </li>
-                <li>
-                    <h2>购物指南</h2>
-                    <a href="#"><i></i>礼品卡的购买与使用</a>
-                    <a href="#"><i></i>无法收到邮件？</a>
-                    <a href="#"><i></i>关于捷信分期？</a>
-                    <a href="#"><i></i>邮费制度</a>
-                    <a href="#"><i></i>订单状态说明</a>
-                </li>
-            </ul>
-            <div class="kefu">
-                <dl>
-                    <dt>客服中心</dt>
-                    <dd class="tel"><img src="{% static 'img/bohao.png' %}">4006-780-781</dd>
-                    <dd>E-mail：mmloo@mmloo.com</dd>
-                    <dd>四川省成都市新南路亚华大厦六楼</dd>
-                    <dd><img src="{% static 'img/qq_index.gif' %}">1398828642</dd>
-                </dl>
-                <dl>
-                    <dt>关于米米乐商城</dt>
-                    <dd class="wx"><img src="{% static 'img/scmmloo.png' %}"></dd>
-                    <dd class="xd">手机下单更优惠<br>
-                        快乐网购 轻松拥有
-                    </dd>
-                </dl>
+    {% block footer %}
+        <div id="footer">
+            <!--帮助-->
+            <div class="help">
+                <ul>
+                    <li>
+                        <h2>购物指南</h2>
+                        <a href="#"><i></i>礼品卡的购买与使用</a>
+                        <a href="#"><i></i>无法收到邮件？</a>
+                        <a href="#"><i></i>关于捷信分期？</a>
+                        <a href="#"><i></i>邮费制度</a>
+                        <a href="#"><i></i>订单状态说明</a>
+                    </li>
+                    <li>
+                        <h2>购物指南</h2>
+                        <a href="#"><i></i>礼品卡的购买与使用</a>
+                        <a href="#"><i></i>无法收到邮件？</a>
+                        <a href="#"><i></i>关于捷信分期？</a>
+                        <a href="#"><i></i>邮费制度</a>
+                        <a href="#"><i></i>订单状态说明</a>
+                    </li>
+                    <li>
+                        <h2>购物指南</h2>
+                        <a href="#"><i></i>礼品卡的购买与使用</a>
+                        <a href="#"><i></i>无法收到邮件？</a>
+                        <a href="#"><i></i>关于捷信分期？</a>
+                        <a href="#"><i></i>邮费制度</a>
+                        <a href="#"><i></i>订单状态说明</a>
+                    </li>
+                    <li>
+                        <h2>购物指南</h2>
+                        <a href="#"><i></i>礼品卡的购买与使用</a>
+                        <a href="#"><i></i>无法收到邮件？</a>
+                        <a href="#"><i></i>关于捷信分期？</a>
+                        <a href="#"><i></i>邮费制度</a>
+                        <a href="#"><i></i>订单状态说明</a>
+                    </li>
+                </ul>
+                <div class="kefu">
+                    <dl>
+                        <dt>客服中心</dt>
+                        <dd class="tel"><img src="{% static 'img/bohao.png' %}">4006-780-781</dd>
+                        <dd>E-mail：mmloo@mmloo.com</dd>
+                        <dd>四川省成都市新南路亚华大厦六楼</dd>
+                        <dd><img src="{% static 'img/qq_index.gif' %}">1398828642</dd>
+                    </dl>
+                    <dl>
+                        <dt>关于米米乐商城</dt>
+                        <dd class="wx"><img src="{% static 'img/scmmloo.png' %}"></dd>
+                        <dd class="xd">手机下单更优惠<br>
+                            快乐网购 轻松拥有
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <!--友情链接-->
+            <div class="friendlink">
+                <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a href="#">乐天代购</a><a
+                    href="#">蛋糕网上订购</a><a
+                    href="#">吃喝玩乐</a><a href="#">网上数码商城</a> <a href="#">网上商城</a><a href="#">免费信息发布</a><a
+                    href="#">客栈网</a><a
+                    href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a href="#">吃喝玩乐</a><a href="#">网上数码商城</a>
+                <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a href="#">乐天代购</a><a
+                    href="#">蛋糕网上订购</a><a
+                    href="#">吃喝玩乐</a><a href="#">网上数码商城</a> <a href="#">网上商城</a><a href="#">免费信息发布</a><a
+                    href="#">客栈网</a><a
+                    href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a href="#">吃喝玩乐</a><a href="#">网上数码商城</a>
+                <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a href="#">乐天代购</a><a
+                    href="#">蛋糕网上订购</a><a
+                    href="#">吃喝玩乐</a><a href="#">网上数码商城</a> <a href="#">网上商城</a><a href="#">免费信息发布</a><a
+                    href="#">客栈网</a><a
+                    href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a href="#">吃喝玩乐</a><a href="#">网上数码商城</a>
+                <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a href="#">乐天代购</a><a
+                    href="#">蛋糕网上订购</a><a
+                    href="#">吃喝玩乐</a><a href="#">网上数码商城</a> <a href="#">网上商城</a><a href="#">免费信息发布</a><a
+                    href="#">客栈网</a><a
+                    href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a href="#">吃喝玩乐</a><a href="#">网上数码商城</a>
+                <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a href="#">乐天代购</a><a
+                    href="#">蛋糕网上订购</a><a
+                    href="#">吃喝玩乐</a><a href="#">网上数码商城</a> <a href="#">网上商城</a><a href="#">免费信息发布</a><a
+                    href="#">客栈网</a><a
+                    href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a href="#">吃喝玩乐</a><a href="#">网上数码商城</a>
+                <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a href="#">乐天代购</a><a
+                    href="#">蛋糕网上订购</a><a
+                    href="#">吃喝玩乐</a><a href="#">网上数码商城</a> <a href="#">网上商城</a><a href="#">免费信息发布</a><a
+                    href="#">客栈网</a><a
+                    href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a href="#">吃喝玩乐</a><a href="#">网上数码商城</a>
+            </div>
+            <!--版权信息-->
+            <div class="copyright">
+                <a href="#">电脑节 </a>|
+                <a href="#"> 年货节 </a>|
+                <a href="#"> 批发商城 </a>|
+                <a href="#"> 合作及洽谈 </a>|
+                <a href="#"> 联系我们 </a>|
+                <a href="#"> 商家登录</a>|
+                <a href="#"> 开店协议</a>|
+                <a href="#"> 商家入驻</a>|
+                <a href="#"> 手机版</a>|
+                <a href="#"> 友情链接</a>|
+                <a href="#"> 招聘英才</a>|
+                <a href="#"> 米商</a>|
+                <a href="#"> 8.8包邮</a>|
+                <p>© 2016 米米乐商城 www.mmloo.com 版权所有 蜀ICP备06015925号-1</p>
+                <p><img src="{% static 'img/cxlogo.png' %}"></p>
+                <span class="backTop">返回顶部</span>
             </div>
         </div>
-        <!--友情链接-->
-        <div class="friendlink">
-            <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a
-                href="#">吃喝玩乐</a><a href="#">网上数码商城</a> <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a
-                href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a href="#">吃喝玩乐</a><a href="#">网上数码商城</a>
-            <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a
-                href="#">吃喝玩乐</a><a href="#">网上数码商城</a> <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a
-                href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a href="#">吃喝玩乐</a><a href="#">网上数码商城</a>
-            <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a
-                href="#">吃喝玩乐</a><a href="#">网上数码商城</a> <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a
-                href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a href="#">吃喝玩乐</a><a href="#">网上数码商城</a>
-            <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a
-                href="#">吃喝玩乐</a><a href="#">网上数码商城</a> <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a
-                href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a href="#">吃喝玩乐</a><a href="#">网上数码商城</a>
-            <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a
-                href="#">吃喝玩乐</a><a href="#">网上数码商城</a> <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a
-                href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a href="#">吃喝玩乐</a><a href="#">网上数码商城</a>
-            <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a
-                href="#">吃喝玩乐</a><a href="#">网上数码商城</a> <a href="#">网上商城</a><a href="#">免费信息发布</a><a href="#">客栈网</a><a
-                href="#">乐天代购</a><a href="#">蛋糕网上订购</a><a href="#">吃喝玩乐</a><a href="#">网上数码商城</a>
+    {% endblock %}
+    {% block sidebar %}
+        <div id="sidebar">
+            <ul>
+                <li>
+                    <img src="{% static 'img/right_sevice.png' %}">
+                    <span>联系客服</span>
+                </li>
+
+                <li>
+                    <a href="page/cart.html"><img src="{% static 'img/right_cart.png' %}"></a>
+                </li>
+
+                <li>
+                    <img src="{% static 'img/right_history.png' %}">
+                </li>
+
+                <li>
+                    <img src="{% static 'img/right_erweima.png' %}">
+                    <span class="ewm"></span>
+                </li>
+
+                <li>
+                    <img src="{% static 'img/right_top.png' %}">
+                    <b>TOP</b>
+                    <span class="backTop">回到顶部</span>
+                </li>
+            </ul>
+
         </div>
-        <!--版权信息-->
-        <div class="copyright">
-            <a href="#">电脑节 </a>|
-            <a href="#"> 年货节 </a>|
-            <a href="#"> 批发商城 </a>|
-            <a href="#"> 合作及洽谈 </a>|
-            <a href="#"> 联系我们 </a>|
-            <a href="#"> 商家登录</a>|
-            <a href="#"> 开店协议</a>|
-            <a href="#"> 商家入驻</a>|
-            <a href="#"> 手机版</a>|
-            <a href="#"> 友情链接</a>|
-            <a href="#"> 招聘英才</a>|
-            <a href="#"> 米商</a>|
-            <a href="#"> 8.8包邮</a>|
-            <p>© 2016 米米乐商城 www.mmloo.com 版权所有 蜀ICP备06015925号-1</p>
-            <p><img src="{% static 'img/cxlogo.png' %}"></p>
-            <span class="backTop">返回顶部</span>
-        </div>
-    </div>
-{% endblock %}
-{% block sidebar %}
-<div id="sidebar">
-        <ul>
-            <li>
-                <img src="{% static 'img/right_sevice.png' %}">
-                <span>联系客服</span>
-            </li>
-
-            <li>
-                <a href="page/cart.html"><img src="{% static 'img/right_cart.png' %}"></a>
-            </li>
-
-            <li>
-                <img src="{% static 'img/right_history.png' %}">
-            </li>
-
-            <li>
-                <img src="{% static 'img/right_erweima.png' %}">
-                <span class="ewm"></span>
-            </li>
-
-            <li>
-                <img src="{% static 'img/right_top.png' %}">
-                <b>TOP</b>
-                <span class="backTop">回到顶部</span>
-            </li>
-        </ul>
-
-    </div>
-{% endblock %}
+    {% endblock %}
 
 
 
 
 
-{#    <div style="height: 2px; background: #D93600;display: block;position: absolute;overflow:hidden;width:100%;top: 266px;left: 0;"></div>#}
+    {#    <div style="height: 2px; background: #D93600;display: block;position: absolute;overflow:hidden;width:100%;top: 266px;left: 0;"></div>#}
 
 
     ​

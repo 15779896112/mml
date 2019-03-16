@@ -105,7 +105,7 @@ html,body{
 
 #header .list .gwc #shopNum{
 	display: inline-block;
-    width: 14px;
+    width: 30px;
     height: 15px;
     line-height: 15px;
     text-align: center;
@@ -115,6 +115,7 @@ html,body{
     left: 24px;
     top: -9px;
     color: #FFF;
+	font-size: 12px;
 }
 
 #header .list .gwc .gwc_bg{
@@ -414,7 +415,7 @@ html,body{
 	background: #2C2C2C;
 	margin-left: 30px;
 	position: absolute;
-	display: none;
+	/*display: none;*/
 	/*overflow: hidden;*/
 }
 #main .menu ul{
@@ -463,7 +464,7 @@ html,body{
 	position: absolute;
 	top: 0px;
 	left: 210px;
-	background: #FFF;
+	background: rgba(255,255,255,0.3);
 	display: none;
 
 

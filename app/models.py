@@ -26,6 +26,7 @@ class Classify(models.Model):
 
 
 class Goods(models.Model):
+    name = models.CharField(max_length=20,default='弄啥嘞')
     fatherid = models.CharField(max_length=10)
     lrp = models.CharField(max_length=20)
     price = models.CharField(max_length=20)
@@ -46,5 +47,16 @@ class User(models.Model):
         db_table = 'mml_user'
 
 
+class Cart(models.Model):
+
+    user = models.ForeignKey(User)
+    goods = models.ForeignKey(Goods)
+    number = models.IntegerField()
+    isselect = models.BooleanField(default=True)
+    isdelete = models.BooleanField(default=False)
+    total = models.FloatField(default=0)
+
+    class Meta:
+        db_table = 'mml_cart'
 
 

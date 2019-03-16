@@ -7,7 +7,11 @@ urlpatterns = [
     url(r'^subclass/',views.subclass,name='subclass'),
     url(r'^index/',views.index,name='index'),
     url(r'^shop/(\w+)',views.shop,name='shop'),
-    url(r'^register',views.register,name='register'),
-    url(r'^logout',views.logout,name='logout'),
-    url(r'^login',views.login,name='login'),
+    url(r'^register/',views.register,name='register'),
+    url(r'^logout/',views.logout,name='logout'),
+    url(r'^login/',views.login,name='login'),
+    url(r'^checkename/',views.checkename,name='checkename'),
+    url(r'^addcart/',views.addcart,name='addcart'),
+    url(r'^cart/',views.cart,name='cart'),
+    url(r'^isselect/',views.isselect,name='isselect')
 ]
