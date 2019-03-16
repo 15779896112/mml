@@ -52,7 +52,7 @@
             </div>
             <!--右侧导航-->
             <ul class="list">
-                <li class="gwc"><a href="#"> <span id="shopNum" class="num">{{ num }}</span> <i class="gwc_bg"></i>购物车<em
+                <li class="gwc"><a href={% url 'app:cart' %}> <span id="shopNum" class="num">{{ num }}</span> <i class="gwc_bg"></i>购物车<em
                         class="num">{{ num }}</em>件 <i class="spinner"></i></a>
                     <ul class="subNav">
                         <b>最新加入的商品</b>
@@ -76,7 +76,7 @@
                     </ul>
                 </li>
 
-                <li><a href="#">我的订单 <i class="spinner"></i></a>
+                <li><a href={% url 'app:myorder' %}>我的订单 <i class="spinner"></i></a>
                     <ul class="subNav">
                         <li><a href="#">待付款订单</a></li>
                         <li><a href="#">待收货交易</a></li>

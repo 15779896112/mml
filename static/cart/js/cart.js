@@ -32,6 +32,21 @@ $(function () {
         })
     })
 
+    $('.dell').click(function () {
+        datas = {
+            'cartid':$(this).attr('cartid')
+        }
+        var $that = $(this)
+         $.get('/dell/',datas,function (response) {
+            if(response.status == '1'){
+                $that.parent().parent().remove()
+               $('.commodityPrice h2 .total').html(response.sum)
+            }
+
+        })
+    })
+    
+
 
 
 })

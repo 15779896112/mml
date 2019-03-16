@@ -9,7 +9,7 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from django_redis.serializers import json
 
-from app.models import Wheel, Classify, Goods, User, Cart
+from app.models import Wheel, Classify, Goods, User, Cart, Order, OrderGoods
 
 
 def index(request, fatherid='00000'):
@@ -98,6 +98,7 @@ def login(request):
                 token = generate_token()
                 cache.set(token, user.id, 60 * 60 * 24 * 3)
                 request.session['token'] = token
+
                 return redirect('app:index')
             else:
                 return render(request, 'mine/login.html', context={'err2': '密码错误'})
@@ -266,7 +267,7 @@ def isselect(request):
                 cart.isselect =False
                 cart.save()
     elif carts.exists() and cartid:
-        cart = Cart.objects.filter(pk=cartid).first()
+        cart = Cart.objects.filter(id=cartid).first()
         if check=='yes':
             cart.isselect = True
             cart.save()
@@ -286,3 +287,62 @@ def isselect(request):
 
 
     return JsonResponse(data)
+
+
+def dell(request):
+    token = request.session.get('token')
+    userid = cache.get(token)
+    user = User.objects.get(pk=userid)
+    cartid = request.GET.get('cartid')
+    cart = Cart.objects.filter(pk=cartid)
+    cart.delete()
+    sum = selectsprice(user)
+    data = {
+        'status': 1,
+        'sum':sum
+    }
+    return JsonResponse(data)
+
+
+
+def create_identifier():
+    identifier = str(int(time.time()))+str((random.randrange(1000,10000)))
+    return identifier
+
+def createorder(request):
+    token = request.session.get('token')
+    userid = cache.get(token)
+    user = User.objects.get(pk=userid)
+    carts = user.cart_set.filter(isselect='True')
+    if carts.exists():
+        order = Order()
+        order.user = user
+        order.identifier = create_identifier()
+
+        order.save()
+        for cart in carts:
+            ordergoods = OrderGoods()
+            ordergoods.order = order
+            ordergoods.goods = cart.goods
+            ordergoods.num = cart.number
+            ordergoods.total = float(cart.goods.price[1:]) * int(cart.number)
+            ordergoods.save()
+            cart.delete()
+
+        return render(request, 'order/order.html', context={'order': order})
+    return redirect('app:cart')
+
+
+
+def myorder(request):
+    token = request.session.get('token')
+    userid = cache.get(token)
+    user = User.objects.get(pk=userid)
+    orders = user.order_set.all()
+    return render(request, 'order/myorder.html', context={'orders': orders})
+
+
+def goodsdetail(request,identifier):
+    order = Order.objects.filter(identifier=identifier).first()
+
+    return render(request, 'order/order.html', context={'order': order})

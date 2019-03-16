@@ -13,5 +13,9 @@ urlpatterns = [
     url(r'^checkename/',views.checkename,name='checkename'),
     url(r'^addcart/',views.addcart,name='addcart'),
     url(r'^cart/',views.cart,name='cart'),
-    url(r'^isselect/',views.isselect,name='isselect')
+    url(r'^isselect/',views.isselect,name='isselect'),
+    url(r'^dell/',views.dell,name='dell'),
+    url(r'^myorder/',views.myorder,name='myorder'),
+    url(r'^createorder/',views.createorder,name='createorder')
+
 ]

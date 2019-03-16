@@ -14,7 +14,9 @@
     <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src={% static 'index/js/index.js' %}></script>
     <script src={% static 'cart/js/cart.js' %}></script>
+    {% block js %}
 
+    {% endblock %}
 {#		<link rel="stylesheet" type="text/css" href="../css/base.css"/>#}
 {#		<link rel="stylesheet" type="text/css" href="../css/publicHead.css"/>#}
 {#		<link rel="stylesheet" type="text/css" href="../css/publicFooter.css"/>#}
@@ -35,6 +37,9 @@
 			</div>
 			<!--右侧导航-->
 			<ul class="list">
+                {% block cart %}
+
+
 				<li class="gwc"><a href="#"> <span id="shopNum" class="num">{{ num }}</span>  <i class="gwc_bg"></i>购物车<em class="num">{{ num }}</em>件	 <i class="spinner"></i></a>
 					<ul class="subNav">
 						<b>最新加入的商品</b>
@@ -47,7 +52,7 @@
 						</div>
 					</ul>
 				</li>
-				
+				{% endblock %}
 				<li><a href="#">用户中心 <i class="spinner"></i></a>
 					<ul class="subNav">
 						<li><a href="#">商品收藏</a></li>
@@ -84,7 +89,11 @@
 		<div id="banner">
 			<div style="background:url(../../static/img/cartlogin.png) no-repeat center center;"></div>
 		</div>
-		
+
+
+        {% block content %}
+
+
 		<!--页面主体-->
 		<div id="myCart">
 			<div class="mc_top">
@@ -100,7 +109,9 @@
 						<span>单价(元)</span>
 						<span>数量</span>
 						<span>小计</span>
+                        <span>操作</span>
 						<span>状态</span>
+
 					</dd>
 
 
@@ -108,33 +119,49 @@
 				<dl>
                     {% for cart in carts %}
 
-					<dt><img src={% static 'img/gfdp.png' %}/></dt>
+{#					<dt><img src={% static 'img/gfdp.png' %}/></dt>#}
 					<dd>
                         {% if cart.isselect %}
-						<input type="checkbox"  checked class="itemSelection" cartid={{ cart.id }}/>
+						<input type="checkbox"  checked class="itemSelection" cartid={{ cart.id }}>
                             {% else %}
-                            <input type="checkbox" class="itemSelection" cartid={{ cart.id }}/>
+                            <input type="checkbox" class="itemSelection" cartid={{ cart.id }}  />
                         {% endif %}
 						<a href="#"><img src={% static cart.goods.img %}/></a>
                         <span>{{ cart.goods.name }}</span>
                         <span>{{ cart.goods.price }}</span>
-                        <span>{{ cart.number }}</span>
+                        <span id="mynum">{{ cart.number }}</span>
                         <span>{{ cart.total }}</span>
+                        <span><button class="dell" cartid={{ cart.id }}>清空</button></span>
                         <span>待购买</span>
 					</dd>
                     {% endfor %}
 
 				</dl>
+
 				<!--商品总价-->
 				<div class="commodityPrice">
 					<h2>商品总价(不含运费)<em>￥<i class="total">{{ sum_select|default:0 }}</i>元</em></h2>
 				</div>
 				<!--下一步-->
 				<div class="nextStep">
-					<a href="#"><i></i>下一步，填写核对购物信息</a>
+					<a href={% url 'app:createorder' %} style="background: #9B9B9B"><i></i>下单</a>
 				</div>
 			</div>
-			<!--可能想买-->
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+        <!--可能想买-->
 			<div class="possibleBuy">
 				<h2>你可能想买</h2>
 				<ul>

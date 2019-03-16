@@ -47,7 +47,9 @@ $(function () {
 
                 $('.shoppingCart').show()
             }else{
-                console.log(response.msg)
+                 // $.cookie('back', 'shop', {expires: 3, path: '/'})
+
+                window.open('/login/', '_self')
             }
         })
 

@@ -729,21 +729,51 @@ html,body{
 	background: #FFF;
 }
 
-#dbrt_description{
+
+
+
+
+
+.dbrt_description{
+	height: 100px;
 	overflow: hidden;
 	padding-left: 20px;
 	padding-bottom: 20px;
 	border-bottom: 1px #CCC solid;
+	padding: 20px 20px;
+	font-size: 18px;
 }
-#dbrt_description dd{
-	float: left;
-	width: 300px;
-	margin-top: 10px;
+
+.dbrt_description .username{
+	/*color:red;*/
+	font-weight: bold;
 }
-#dbrt_img{
-	padding-bottom: 20px;
-	border-bottom: 1px #CCC solid;
+
+.dbrt_description .comment{
+	font-size: 16px;
 }
+
+.dbrt_description .time{
+	font-size: 16px;
+}
+.dbrt_description a{
+	font-size: 16px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*评论*/
 

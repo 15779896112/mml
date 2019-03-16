@@ -229,7 +229,7 @@
                                             class="alwaysNum">¥0.00</i></span>
                                     <div class="shoppingCart_btn">
                                         <a href={% url 'app:cart' %}>查看购物车</a>
-                                        <a class="close" href="#">继续购物</a>
+                                        <a href={% url 'app:index' %}>继续购物</a>
                                     </div>
                                     <button class="close">x</button>
                                 </div>
@@ -395,23 +395,45 @@
             <!--右-->
             <div class="db_right">
                 <div id="dbr_top">
-                    <h2 class="curve"><a href="#dbrt_description">商品详情</a></h2>
+                    <h2 class="curve"><a href="#dbrt_review">商品评价(0)</a></h2>
                     <h2><a href="#dbrt_img">商品参数</a></h2>
-                    <h2><a href="#dbrt_review">商品评价(0)</a></h2>
+                    <h2><a href="#dbrt_description">商品详情</a></h2>
                     <h2><a href="#purchaseConsulting">购买咨询</a></h2>
                 </div>
+
+
+
+
+
+
+
+
+
+
                 <!--商品详情-->
-                <div id="dbrt_description">
-                    <dd>商家货号：</dd>
-                    <dd>品牌：联想</dd>
-                    <dd>内存：8G</dd>
-                    <dd>价格：4700-6699</dd>
-                    <dd>尺寸：17英寸以上</dd>
-                    <dd>处理器：Intel i7</dd>
-                    <dd>显卡：不限</dd>
-                    <dd>触控：不限</dd>
-                    <dd>系统：Windows 7</dd>
+                <div class="dbrt_description">
+                   @<span class="username">晓风残月</span>：
+                    <span class="comment">正文</span>&nbsp;&nbsp;&nbsp;
+                    <span class="time">这里是时间</span>&nbsp;&nbsp;&nbsp;
+                    <a class="tiwen">提问</a>
                 </div>
+               <div class="dbrt_description">
+                   @<span class="username">晓风残月</span>：
+                    <span class="comment">正文</span>&nbsp;&nbsp;&nbsp;
+                    <span class="time">这里是时间</span>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
                 <!--图片详情-->
                 <div id="dbrt_img">
                     <dd>
