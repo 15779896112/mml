@@ -1,0 +1,18 @@
+.comment{
+     display: none;
+}
+
+.comment input{
+    width: 10%;
+    float: left;
+}
+
+.comment .input{
+    width: 70%;
+    height: 38px;
+    font-size: 14px;
+    line-height: 16px;
+    float: left;
+
+
+}

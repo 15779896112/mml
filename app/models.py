@@ -78,3 +78,13 @@ class OrderGoods(models.Model):
     goods = models.ForeignKey(Goods)
     num = models.IntegerField()
     total = models.FloatField(default=0)
+
+
+class Comment(models.Model):
+    createtime = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User)
+    goods = models.ForeignKey(Goods)
+    comment = models.TextField()
+    time = models.DateTimeField(auto_now_add=True)
+
+

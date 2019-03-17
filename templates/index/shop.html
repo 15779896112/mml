@@ -59,7 +59,7 @@
             </ul>
         </li>
 
-        <li><a href="#">我的订单 <i class="spinner"></i></a>
+        <li><a href={% url 'app:myorder' %}>我的订单 <i class="spinner"></i></a>
             <ul class="subNav">
                 <li><a href="#">待付款订单</a></li>
                 <li><a href="#">待收货交易</a></li>
@@ -411,17 +411,18 @@
 
 
                 <!--商品详情-->
+                {% for com in coms %}
+
+
+
                 <div class="dbrt_description">
-                   @<span class="username">晓风残月</span>：
-                    <span class="comment">正文</span>&nbsp;&nbsp;&nbsp;
-                    <span class="time">这里是时间</span>&nbsp;&nbsp;&nbsp;
-                    <a class="tiwen">提问</a>
+                   @<span class="username">{{ com.user.username }}</span>：
+                    <span class="comment">{{ com.comment }}</span>&nbsp;&nbsp;&nbsp;
+                    <span class="time">{{ com.time }}</span>&nbsp;&nbsp;&nbsp;
+{#                    <a class="tiwen">向他（她）提问?</a>#}
                 </div>
-               <div class="dbrt_description">
-                   @<span class="username">晓风残月</span>：
-                    <span class="comment">正文</span>&nbsp;&nbsp;&nbsp;
-                    <span class="time">这里是时间</span>
-                </div>
+                {% endfor %}
+
 
 
 

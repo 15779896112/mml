@@ -16,6 +16,8 @@ urlpatterns = [
     url(r'^isselect/',views.isselect,name='isselect'),
     url(r'^dell/',views.dell,name='dell'),
     url(r'^myorder/',views.myorder,name='myorder'),
-    url(r'^createorder/',views.createorder,name='createorder')
+    url(r'^createorder/',views.createorder,name='createorder'),
+    url(r'^comment/',views.comment,name='comment'),
+
 
 ]

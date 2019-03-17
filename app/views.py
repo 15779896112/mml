@@ -9,10 +9,10 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from django_redis.serializers import json
 
-from app.models import Wheel, Classify, Goods, User, Cart, Order, OrderGoods
+from app.models import Wheel, Classify, Goods, User, Cart, Order, OrderGoods, Comment
 
 
-def index(request, fatherid='00000'):
+def index(request, fatherid='0'):
     token = request.session.get('token')
     userid = cache.get(token)
     print(userid)
@@ -26,6 +26,11 @@ def index(request, fatherid='00000'):
 
     wheels = Wheel.objects.all()
     classifys = Classify.objects.all()
+    index = request.COOKIES.get('index')
+    if(fatherid == '0'):
+        if index:
+            fatherid = "00"+ index +'00'
+        else:fatherid = '00000'
     goods_list = Goods.objects.filter(fatherid=fatherid)
     data = {
         'wheels': wheels,
@@ -75,11 +80,13 @@ def shop(request, goodsid):
         num = '0'
 
     goods = Goods.objects.get(pk=goodsid)
+    coms = goods.comment_set.all()
     data = {
         'goods': goods,
         'user': user,
         'sum':sum,
-        'num':num
+        'num':num,
+        'coms':coms
     }
     return render(request, 'index/shop.html', context=data)
 
@@ -337,12 +344,31 @@ def createorder(request):
 def myorder(request):
     token = request.session.get('token')
     userid = cache.get(token)
-    user = User.objects.get(pk=userid)
-    orders = user.order_set.all()
-    return render(request, 'order/myorder.html', context={'orders': orders})
-
+    user = None
+    if userid:
+        user = User.objects.get(pk=userid)
+        orders = user.order_set.all()
+        return render(request, 'order/myorder.html', context={'orders': orders})
+    else:
+        return redirect('app:login')
 
 def goodsdetail(request,identifier):
     order = Order.objects.filter(identifier=identifier).first()
 
     return render(request, 'order/order.html', context={'order': order})
+
+
+def comment(request):
+    token = request.session.get('token')
+    userid = cache.get(token)
+    user = User.objects.get(pk=userid)
+    goodsid = request.POST.get('goodsid')
+    comment = request.POST.get('comment')
+    goods = Goods.objects.get(pk=goodsid)
+    comm = Comment()
+    comm.user = user
+    comm.goods = goods
+    comm.comment = comment
+    comm.save()
+    return redirect('app:index')
+

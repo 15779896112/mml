@@ -8,7 +8,9 @@
     <link rel="stylesheet" type="text/css" href={% static 'index/css/publicHead.css' %}>
     <link rel="stylesheet" type="text/css" href="{% static 'index/css/publicFooter.css' %}"/>
     <link rel="stylesheet" type="text/css" href={% static 'cart/css/cart.css' %}/>
+    {% block css %}
 
+    {% endblock %}
     <script src={% static 'index/js/jquery-1.12.3.js' %}></script>
     <script src="{% static 'index/js/Swiper3.4.2.min.js' %}"></script>
     <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
@@ -61,7 +63,7 @@
 					</ul>
 				</li>
 				
-				<li><a href="#">我的订单 <i class="spinner"></i></a>
+				<li><a href={% url 'app:myorder' %}>我的订单 <i class="spinner"></i></a>
 					<ul class="subNav">
 						<li><a href="#">待付款订单</a></li>
 						<li><a href="#">待收货交易</a></li>
