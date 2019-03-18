@@ -24,12 +24,13 @@
 
 
             <div class="mc_top">
-                <h2>订单号：{{ order.identifier }}</h2>
+                <h2 identifier={{ order.identifier }}>订单号：{{ order.identifier }}</h2>
                 <i>下单时间：{{ order.createtime }}</i>
             </div>
             <tltle class="mc_btm">
             <dl>
                 <dd>
+                    <span>商品id</span>
                     <span>商品名</span>
                     <span>单价(元)</span>
                     <span>数量</span>
@@ -40,14 +41,18 @@
 
 
                     <dd class="order">
-
+                        <span>{{ ordergoods.goods.id }}</span>
                         <span>{{ ordergoods.goods.name }}</span>
                         <span>{{ ordergoods.goods.price }}</span>
                         <span class="num" n={{ ordergoods.num }}>{{ ordergoods.num }}</span>
                         <span style="color: red" class="total"
                               price={{ ordergoods.total }}>￥{{ ordergoods.total }}</span>
-                    {% if order.status == 3 %}
-                        <a goods={{ ordergoods.goods.id }}>评价</a>
+                        {% if order.status == 1  %}
+                            <button identifier={{ order.identifier }}>确认收货</button>
+                            {% elif order.status == 2  %}
+                            <button identifier={{ order.identifier }}>确认收货</button>
+                             {% elif order.status == 3 %}
+                        <a goods={{ ordergoods.goods.id }} >评价<span identifier={{ order.identifier }}></span></a>
                     {% endif %}
 
 
@@ -73,7 +78,8 @@
             <dd class="comment">
                 <form action={% url 'app:comment'  %} method="post">
                     {% csrf_token %}
-                    <input type="text" name="goodsid" class="goodsname" >
+                    <input type="text" name="identifier" class="this_identifier" >
+                    <input type="text" name="goodsid" class="goodsname" placeholder="填写商品id">
                     <input type="text" name="comment" class="input">
                     <input type="submit" value="发表">
                 </form>

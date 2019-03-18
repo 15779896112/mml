@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>注册-米米乐商城</title>
-    <link rel="stylesheet" type="text/css" href={% static 'index/css/base.css' %}/>
-    <link rel="stylesheet" type="text/css" href={% static 'index/css/publicFooter.css' %}/>
-    <link rel="stylesheet" type="text/css" href={% static 'mine/css/register.css' %}/>
+    <link rel="stylesheet"  href={% static 'index/css/base.css' %}>
+    <link rel="stylesheet"  href={% static 'index/css/publicFooter.css' %}>
+    <link rel="stylesheet"  href={% static 'mine/css/register.css' %}>
     <script src={% static 'index/js/jquery-1.12.3.js' %}></script>
     <script src="{% static 'index/js/Swiper3.4.2.min.js' %}"></script>
     <script src={% static 'index/js/index.js' %}></script>
@@ -28,7 +28,7 @@
     <div id="main">
         <div class="logo">
             <div class="logo_left">
-                <img src={% static 'img/05053060183653829.png' %}/>
+                <img src="{% static 'img/05053060183653829.png' %}"/>
                 <span>欢迎注册</span>
             </div>
             <div class="logo_right">
@@ -60,7 +60,7 @@
                     <input type="text" name="captcha" id="captcha" value="" placeholder="验证码"/>
                     <b class="code"></b>
                     <i></i>
-                    <a href="#" class="code1">看不清，换一张</a>
+                    <a href="#" class="code1">换一张</a>
                     <span class="msg_red">验证码不正确</span>
 
                 </li>
@@ -99,7 +99,7 @@
     <a href="#"> 米商</a>|
     <a href="#"> 8.8包邮</a>|
     <p>&copy; 2016 米米乐商城 www.mmloo.com 版权所有 蜀ICP备06015925号-1</p>
-    <p><img src={% static '/img/cxlogo.png' %}/></p>
+{#    <p><img src={% static '/img/cxlogo.png' %}/></p>#}
     <span class="backTop">返回顶部</span>
 </div>
 

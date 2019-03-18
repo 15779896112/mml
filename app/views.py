@@ -2,13 +2,16 @@ import hashlib
 import random
 import time
 
+from urllib.parse import parse_qs
 from django.core.cache import cache
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
+from django.views.decorators.csrf import csrf_exempt
 from django_redis.serializers import json
 
+from app.alipay import alipay
 from app.models import Wheel, Classify, Goods, User, Cart, Order, OrderGoods, Comment
 
 
@@ -364,11 +367,90 @@ def comment(request):
     user = User.objects.get(pk=userid)
     goodsid = request.POST.get('goodsid')
     comment = request.POST.get('comment')
+    identifier = request.POST.get('identifier')
     goods = Goods.objects.get(pk=goodsid)
     comm = Comment()
     comm.user = user
     comm.goods = goods
     comm.comment = comment
     comm.save()
+    print(identifier)
+    order = Order.objects.filter(identifier=identifier).first()
+    order.status=4
+    order.save()
+
+    return redirect('app:myorder')
+
+
+
+
+
+
+@csrf_exempt
+def appnotifyurl(request):
+    if request.method == 'POST':
+        # 获取到参数
+        body_str = request.body.decode('utf-8')
+
+        # 通过parse_qs函数
+        post_data = parse_qs(body_str)
+
+        # 转换为字典
+        post_dic = {}
+        for k,v in post_data.items():
+            post_dic[k] = v[0]
+
+        # 获取订单号
+        out_trade_no = post_dic['out_trade_no']
+
+        # 更新状态
+        Order.objects.filter(identifier=out_trade_no).update(status=1)
+
+
+    return JsonResponse({'msg':'success'})
+
+
+def pay(request):
+    # print(request.GET.get('orderid'))
+
+    orderid = request.GET.get('orderid')
+    order = Order.objects.get(pk=orderid)
+
+    sum = 0
+    for orderGoods in order.ordergoods_set.all():
+        sum += float(orderGoods.goods.price[1:]) * orderGoods.num
+
+    # 支付地址信息
+    data = alipay.direct_pay(
+        subject='iphone8 plus [256G 8G 灰色]',
+        out_trade_no=order.identifier,    # 订单号
+        total_amount=str(sum),   # 支付金额
+        return_url='http://47.101.216.171/returnurl/'
+
+    )
+
+    # 支付地址
+    alipay_url = 'https://openapi.alipaydev.com/gateway.do?{data}'.format(data=data)
+
+    response_data = {
+        'msg': '调用支付接口',
+        'alipayurl': alipay_url,
+        'status': 1
+    }
+    return JsonResponse(response_data)
+
+
+def returnurl(request):
     return redirect('app:index')
 
+
+def getgoods(request):
+    identifier = request.GET.get('identifier')
+    order = Order.objects.filter(identifier=identifier).first()
+    order.status=3
+    order.save()
+    datas = {
+        'status': 1
+    }
+
+    return JsonResponse(datas)

@@ -8,13 +8,14 @@
         <title>米米乐商城</title>
     {% endblock %}
 
-    <link rel="stylesheet" href="{% static 'index/css/Swiper3.4.2.min.css' %}">
-    <link rel="stylesheet" type="text/css" href={% static 'index/css/base.css' %}/>
-    <link rel="stylesheet" type="text/css" href={% static 'index/css/publicHead.css' %}/>
-    <link rel="stylesheet" type="text/css" href={% static 'index/css/publicFooter.css' %}/>
-    <link rel="stylesheet" type="text/css" href={% static 'index/css/index.css' %}/>
-    {% block css %}
 
+    <link rel="stylesheet" href={% static 'index/css/Swiper3.4.2.min.css' %}>
+    <link rel="stylesheet" href={% static 'index/css/base.css' %}>
+    <link rel="stylesheet" href={% static 'index/css/publicHead.css' %}>
+    <link rel="stylesheet" href={% static 'index/css/publicFooter.css' %}>
+    <link rel="stylesheet" href={% static 'index/css/index.css' %}>
+
+    {% block css %}
     {% endblock %}
 
 
@@ -203,7 +204,7 @@
                 <div class="goods">
                     <div class="img">
 
-                        <img src={% static goods.img %} alt="">
+                        <img src="{% static goods.img %}" alt="">
 
                     </div>
                     <div class="title">{{ goods.title }}</div>
@@ -378,7 +379,7 @@
 
                             <div class="swiper-wrapper">
                                 {% for wheel in wheels %}
-                                    <a href="#" class="swiper-slide"><img src={% static wheel.img %}/></a>
+                                    <a href="#" class="swiper-slide"><img src="{% static wheel.img %}"/></a>
                                 {% endfor %}
                             </div>
                         </div>

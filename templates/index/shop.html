@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8"/>
     <title>米米乐商城</title>
-    <link rel="stylesheet" type="text/css" href={% static 'index/css/base.css' %}>
-    <link rel="stylesheet" type="text/css" href={% static 'index/css/publicHead.css' %}>
-    <link rel="stylesheet" type="text/css" href="{% static 'index/css/publicFooter.css' %}"/>
-    <link rel="stylesheet" type="text/css" href={% static 'index/css/shop.css' %}/>
+    <link rel="stylesheet" href="{% static 'index/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'index/css/publicHead.css' %}">
+    <link rel="stylesheet" href="{% static 'index/css/publicFooter.css' %}">
+    <link rel="stylesheet" href="{% static 'index/css/shop.css' %}">
 
     <script src={% static 'index/js/jquery-1.12.3.js' %}></script>
     <script src="{% static 'index/js/Swiper3.4.2.min.js' %}"></script>
@@ -97,7 +97,7 @@
     <div class="main_top">
         <!--logo-->
         <div class="logo">
-            <a href="http://www.mmloo.com/"><img src={% static 'img/05053060183653829.png' %}/></a>
+            <a href="http://www.mmloo.com/"><img src="{% static 'img/05053060183653829.png' %}"/></a>
         </div>
         <!--搜索-->
         <div class="main_search">
@@ -113,9 +113,9 @@
         <!--认证--招商--需求-->
         <div class="top_menu">
             <ul>
-                <li><img src={% static 'img/baoyou.png' %}/><span>认证包邮</span></li>
-                <li><img src={% static 'img/jiameng.png' %}/><span>招商加盟</span></li>
-                <li><img src={% static 'img/xuqiu.png' %}/><span>需求发布</span></li>
+                <li><img src="{% static 'img/baoyou.png' %}"/><span>认证包邮</span></li>
+                <li><img src="{% static 'img/jiameng.png' %}"/><span>招商加盟</span></li>
+                <li><img src="{% static 'img/xuqiu.png' %}"/><span>需求发布</span></li>
             </ul>
         </div>
     </div>
@@ -152,7 +152,7 @@
                     <ul>
 
                         {#							<li></li>#}
-                        <img src={% static goods.bigimg %}/>
+                        <img src="{% static goods.bigimg %}"/>
                         <div>{{ goods.title }}</div>
                     </ul>
                 </div>
@@ -221,7 +221,7 @@
                             </div>
                             <div class="dmtblb_btn">
                                 <a href="#" id="nowBuy">立即购买</a>
-                                <a href="#" id="addCart" class={{ goods.id }}><img src={% static 'img/cart.png' %}/>添加到购物车</a>
+                                <a href="#" id="addCart" class={{ goods.id }}><img src="{% static 'img/cart.png' %}"/>添加到购物车</a>
                                 <a class="byStages_a" href="#">分期付款</a>
                                 <div class="shoppingCart">
                                     <h2>成功添加到购物车</h2>
@@ -281,7 +281,7 @@
                                 </dl>
                             </li>
                             <li class="lxfs">
-                                联系方式：<img src={% static 'img/lxfs.png' %} alt=""/>
+                                联系方式：<img src="{% static 'img/lxfs.png' %}" alt=""/>
                             </li>
                             <li class="gs">
                                 公司名称：<span>米米乐商城</span>
@@ -310,13 +310,13 @@
                 <div class="dbl_ewm">
                     <h2>商品二维码</h2>
                     <p>
-                        <img src={% static 'img/152356.png' %}/>
+                        <img src="{% static 'img/152356.png' %}"/>
                     </p>
 
                 </div>
                 <!--官方店铺-->
                 <div class="dbl_official">
-                    <h2>官方店铺 <img src={% static 'img/lxfs.png' %} alt=""/></h2>
+                    <h2>官方店铺 <img src="{% static 'img/lxfs.png' %}" alt=""/></h2>
                     <dl>
                         <dt>工作时间：</dt>
                         <dd>工作时间 AM 9:00 - PM 18:00</dd>
@@ -438,7 +438,7 @@
                 <!--图片详情-->
                 <div id="dbrt_img">
                     <dd>
-                        <img src={% static 'img/1_05248467524947701_1280.png' %}>
+                        <img src=“{% static 'img/1_05248467524947701_1280.png' %}”>
                     </dd>
                 </div>
                 <!--评论-->
@@ -500,14 +500,14 @@
             <div class="kefu">
                 <dl>
                     <dt>客服中心</dt>
-                    <dd class="tel"><img src={% static 'img/bohao.png' %}/>4006-780-781</dd>
+                    <dd class="tel"><img src=“{% static 'img/bohao.png' %}”/>4006-780-781</dd>
                     <dd>E-mail：mmloo@mmloo.com</dd>
                     <dd>四川省成都市新南路亚华大厦六楼</dd>
                     <dd><img src='#'/>1398828642</dd>
                 </dl>
                 <dl>
                     <dt>关于米米乐商城</dt>
-                    <dd class="wx"><img src={% static 'img/scmmloo.png' %}/></dd>
+                    <dd class="wx"><img src="{% static 'img/scmmloo.png' %}"/></dd>
                     <dd class="xd">手机下单更优惠<br/>
                         快乐网购 轻松拥有
                     </dd>
@@ -530,7 +530,7 @@
             <a href="#"> 米商</a>|
             <a href="#"> 8.8包邮</a>|
             <p>&copy; 2016 米米乐商城 www.mmloo.com 版权所有 蜀ICP备06015925号-1</p>
-            <p><img src={% static 'img/cxlogo.png' %}/></p>
+            <p><img src="{% static 'img/cxlogo.png' %}"/></p>
             <span class="backTop">返回顶部</span>
         </div>
     </div>
@@ -540,25 +540,25 @@
     <div id="sidebar">
         <ul>
             <li>
-                <img src={% static 'img/right_sevice.png' %}/>
+                <img src="{% static 'img/right_sevice.png' %}"/>
                 <span>联系客服</span>
             </li>
 
             <li>
-                <a href="cart.html"><img src={% static 'img/right_cart.png' %}/></a>
+                <a href="cart.html"><img src="{% static 'img/right_cart.png' %}"/></a>
             </li>
 
             <li>
-                <img src={% static 'img/right_history.png' %}/>
+                <img src="{% static 'img/right_history.png' %}"/>
             </li>
 
             <li>
-                <img src={% static 'img/right_erweima.png' %}/>
+                <img src="{% static 'img/right_erweima.png' %}"/>
                 <span class="ewm"></span>
             </li>
 
             <li>
-                <img src={% static 'img/right_top.png' %}/>
+                <img src="{% static 'img/right_top.png' %}"/>
                 <b>TOP</b>
                 <span class="backTop">回到顶部</span>
             </li>

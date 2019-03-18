@@ -4,10 +4,13 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>购物车-米米乐商城</title>
-            <link rel="stylesheet" type="text/css" href={% static 'index/css/base.css' %}>
-    <link rel="stylesheet" type="text/css" href={% static 'index/css/publicHead.css' %}>
-    <link rel="stylesheet" type="text/css" href="{% static 'index/css/publicFooter.css' %}"/>
-    <link rel="stylesheet" type="text/css" href={% static 'cart/css/cart.css' %}/>
+
+        <link rel="stylesheet" href="{% static 'index/css/base.css' %}">
+        <link rel="stylesheet" href="{% static 'index/css/publicHead.css' %}">
+        <link rel="stylesheet" href="{% static 'index/css/publicFooter.css' %}">
+        <link rel="stylesheet" href="{% static 'cart/css/cart.css' %}">
+
+
     {% block css %}
 
     {% endblock %}
@@ -128,7 +131,7 @@
                             {% else %}
                             <input type="checkbox" class="itemSelection" cartid={{ cart.id }}  />
                         {% endif %}
-						<a href="#"><img src={% static cart.goods.img %}/></a>
+						<a href="#"><img src="{% static cart.goods.img %}"/></a>
                         <span>{{ cart.goods.name }}</span>
                         <span>{{ cart.goods.price }}</span>
                         <span id="mynum">{{ cart.number }}</span>
@@ -212,14 +215,14 @@
 				<div class="kefu">
 					<dl>
 						<dt>客服中心</dt>
-						<dd class="tel"><img src={% static 'img/bohao.png' %}/>4006-780-781</dd>
+						<dd class="tel"><img src="{% static 'img/bohao.png' %}"/>4006-780-781</dd>
 						<dd>E-mail：mmloo@mmloo.com</dd>
 						<dd>四川省成都市新南路亚华大厦六楼</dd>
-						<dd><img src={% static 'img/qq_index.gif' %}/>1398828642</dd>
+						<dd><img src="{% static 'img/qq_index.gif' %}"/>1398828642</dd>
 					</dl>
 					<dl>
 						<dt>关于米米乐商城</dt>
-						<dd class="wx"><img src={% static 'img/scmmloo.png' %}/></dd>
+						<dd class="wx"><img src="{% static 'img/scmmloo.png' %}"/></dd>
 						<dd class="xd">手机下单更优惠<br />
 					快乐网购 轻松拥有</dd>
 					</dl>
@@ -241,7 +244,7 @@
 				<a href="#"> 米商</a>|
 				<a href="#"> 8.8包邮</a>|
 				<p>&copy; 2016 米米乐商城 www.mmloo.com 版权所有 蜀ICP备06015925号-1</p>
-				<p><img src={% static 'img/cxlogo.png' %}/></p>
+				<p><img src="{% static 'img/cxlogo.png' %}"/></p>
 				<span class="backTop">返回顶部</span>
 			</div>
 		</div>
