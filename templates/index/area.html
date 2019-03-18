@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>省市县</title>
+    <style>
+        *{margin:0}
+        select{width:150px;}
+        div{float: left;margin-left:10px;}
+    </style>
+</head>
+<body>
+<div>
+    <h2>省</h2>
+    <select name="province" id="province">
+        <option value=""></option>
+    </select>
+</div>
+<div>
+    <h2>市</h2>
+    <select name="province" id="city">
+        <option value=""></option>
+    </select>
+</div>
+<div>
+    <h2>县</h2>
+    <select name="province" id="xian">
+        <option value=""></option>
+    </select>
+</div>
+<script src="area.js"></script>
+<script>
+//	console.log(data)   ('110000','北京市',NULL),('110100','市辖区','110000'),('110101','东城区','110100')
+    oProvince = document.getElementById('province')
+    
+    oCity = document.getElementById('city')
+    oXian = document.getElementById('xian')
+	data = data.slice(1,data.length-1) 
+	var a = data.split('),(')
+	var c = []
+//	console.log(a)
+	for(var i = 0;i<a.length;i++){
+		b = a[i].split(',')
+		c.push(b)
+//		console.log(b[2])
+		if(b[2] == 'NULL'){
+//			console.log(b[1])
+			elem = document.createElement('option')
+            elem.innerText = b[1].slice(1,b[1].length-1)
+            elem.value = b[0]
+            oProvince.appendChild(elem)
+		}
+	}
+
+	
+	
+	oProvince.onchange = function(){
+		oCity.innerHTML = ''
+		oXian.innerHTML = ''
+		elem = document.createElement('option')
+		oCity.appendChild(elem)
+		
+		s = oProvince.options[oProvince.selectedIndex].value
+
+		
+		for(var i = 0;i<c.length;i++){
+			if(c[i][2]== s){
+				elem = document.createElement('option')
+            	elem.innerText = c[i][1].slice(1,c[i][1].length-1)
+            	elem.value = c[i][0]
+            	oCity.appendChild(elem)
+			}
+		}
+	}
+	
+	oCity.onchange = function(){
+		
+		
+		oXian.innerHTML = ''
+		elem = document.createElement('option')
+		oXian.appendChild(elem)
+		x = oCity.options[oCity.selectedIndex].value
+		
+		for(var i = 0;i<c.length;i++){
+			if(c[i][2]== x){
+				elem = document.createElement('option')
+            	elem.innerText = c[i][1].slice(1,c[i][1].length-1)
+            	elem.value = c[i][0]
+            	oXian.appendChild(elem)
+			}
+		}
+	}
+
+
+
+</script>
+</body>
+
+</html>
+

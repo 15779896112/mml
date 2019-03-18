@@ -47,12 +47,14 @@
                         <span class="num" n={{ ordergoods.num }}>{{ ordergoods.num }}</span>
                         <span style="color: red" class="total"
                               price={{ ordergoods.total }}>￥{{ ordergoods.total }}</span>
-                        {% if order.status == 1  %}
+                        {% if order.status == 0  %}
+                            <a href={% url 'app:startpay'  order.id  %}>去付款</a>
+                        {% elif order.status == 1  %}
                             <button identifier={{ order.identifier }}>确认收货</button>
                             {% elif order.status == 2  %}
                             <button identifier={{ order.identifier }}>确认收货</button>
                              {% elif order.status == 3 %}
-                        <a goods={{ ordergoods.goods.id }} >评价<span identifier={{ order.identifier }}></span></a>
+                        <div class="ping" goods={{ ordergoods.goods.id }} >评价<span identifier={{ order.identifier }}></span></div>
                     {% endif %}
 
 
@@ -75,16 +77,17 @@
                         <span>已评价</span>
                     {% endif %}
                 </dd>
-            <dd class="comment">
-                <form action={% url 'app:comment'  %} method="post">
+{#            <dd class="comment">#}
+                <form action={% url 'app:comment'  %} method="post" class="comment">
                     {% csrf_token %}
-                    <input type="text" name="identifier" class="this_identifier" >
-                    <input type="text" name="goodsid" class="goodsname" placeholder="填写商品id">
-                    <input type="text" name="comment" class="input">
-                    <input type="submit" value="发表">
+
+                    <dd>订单号：<input type="text" name="identifier" class="this_identifier" >
+                    &nbsp;&nbsp;评价商品id：<input type="text" name="goodsid" class="goodsname" placeholder="填写商品id"></dd>
+                    <dd><input type="text" name="comment" class="input" placeholder="评价内容">
+                    <input type="submit" value="发表"></dd>
                 </form>
 {#                <button>发表</button>#}
-            </dd>
+{#            </dd>#}
 
 
             </dl>

@@ -1,11 +1,12 @@
 $(function () {
-    $('a').click(function () {
+    $('.ping').click(function () {
         goodsid = $(this).attr('goods')
         identifier = $(this).children('span').attr('identifier')
         $('.goodsname').val(goodsid)
         $('.this_identifier').val(identifier)
         // console.log($('.this_identifier').val(identifier))
         $(this).parent().siblings().css('display','block')
+        console.log(1111)
 
 
     })
@@ -21,4 +22,14 @@ $(function () {
         })
     })
 
+
+    // $('#start_pay').click(function () {
+    //     identifier = $(this).attr('identifier')
+    //     datas={
+    //         'identifier':identifier
+    //     }
+    //     $.get('/start_pay/',datas,function (response) {
+    //
+    //     })
+    // })
 })

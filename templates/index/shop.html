@@ -14,6 +14,7 @@
     <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src={% static 'index/js/index.js' %}></script>
     <script src={% static 'index/js/shop.js' %}></script>
+    <script src={% static 'index/js/area.js' %}></script>
 
 </head>
 <body>
@@ -36,7 +37,8 @@
     </div>
     <!--右侧导航-->
     <ul class="list">
-        <li class="gwc"><a href={% url 'app:cart' %}> <span id="shopNum" class="num">{{ num }}</span> <i class="gwc_bg"></i>购物车<em
+        <li class="gwc"><a href={% url 'app:cart' %}> <span id="shopNum" class="num">{{ num }}</span> <i
+                class="gwc_bg"></i>购物车<em
                 class="num">{{ num }}</em>件 <i class="spinner"></i></a>
             <ul class="subNav">
                 <b>最新加入的商品</b>
@@ -164,6 +166,7 @@
                     </ul>
                 </div>
                 <!--不知道是什么-->
+
                 <div class="dmi_btm">
                     <ul>
                         <li><i></i><a>开具真票</a></li>
@@ -172,9 +175,26 @@
                     </ul>
                 </div>
             </div>
+
             <!--文字描述-->
             <div class="dm_txt">
+                <div class="ssx"><span style="color:red;">配送至&nbsp;&nbsp;</span>
+                    省:<select name="province" id="province">
+                    <option value=""></option>
+                </select>
+                </div>
+                <div class="ssx">
+                    市:<select name="province" id="city">
+                    <option value=""></option>
+                </select>
+                </div>
+                <div class="ssx">
+                    县: <select name="province" id="xian">
+                    <option value=""></option>
+                </select>
+                </div>
                 <div class="dmt_top">
+                    {{ goods.intro }}
                 </div>
                 <div class="dmtb">
                     <div class="dmtb_left">
@@ -184,17 +204,10 @@
 
                             </div>
                             <div class="dmtbl_by">
-									<span>&nbsp;&nbsp;&nbsp;&nbsp;至<a><b>全国</b>
-										<ul>
-											<li>北京</li><li>天津</li><li>河北</li><li>山西</li><li>内蒙古</li><li>辽宁</li><li>吉林</li>
-											<li>黑龙江</li><li>上海</li><li>江苏</li><li>浙江</li><li>安徽</li><li>福建</li><li>江西</li>
-											<li>山东</li><li>河南</li><li>湖北</li><li>湖南</li><li>广东</li><li>广西</li><li>海南</li>
-											<li>重庆</li><li>四川</li><li>贵州</li><li>云南</li><li>西藏</li><li>陕西</li><li>甘肃</li>
-											<li>青海</li><li>宁夏</li><li>新疆</li><li>台湾</li><li>香港</li><li>澳门</li><li>海外</li>
-										</ul>
-									</a>：运费：	6.00元 由 早买商城 发货 满 49.00 元，免运费！</span>
+
                             </div>
                         </div>
+                        <br>
 
                         <!--数量分享-->
                         <div class="dmtbl_b">
@@ -220,9 +233,9 @@
                                 </dd>
                             </div>
                             <div class="dmtblb_btn">
-                                <a href="#" id="nowBuy">立即购买</a>
+                                {#                                <a href="#" id="nowBuy">立即购买</a>#}
                                 <a href="#" id="addCart" class={{ goods.id }}><img src="{% static 'img/cart.png' %}"/>添加到购物车</a>
-                                <a class="byStages_a" href="#">分期付款</a>
+                                {#                                <a class="byStages_a" href="#">分期付款</a>#}
                                 <div class="shoppingCart">
                                     <h2>成功添加到购物车</h2>
                                     <span>购物车中共有&nbsp;<i class="num">0</i>&nbsp;件商品&nbsp;总金额为：<i
@@ -244,12 +257,12 @@
                             </div>
                             <ul>
                                 <li><img src={% static 'img/jiathis_ico_24x24.png' %}></li>
-{#                                <li><img src={% static 'img/jiathis_ico_24x24.png' %}></li>#}
-{#                                <li><img src={% static 'img/jiathis_ico_24x24.png' %}></li>#}
-{#                                <li><img src={% static 'img/jiathis_ico_24x24.png' %}></li>#}
-{#                                <li><img src={% static 'img/jiathis_ico_24x24.png' %}></li>#}
-{#                                <li><img src={% static 'img/jiathis_ico_24x24.png' %}></li>#}
-{#                                <li><img src={% static 'img/jiathis_ico_24x24.png' %}></li>#}
+                                {#                                <li><img src={% static 'img/jiathis_ico_24x24.png' %}></li>#}
+                                {#                                <li><img src={% static 'img/jiathis_ico_24x24.png' %}></li>#}
+                                {#                                <li><img src={% static 'img/jiathis_ico_24x24.png' %}></li>#}
+                                {#                                <li><img src={% static 'img/jiathis_ico_24x24.png' %}></li>#}
+                                {#                                <li><img src={% static 'img/jiathis_ico_24x24.png' %}></li>#}
+                                {#                                <li><img src={% static 'img/jiathis_ico_24x24.png' %}></li>#}
                             </ul>
                         </div>
                     </div>
@@ -395,19 +408,11 @@
             <!--右-->
             <div class="db_right">
                 <div id="dbr_top">
-                    <h2 class="curve"><a href="#dbrt_review">商品评价(0)</a></h2>
+                    <h2 class="curve"><a href="#dbrt_review">商品评价</a></h2>
                     <h2><a href="#dbrt_img">商品参数</a></h2>
                     <h2><a href="#dbrt_description">商品详情</a></h2>
                     <h2><a href="#purchaseConsulting">购买咨询</a></h2>
                 </div>
-
-
-
-
-
-
-
-
 
 
                 <!--商品详情-->
@@ -415,12 +420,12 @@
 
 
 
-                <div class="dbrt_description">
-                   @<span class="username">{{ com.user.username }}</span>：
-                    <span class="comment">{{ com.comment }}</span>&nbsp;&nbsp;&nbsp;
-                    <span class="time">{{ com.time }}</span>&nbsp;&nbsp;&nbsp;
-{#                    <a class="tiwen">向他（她）提问?</a>#}
-                </div>
+                    <div class="dbrt_description">
+                        @<span class="username">{{ com.user.username }}</span>：
+                        <span class="comment">{{ com.comment }}</span>&nbsp;&nbsp;&nbsp;
+                        <span class="time">{{ com.time }}</span>&nbsp;&nbsp;&nbsp;
+                        {#                    <a class="tiwen">向他（她）提问?</a>#}
+                    </div>
                 {% endfor %}
 
 
@@ -438,17 +443,10 @@
                 <!--图片详情-->
                 <div id="dbrt_img">
                     <dd>
-                        <img src=“{% static 'img/1_05248467524947701_1280.png' %}”>
+                        <img src="{% static 'img/1_05248467524947701_1280.png' %}">
                     </dd>
                 </div>
-                <!--评论-->
-                <div id="dbrt_review">
-                    <h2 class="curve">商品评价(0)</h2>
-                    <h2>好评(0)</h2>
-                    <h2>中评(0)</h2>
-                    <h2>差评(0)</h2>
-                    暂无符合条件的数据记录
-                </div>
+
                 <!--购买咨询-->
                 <div id="purchaseConsulting">
                     <title>购买咨询</title>
@@ -567,3 +565,65 @@
     </div>
 </body>
 </html>
+<script>
+    oProvince = document.getElementById('province')
+
+oCity = document.getElementById('city')
+oXian = document.getElementById('xian')
+data = data.slice(1, data.length - 1)
+var a = data.split('),(')
+var c = []
+//	console.log(a)
+for (var i = 0; i < a.length; i++) {
+    b = a[i].split(',')
+    c.push(b)
+//		console.log(b[2])
+    if (b[2] == 'NULL') {
+//			console.log(b[1])
+        elem = document.createElement('option')
+        elem.innerText = b[1].slice(1, b[1].length - 1)
+        elem.value = b[0]
+        oProvince.appendChild(elem)
+    }
+}
+
+
+oProvince.onchange = function () {
+    oCity.innerHTML = ''
+    oXian.innerHTML = ''
+    elem = document.createElement('option')
+    oCity.appendChild(elem)
+
+    s = oProvince.options[oProvince.selectedIndex].value
+
+
+    for (var i = 0; i < c.length; i++) {
+        if (c[i][2] == s) {
+            elem = document.createElement('option')
+            elem.innerText = c[i][1].slice(1, c[i][1].length - 1)
+            elem.value = c[i][0]
+            oCity.appendChild(elem)
+        }
+    }
+}
+
+oCity.onchange = function () {
+
+
+    oXian.innerHTML = ''
+    elem = document.createElement('option')
+    oXian.appendChild(elem)
+    x = oCity.options[oCity.selectedIndex].value
+
+    for (var i = 0; i < c.length; i++) {
+        if (c[i][2] == x) {
+            elem = document.createElement('option')
+            elem.innerText = c[i][1].slice(1, c[i][1].length - 1)
+            elem.value = c[i][0]
+            oXian.appendChild(elem)
+        }
+    }
+}
+
+
+</script>

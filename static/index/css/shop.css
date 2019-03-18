@@ -169,7 +169,7 @@ html,body{
 
 }
 .dmtbl_by a{
-	display: inline-block;
+	/*display: inline-block;*/
 
     padding: 0 11px 0 1px;
 	position: relative;
@@ -811,4 +811,11 @@ html,body{
 	margin: 5px;
 	color: #00549D;
 	line-height: 20px;
+}
+
+select{
+	width:150px;
+}
+.ssx{
+	float: left;
 }

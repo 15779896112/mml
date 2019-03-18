@@ -4,7 +4,7 @@
 
 .comment input{
     width: 10%;
-    float: left;
+    /*float: left;*/
 }
 
 .comment .input{
@@ -12,7 +12,7 @@
     height: 38px;
     font-size: 14px;
     line-height: 16px;
-    float: left;
+
 
 
 }

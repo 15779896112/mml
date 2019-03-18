@@ -4,6 +4,7 @@ from app import views
 
 urlpatterns = [
     url(r'^index/(\w+)',views.index,name='index'),
+    url(r'^$',views.index,name='index'),
     url(r'^subclass/',views.subclass,name='subclass'),
     url(r'^index/',views.index,name='index'),
     url(r'^shop/(\w+)',views.shop,name='shop'),
@@ -17,6 +18,7 @@ urlpatterns = [
     url(r'^dell/',views.dell,name='dell'),
     url(r'^myorder/',views.myorder,name='myorder'),
     url(r'^createorder/',views.createorder,name='createorder'),
+    url(r'^startpay/(\w+)',views.startpay,name='startpay'),
     url(r'^comment/',views.comment,name='comment'),
     url(r'^getgoods/$', views.getgoods, name='getgoods'),
     url(r'^returnurl/$', views.returnurl, name='returnurl'),  # 支付成功后，客户端的显示

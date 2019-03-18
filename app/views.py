@@ -84,6 +84,7 @@ def shop(request, goodsid):
 
     goods = Goods.objects.get(pk=goodsid)
     coms = goods.comment_set.all()
+    coms = coms.order_by('-id')
     data = {
         'goods': goods,
         'user': user,
@@ -351,14 +352,23 @@ def myorder(request):
     if userid:
         user = User.objects.get(pk=userid)
         orders = user.order_set.all()
+        orders = orders.order_by('-id')
         return render(request, 'order/myorder.html', context={'orders': orders})
     else:
         return redirect('app:login')
+
+
+def startpay(request,orderid):
+    order = Order.objects.get(pk=orderid)
+    return render(request, 'order/order.html', context={'order': order})
+
 
 def goodsdetail(request,identifier):
     order = Order.objects.filter(identifier=identifier).first()
 
     return render(request, 'order/order.html', context={'order': order})
+
+
 
 
 def comment(request):
@@ -454,3 +464,4 @@ def getgoods(request):
     }
 
     return JsonResponse(datas)
+
