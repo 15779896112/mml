@@ -18,14 +18,24 @@ from app.models import Wheel, Classify, Goods, User, Cart, Order, OrderGoods, Co
 def index(request, fatherid='0'):
     token = request.session.get('token')
     userid = cache.get(token)
-    print(userid)
     user = None
     if userid:
         user = User.objects.get(pk=userid)
         sum,num = sumsprice(user)
+        carts = Cart.objects.filter(user=user)
+        carts = carts.order_by('-id')
+        orders = user.order_set.all()
+        orders = orders.order_by('-id')
+        num1,num2,num3 = getordernum(user)
     else:
         sum= '0'
         num = '0'
+        orders = ''
+        carts = ''
+        num1 = '0'
+        num2 = '0'
+        num3 = '0'
+
 
     wheels = Wheel.objects.all()
     classifys = Classify.objects.all()
@@ -40,12 +50,27 @@ def index(request, fatherid='0'):
         'classifys': classifys,
         'goods_list': goods_list,
         'user': user,
+        #购物车数量价钱
         'sum':sum,
         'num':num,
+        'carts':carts,
+        'orders':orders,
+        # 订单数量（默认0）
+        'num1':num1,
+        'num2':num2,
+        'num3':num3,
+
     }
 
     return render(request, 'index/index.html', context=data)
 
+def getordernum(user):
+    num1 = Order.objects.filter(user=user).filter(status='0').count()
+
+    num2 = Order.objects.filter(user=user).filter(status='2').count()
+    num3 = Order.objects.filter(user=user).filter(status='3').count()
+    # print(num1,num2,num3)
+    return num1,num2,num3
 
 def subclass(request):
     typeid = request.GET.get('typeid')
@@ -73,14 +98,26 @@ def subclass(request):
 def shop(request, goodsid):
     token = request.session.get('token')
     userid = cache.get(token)
-    print(userid)
+
     user = None
     if userid:
         user = User.objects.get(pk=userid)
         sum, num = sumsprice(user)
+        carts = Cart.objects.filter(user=user)
+        carts = carts.order_by('-id')
+        orders = user.order_set.all()
+        orders = orders.order_by('-id')
+        num1, num2, num3 = getordernum(user)
+
+
     else:
         sum = '0'
         num = '0'
+        carts = ''
+        orders = ''
+        num1=0
+        num2=0
+        num3=0
 
     goods = Goods.objects.get(pk=goodsid)
     coms = goods.comment_set.all()
@@ -90,7 +127,12 @@ def shop(request, goodsid):
         'user': user,
         'sum':sum,
         'num':num,
-        'coms':coms
+        'coms':coms,
+        'carts':carts,
+        'orders':orders,
+        'num1': num1,
+        'num2': num2,
+        'num3': num3
     }
     return render(request, 'index/shop.html', context=data)
 
@@ -178,6 +220,8 @@ def cart(request):
     if userid:
         user = User.objects.get(pk=userid)
         carts = Cart.objects.filter(user=user)
+        carts =carts.order_by('-id')
+        num1, num2, num3 = getordernum(user)
         sum,num = sumsprice(user)
         sum_select = selectsprice(user)
         data ={
@@ -185,7 +229,10 @@ def cart(request):
             'carts':carts,
             'sum':sum,
             'num':num,
-            'sum_select':sum_select
+            'sum_select':sum_select,
+            'num1':num1,
+            'num2': num2,
+            'num3': num3
         }
         return render(request, 'cart/cart.html',context=data)
     else:
@@ -345,13 +392,17 @@ def createorder(request):
 
 
 
-def myorder(request):
+def myorder(request,s='6'):
     token = request.session.get('token')
     userid = cache.get(token)
+    print('status',s)
     user = None
     if userid:
         user = User.objects.get(pk=userid)
-        orders = user.order_set.all()
+        if s == '6':
+            orders = user.order_set.all()
+        else:
+            orders = Order.objects.filter(user=user).filter(status=s)
         orders = orders.order_by('-id')
         return render(request, 'order/myorder.html', context={'orders': orders})
     else:

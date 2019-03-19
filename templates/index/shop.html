@@ -42,13 +42,22 @@
                 class="num">{{ num }}</em>件 <i class="spinner"></i></a>
             <ul class="subNav">
                 <b>最新加入的商品</b>
-                <!--添加商品详情-->
-                <div id='product'>
-                </div>
+                {% if carts %}
+
+
+                    {% for cart in carts %}
+                        <div class="show_cart">{{ cart.goods.title }}</div><span>..</span>&nbsp;&nbsp;
+                        <span style="color: red">×{{ cart.number }}</span>
+                    {% endfor %}
+                {% else %}
+                    <div id="product">
+                        <img src="{% static 'img/loading.gif' %}" style="margin-top:30px"/>
+                    </div>
+                {% endif %}
                 <!--商品数量，总金额-->
                 <div class="gwc_bottom">
                     <div>共<span class="num">{{ num }}</span>件商品 &nbsp;总计金额:<span id="total">¥{{ sum }}</span></div>
-                    <a href="cart.html">结算购物车中的商品</a>
+                    <a href={% url 'app:cart' %}>结算购物车</a>
                 </div>
             </ul>
         </li>
@@ -63,9 +72,9 @@
 
         <li><a href={% url 'app:myorder' %}>我的订单 <i class="spinner"></i></a>
             <ul class="subNav">
-                <li><a href="#">待付款订单</a></li>
-                <li><a href="#">待收货交易</a></li>
-                <li><a href="#">待评价交易 </a></li>
+                <li><a href="{% url 'app:myorders' 1 %}">待付款<span style="color: red">{{ num1 }}</span></a></li>
+                <li><a href="{% url 'app:myorders' 2 %}">待收货<span style="color: red">{{ num2 }}</span></a></li>
+                <li><a href="{% url 'app:myorders' 3 %}">待评价<span style="color: red">{{ num3 }}</span></a></li>
             </ul>
         </li>
 
@@ -180,8 +189,8 @@
             <div class="dm_txt">
                 <div class="ssx"><span style="color:red;">配送至&nbsp;&nbsp;</span>
                     省:<select name="province" id="province">
-                    <option value=""></option>
-                </select>
+                        <option value=""></option>
+                    </select>
                 </div>
                 <div class="ssx">
                     市:<select name="province" id="city">
@@ -568,62 +577,62 @@
 <script>
     oProvince = document.getElementById('province')
 
-oCity = document.getElementById('city')
-oXian = document.getElementById('xian')
-data = data.slice(1, data.length - 1)
-var a = data.split('),(')
-var c = []
-//	console.log(a)
-for (var i = 0; i < a.length; i++) {
-    b = a[i].split(',')
-    c.push(b)
+    oCity = document.getElementById('city')
+    oXian = document.getElementById('xian')
+    data = data.slice(1, data.length - 1)
+    var a = data.split('),(')
+    var c = []
+    //	console.log(a)
+    for (var i = 0; i < a.length; i++) {
+        b = a[i].split(',')
+        c.push(b)
 //		console.log(b[2])
-    if (b[2] == 'NULL') {
+        if (b[2] == 'NULL') {
 //			console.log(b[1])
+            elem = document.createElement('option')
+            elem.innerText = b[1].slice(1, b[1].length - 1)
+            elem.value = b[0]
+            oProvince.appendChild(elem)
+        }
+    }
+
+
+    oProvince.onchange = function () {
+        oCity.innerHTML = ''
+        oXian.innerHTML = ''
         elem = document.createElement('option')
-        elem.innerText = b[1].slice(1, b[1].length - 1)
-        elem.value = b[0]
-        oProvince.appendChild(elem)
-    }
-}
+        oCity.appendChild(elem)
+
+        s = oProvince.options[oProvince.selectedIndex].value
 
 
-oProvince.onchange = function () {
-    oCity.innerHTML = ''
-    oXian.innerHTML = ''
-    elem = document.createElement('option')
-    oCity.appendChild(elem)
-
-    s = oProvince.options[oProvince.selectedIndex].value
-
-
-    for (var i = 0; i < c.length; i++) {
-        if (c[i][2] == s) {
-            elem = document.createElement('option')
-            elem.innerText = c[i][1].slice(1, c[i][1].length - 1)
-            elem.value = c[i][0]
-            oCity.appendChild(elem)
+        for (var i = 0; i < c.length; i++) {
+            if (c[i][2] == s) {
+                elem = document.createElement('option')
+                elem.innerText = c[i][1].slice(1, c[i][1].length - 1)
+                elem.value = c[i][0]
+                oCity.appendChild(elem)
+            }
         }
     }
-}
 
-oCity.onchange = function () {
+    oCity.onchange = function () {
 
 
-    oXian.innerHTML = ''
-    elem = document.createElement('option')
-    oXian.appendChild(elem)
-    x = oCity.options[oCity.selectedIndex].value
+        oXian.innerHTML = ''
+        elem = document.createElement('option')
+        oXian.appendChild(elem)
+        x = oCity.options[oCity.selectedIndex].value
 
-    for (var i = 0; i < c.length; i++) {
-        if (c[i][2] == x) {
-            elem = document.createElement('option')
-            elem.innerText = c[i][1].slice(1, c[i][1].length - 1)
-            elem.value = c[i][0]
-            oXian.appendChild(elem)
+        for (var i = 0; i < c.length; i++) {
+            if (c[i][2] == x) {
+                elem = document.createElement('option')
+                elem.innerText = c[i][1].slice(1, c[i][1].length - 1)
+                elem.value = c[i][0]
+                oXian.appendChild(elem)
+            }
         }
     }
-}
 
 
 </script>

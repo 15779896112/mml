@@ -1,14 +1,14 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title>购物车-米米乐商城</title>
+<head>
+    <meta charset="utf-8"/>
+    <title>购物车-米米乐商城</title>
 
-        <link rel="stylesheet" href="{% static 'index/css/base.css' %}">
-        <link rel="stylesheet" href="{% static 'index/css/publicHead.css' %}">
-        <link rel="stylesheet" href="{% static 'index/css/publicFooter.css' %}">
-        <link rel="stylesheet" href="{% static 'cart/css/cart.css' %}">
+    <link rel="stylesheet" href="{% static 'index/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'index/css/publicHead.css' %}">
+    <link rel="stylesheet" href="{% static 'index/css/publicFooter.css' %}">
+    <link rel="stylesheet" href="{% static 'cart/css/cart.css' %}">
 
 
     {% block css %}
@@ -22,136 +22,149 @@
     {% block js %}
 
     {% endblock %}
-{#		<link rel="stylesheet" type="text/css" href="../css/base.css"/>#}
-{#		<link rel="stylesheet" type="text/css" href="../css/publicHead.css"/>#}
-{#		<link rel="stylesheet" type="text/css" href="../css/publicFooter.css"/>#}
-{#		<link rel="stylesheet" type="text/css" href="../css/cart.css"/>#}
-{#			#}
-{#		<script src="../js/jquery-1.12.3.js" type="text/javascript" charset="utf-8"></script>#}
-{#		<script src="../js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>#}
-{#		<script src="../js/move.js" type="text/javascript" charset="utf-8"></script>#}
-{#		<script src="../js/pack.js" type="text/javascript" charset="utf-8"></script>#}
-{#		<script src="../js/_public.js" type="text/javascript" charset="utf-8"></script>#}
-{#		<script src="../js/cart.js" type="text/javascript" charset="utf-8"></script>#}
-	</head>
-	<body>
-		<div id="header">
-			<!--登录----注册-->
-			<div class="hd_login">
-				<a>您好{{ username }}，欢迎来到米米乐商城</a>
-			</div>
-			<!--右侧导航-->
-			<ul class="list">
-                {% block cart %}
+    {#		<link rel="stylesheet" type="text/css" href="../css/base.css"/>#}
+    {#		<link rel="stylesheet" type="text/css" href="../css/publicHead.css"/>#}
+    {#		<link rel="stylesheet" type="text/css" href="../css/publicFooter.css"/>#}
+    {#		<link rel="stylesheet" type="text/css" href="../css/cart.css"/>#}
+    {#			#}
+    {#		<script src="../js/jquery-1.12.3.js" type="text/javascript" charset="utf-8"></script>#}
+    {#		<script src="../js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>#}
+    {#		<script src="../js/move.js" type="text/javascript" charset="utf-8"></script>#}
+    {#		<script src="../js/pack.js" type="text/javascript" charset="utf-8"></script>#}
+    {#		<script src="../js/_public.js" type="text/javascript" charset="utf-8"></script>#}
+    {#		<script src="../js/cart.js" type="text/javascript" charset="utf-8"></script>#}
+</head>
+<body>
+<div id="header">
+    <!--登录----注册-->
+    <div class="hd_login">
+        <a>您好{{ username }}，欢迎来到米米乐商城</a>
+    </div>
+    <!--右侧导航-->
+    <ul class="list">
+        {% block cart %}
 
 
-				<li class="gwc"><a href="#"> <span id="shopNum" class="num">{{ num }}</span>  <i class="gwc_bg"></i>购物车<em class="num">{{ num }}</em>件	 <i class="spinner"></i></a>
-					<ul class="subNav">
-						<b>最新加入的商品</b>
-						<!--添加商品详情-->
-						<div id='product'>
-						</div>
-						<!--商品数量，总金额-->
-						<div class="gwc_bottom"><div>共<span class="num">{{ num }}</span>件商品 &nbsp;总计金额:<span id="total">¥{{ sum }}</span></div>
-							<a href="#">结算购物车中的商品</a>
-						</div>
-					</ul>
-				</li>
-				{% endblock %}
-				<li><a href="#">用户中心 <i class="spinner"></i></a>
-					<ul class="subNav">
-						<li><a href="#">商品收藏</a></li>
-						<li><a href="#">店铺收藏</a></li>
-						<li><a href="#">收藏米米乐</a></li>
-					</ul>
-				</li>
-				
-				<li><a href={% url 'app:myorder' %}>我的订单 <i class="spinner"></i></a>
-					<ul class="subNav">
-						<li><a href="#">待付款订单</a></li>
-						<li><a href="#">待收货交易</a></li>
-						<li><a href="#">待评价交易	</a></li>
-					</ul>
-				</li>
-				
-				<li><a href="#">客户服务 <i class="spinner"></i></a>
-					<ul class="subNav">
-						<li><a href="#">帮助中心</a></li>
-						<li><a href="#">售后服务</a></li>
-						<li><a href="#">客服中心</a></li>
-						<li><a href="#">在线客服</a></li>
-						<li><a href="#">QQ客服</a></li>
-					</ul>
-				</li>
-				<li><a href="#"><i class="nav_menu"></i>网站导航<i class="spinner"></i></a>
-					<ul class="subNav">
-						<li><a href="#">导购频道</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-		
-		<div id="banner">
-			<div style="background:url(../../static/img/cartlogin.png) no-repeat center center;"></div>
-		</div>
+            <li class="gwc"><a href="#"> <span id="shopNum" class="num">{{ num }}</span> <i class="gwc_bg"></i>购物车<em
+                    class="num">{{ num }}</em>件 <i class="spinner"></i></a>
+                <ul class="subNav">
+                    <b>最新加入的商品</b>
+                    {% if carts %}
 
 
-        {% block content %}
+                        {% for cart in carts %}
+                            <div class="show_cart">{{ cart.goods.title }}</div><span>..</span>&nbsp;&nbsp;
+                            <span style="color: red">×{{ cart.number }}</span>
+                        {% endfor %}
+                    {% else %}
+                        <div id="product">
+                            <img src="{% static 'img/loading.gif' %}" style="margin-top:30px"/>
+                        </div>
+                    {% endif %}
+                    <!--商品数量，总金额-->
+                    <div class="gwc_bottom">
+                        <div>共<span class="num">{{ num }}</span>件商品 &nbsp;总计金额:<span id="total">¥{{ sum }}</span></div>
+                        <a href="#">结算购物车</a>
+                    </div>
+                </ul>
+            </li>
+        {% endblock %}
+        <li><a href="#">用户中心 <i class="spinner"></i></a>
+            <ul class="subNav">
+                <li><a href="#">商品收藏</a></li>
+                <li><a href="#">店铺收藏</a></li>
+                <li><a href="#">收藏米米乐</a></li>
+            </ul>
+        </li>
+
+        <li><a href={% url 'app:myorder' %}>我的订单 <i class="spinner"></i></a>
+            {% block subNav %}
+                <ul class="subNav">
+                    <li><a href="{% url 'app:myorders' 1 %}">待付款<span style="color: red">{{ num1 }}</span></a></li>
+                    <li><a href="{% url 'app:myorders' 2 %}">待收货<span style="color: red">{{ num2 }}</span></a></li>
+                    <li><a href="{% url 'app:myorders' 3 %}">待评价<span style="color: red">{{ num3 }}</span></a></li>
+                </ul>
+            {% endblock %}
+        </li>
+
+        <li><a href="#">客户服务 <i class="spinner"></i></a>
+            <ul class="subNav">
+                <li><a href="#">帮助中心</a></li>
+                <li><a href="#">售后服务</a></li>
+                <li><a href="#">客服中心</a></li>
+                <li><a href="#">在线客服</a></li>
+                <li><a href="#">QQ客服</a></li>
+            </ul>
+        </li>
+        <li><a href="#"><i class="nav_menu"></i>网站导航<i class="spinner"></i></a>
+            <ul class="subNav">
+                <li><a href="#">导购频道</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div id="banner">
+    <div style="background:url(../../static/img/cartlogin.png) no-repeat center center;"></div>
+</div>
 
 
-		<!--页面主体-->
-		<div id="myCart">
-			<div class="mc_top">
-				<h2>我的购物车</h2>
-				<i>查看购物车商品清单，增加减少商品数量，并勾选想要的商品进入下一步操作。</i>
-			</div>
-			<tltle class="mc_btm">
-				<dl>
-					<dd>
-                        <input type="checkbox" name="" class="itemSelection" cartid="all"/>
-						<a href="#" class="allselect">全选</a>
-						<span >商品名</span>
-						<span>单价(元)</span>
-						<span>数量</span>
-						<span>小计</span>
-                        <span>操作</span>
-						<span>状态</span>
-
-					</dd>
+{% block content %}
 
 
-                </dl>
-				<dl>
-                    {% for cart in carts %}
+    <!--页面主体-->
+    <div id="myCart">
+        <div class="mc_top">
+            <h2>我的购物车</h2>
+            <i>查看购物车商品清单，增加减少商品数量，并勾选想要的商品进入下一步操作。</i>
+        </div>
+        <tltle class="mc_btm">
+            <dl>
+                <dd>
+                    <input type="checkbox" name="" class="itemSelection" cartid="all"/>
+                    <a href="#" class="allselect">全选</a>
+                    <span>商品名</span>
+                    <span>单价(元)</span>
+                    <span>数量</span>
+                    <span>小计</span>
+                    <span>操作</span>
+                    <span>状态</span>
 
-{#					<dt><img src={% static 'img/gfdp.png' %}/></dt>#}
-					<dd>
+                </dd>
+
+
+            </dl>
+            <dl>
+                {% for cart in carts %}
+
+                    {#					<dt><img src={% static 'img/gfdp.png' %}/></dt>#}
+                    <dd>
                         {% if cart.isselect %}
-						<input type="checkbox"  checked class="itemSelection" cartid={{ cart.id }}>
-                            {% else %}
-                            <input type="checkbox" class="itemSelection" cartid={{ cart.id }}  />
+                            <input type="checkbox" checked class="itemSelection" cartid={{ cart.id }}>
+                        {% else %}
+                            <input type="checkbox" class="itemSelection" cartid={{ cart.id }}/>
                         {% endif %}
-						<a href="#"><img src="{% static cart.goods.img %}"/></a>
+                        <a href="#"><img src="{% static cart.goods.img %}"/></a>
                         <span>{{ cart.goods.name }}</span>
                         <span>{{ cart.goods.price }}</span>
                         <span id="mynum">{{ cart.number }}</span>
                         <span>{{ cart.total }}</span>
                         <span><button class="dell" cartid={{ cart.id }}>清空</button></span>
                         <span>待购买</span>
-					</dd>
-                    {% endfor %}
+                    </dd>
+                {% endfor %}
 
-				</dl>
+            </dl>
 
-				<!--商品总价-->
-				<div class="commodityPrice">
-					<h2>商品总价(不含运费)<em>￥<i class="total">{{ sum_select|default:0 }}</i>元</em></h2>
-				</div>
-				<!--下一步-->
-				<div class="nextStep">
-					<a href={% url 'app:createorder' %} style="background: #9B9B9B"><i></i>下单</a>
-				</div>
-			</div>
+            <!--商品总价-->
+            <div class="commodityPrice">
+                <h2>商品总价(不含运费)<em>￥<i class="total">{{ sum_select|default:0 }}</i>元</em></h2>
+            </div>
+            <!--下一步-->
+            <div class="nextStep">
+                <a href={% url 'app:createorder' %} style="background: #9B9B9B"><i></i>下单</a>
+            </div>
+    </div>
 
 
 
@@ -166,87 +179,88 @@
 
 
 
-        <!--可能想买-->
-			<div class="possibleBuy">
-				<h2>你可能想买</h2>
-				<ul>
-					<!--<li></li>-->
-				</ul>
-			</div>
-		</div>
-			
-		<div id="footer">
-			<!--帮助-->
-			<div class="help">
-				<ul>
-					<li>
-						<h2>购物指南</h2>
-						<a href="#"><i></i>礼品卡的购买与使用</a>				
-						<a href="#"><i></i>无法收到邮件？</a>				
-						<a href="#"><i></i>关于捷信分期？</a>				
-						<a href="#"><i></i>邮费制度</a>				
-						<a href="#"><i></i>订单状态说明</a>				
-					</li>
-					<li>
-						<h2>购物指南</h2>
-						<a href="#"><i></i>礼品卡的购买与使用</a>				
-						<a href="#"><i></i>无法收到邮件？</a>				
-						<a href="#"><i></i>关于捷信分期？</a>				
-						<a href="#"><i></i>邮费制度</a>				
-						<a href="#"><i></i>订单状态说明</a>				
-					</li>
-					<li>
-						<h2>购物指南</h2>
-						<a href="#"><i></i>礼品卡的购买与使用</a>				
-						<a href="#"><i></i>无法收到邮件？</a>				
-						<a href="#"><i></i>关于捷信分期？</a>				
-						<a href="#"><i></i>邮费制度</a>				
-						<a href="#"><i></i>订单状态说明</a>				
-					</li>
-					<li>
-						<h2>购物指南</h2>
-						<a href="#"><i></i>礼品卡的购买与使用</a>				
-						<a href="#"><i></i>无法收到邮件？</a>				
-						<a href="#"><i></i>关于捷信分期？</a>				
-						<a href="#"><i></i>邮费制度</a>				
-						<a href="#"><i></i>订单状态说明</a>				
-					</li>
-				</ul>	
-				<div class="kefu">
-					<dl>
-						<dt>客服中心</dt>
-						<dd class="tel"><img src="{% static 'img/bohao.png' %}"/>4006-780-781</dd>
-						<dd>E-mail：mmloo@mmloo.com</dd>
-						<dd>四川省成都市新南路亚华大厦六楼</dd>
-						<dd><img src="{% static 'img/qq_index.gif' %}"/>1398828642</dd>
-					</dl>
-					<dl>
-						<dt>关于米米乐商城</dt>
-						<dd class="wx"><img src="{% static 'img/scmmloo.png' %}"/></dd>
-						<dd class="xd">手机下单更优惠<br />
-					快乐网购 轻松拥有</dd>
-					</dl>
-				</div>
-			</div>
-					<!--版权信息-->
-			<div class="copyright">
-				<a href="#">电脑节 </a>|
-				<a href="#"> 年货节 </a>|
-				<a href="#"> 批发商城 </a>|
-				<a href="#"> 合作及洽谈 </a>|
-				<a href="#"> 联系我们 </a>|
-				<a href="#">  商家登录</a>|
-				<a href="#"> 开店协议</a>|
-				<a href="#"> 商家入驻</a>|
-				<a href="#"> 手机版</a>|
-				<a href="#"> 友情链接</a>|
-				<a href="#"> 招聘英才</a>|
-				<a href="#"> 米商</a>|
-				<a href="#"> 8.8包邮</a>|
-				<p>&copy; 2016 米米乐商城 www.mmloo.com 版权所有 蜀ICP备06015925号-1</p>
-				<p><img src="{% static 'img/cxlogo.png' %}"/></p>
-				<span class="backTop">返回顶部</span>
-			</div>
-		</div>
-	</body>
+<!--可能想买-->
+<div class="possibleBuy">
+    <h2>你可能想买</h2>
+    <ul>
+        <!--<li></li>-->
+    </ul>
+</div>
+</div>
+
+<div id="footer">
+    <!--帮助-->
+    <div class="help">
+        <ul>
+            <li>
+                <h2>购物指南</h2>
+                <a href="#"><i></i>礼品卡的购买与使用</a>
+                <a href="#"><i></i>无法收到邮件？</a>
+                <a href="#"><i></i>关于捷信分期？</a>
+                <a href="#"><i></i>邮费制度</a>
+                <a href="#"><i></i>订单状态说明</a>
+            </li>
+            <li>
+                <h2>购物指南</h2>
+                <a href="#"><i></i>礼品卡的购买与使用</a>
+                <a href="#"><i></i>无法收到邮件？</a>
+                <a href="#"><i></i>关于捷信分期？</a>
+                <a href="#"><i></i>邮费制度</a>
+                <a href="#"><i></i>订单状态说明</a>
+            </li>
+            <li>
+                <h2>购物指南</h2>
+                <a href="#"><i></i>礼品卡的购买与使用</a>
+                <a href="#"><i></i>无法收到邮件？</a>
+                <a href="#"><i></i>关于捷信分期？</a>
+                <a href="#"><i></i>邮费制度</a>
+                <a href="#"><i></i>订单状态说明</a>
+            </li>
+            <li>
+                <h2>购物指南</h2>
+                <a href="#"><i></i>礼品卡的购买与使用</a>
+                <a href="#"><i></i>无法收到邮件？</a>
+                <a href="#"><i></i>关于捷信分期？</a>
+                <a href="#"><i></i>邮费制度</a>
+                <a href="#"><i></i>订单状态说明</a>
+            </li>
+        </ul>
+        <div class="kefu">
+            <dl>
+                <dt>客服中心</dt>
+                <dd class="tel"><img src="{% static 'img/bohao.png' %}"/>4006-780-781</dd>
+                <dd>E-mail：mmloo@mmloo.com</dd>
+                <dd>四川省成都市新南路亚华大厦六楼</dd>
+                <dd><img src="{% static 'img/qq_index.gif' %}"/>1398828642</dd>
+            </dl>
+            <dl>
+                <dt>关于米米乐商城</dt>
+                <dd class="wx"><img src="{% static 'img/scmmloo.png' %}"/></dd>
+                <dd class="xd">手机下单更优惠<br/>
+                    快乐网购 轻松拥有
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <!--版权信息-->
+    <div class="copyright">
+        <a href="#">电脑节 </a>|
+        <a href="#"> 年货节 </a>|
+        <a href="#"> 批发商城 </a>|
+        <a href="#"> 合作及洽谈 </a>|
+        <a href="#"> 联系我们 </a>|
+        <a href="#"> 商家登录</a>|
+        <a href="#"> 开店协议</a>|
+        <a href="#"> 商家入驻</a>|
+        <a href="#"> 手机版</a>|
+        <a href="#"> 友情链接</a>|
+        <a href="#"> 招聘英才</a>|
+        <a href="#"> 米商</a>|
+        <a href="#"> 8.8包邮</a>|
+        <p>&copy; 2016 米米乐商城 www.mmloo.com 版权所有 蜀ICP备06015925号-1</p>
+        <p><img src="{% static 'img/cxlogo.png' %}"/></p>
+        <span class="backTop">返回顶部</span>
+    </div>
+</div>
+</body>
 </html>

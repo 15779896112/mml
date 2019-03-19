@@ -21,7 +21,7 @@
 
     <script src={% static 'index/js/jquery-1.12.3.js' %}></script>
     <script src="{% static 'index/js/Swiper3.4.2.min.js' %}"></script>
-{#    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>#}
+    {#    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>#}
     <script src="https://cdn.bootcss.com/jquery-cookie/1.1/jquery.cookie.js"></script>
     <script src={% static 'index/js/index.js' %}></script>
     <script src={% static 'index/js/goodslist.js' %}></script>
@@ -53,18 +53,29 @@
             </div>
             <!--右侧导航-->
             <ul class="list">
-                <li class="gwc"><a href={% url 'app:cart' %}> <span id="shopNum" class="num">{{ num }}</span> <i class="gwc_bg"></i>购物车<em
-                        class="num">{{ num }}</em>件 <i class="spinner"></i></a>
+                <li class="gwc">
+                    <a href={% url 'app:cart' %}>
+                        <span id="shopNum" class="num">{{ num }}</span>
+                        <i class="gwc_bg"></i>购物车<em class="num">{{ num }}</em>件 <i class="spinner"></i>
+                    </a>
                     <ul class="subNav">
                         <b>最新加入的商品</b>
-                        <!--添加商品详情-->
-                        <div id="product">
-                            <!--<img src="img/loading.gif" style="margin-top:30px"/>-->
-                        </div>
+                        {% if carts %}
+                            {% for cart in carts %}
+                                <div class="show_cart">{{ cart.goods.title }}</div><span>..</span>&nbsp;&nbsp;
+                                <span style="color: red">×{{ cart.number }}</span>
+                            {% endfor %}
+                        {% else %}
+                            <div id="product">
+                                <img src="{% static 'img/loading.gif' %}" style="margin-top:30px"/>
+                            </div>
+                        {% endif %}
+
                         <!--商品数量，总金额-->
                         <div class="gwc_bottom">
-                            <div>共<span class="num">{{ num }}</span>件商品 &nbsp;总计金额:<span id="total">¥{{ sum }}</span></div>
-                            <a href="page/cart.html">结算购物车中的商品</a>
+                            <div>共<span class="num">{{ num }}</span>件商品 &nbsp;总计金额:<span id="total">¥{{ sum }}</span>
+                            </div>
+                            <a href={% url 'app:cart' %}>结算购物车</a>
                         </div>
                     </ul>
                 </li>
@@ -79,9 +90,9 @@
 
                 <li><a href={% url 'app:myorder' %}>我的订单 <i class="spinner"></i></a>
                     <ul class="subNav">
-                        <li><a href="#">待付款订单</a></li>
-                        <li><a href="#">待收货交易</a></li>
-                        <li><a href="#">待评价交易 </a></li>
+                        <li><a href="{% url 'app:myorders' 1 %}">待付款<span style="color: red">{{ num1 }}</span></a></li>
+                        <li><a href="{% url 'app:myorders' 2 %}">待收货<span style="color: red">{{ num2 }}</span></a></li>
+                        <li><a href="{% url 'app:myorders' 3 %}">待评价<span style="color: red">{{ num3 }}</span></a></li>
                     </ul>
                 </li>
 
