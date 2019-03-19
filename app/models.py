@@ -28,8 +28,8 @@ class Classify(models.Model):
 class Goods(models.Model):
     name = models.CharField(max_length=20,default='弄啥嘞')
     fatherid = models.CharField(max_length=10)
-    lrp = models.CharField(max_length=20)
-    price = models.CharField(max_length=20)
+    lrp = models.CharField(max_length=50)
+    price = models.CharField(max_length=50)
     img = models.CharField(max_length=100)
     bigimg = models.CharField(max_length=100)
     title = models.CharField(max_length=255)
@@ -39,10 +39,13 @@ class Goods(models.Model):
         db_table = 'mml_goods'
 
 class User(models.Model):
-    username = models.CharField(max_length=20,unique=True)
+    username = models.CharField(max_length=20)
     password = models.CharField(max_length=255)
-    freindword = models.CharField(max_length=30,default='')
-
+    tel = models.CharField(max_length=30,unique=True)
+    img = models.CharField(max_length=50,default='wzh.jpg')
+    add = models.CharField(max_length=200,default='')
+    sex = models.CharField(max_length=10,default='')
+    old = models.CharField(max_length=10,default='')
     class Meta:
         db_table = 'mml_user'
 

@@ -1,7 +1,10 @@
 $(function(){
 	var code = mrdm();
-	var aa=0,pw=0,cd=0,fx=0;
+	var aa=0,pw=0,cd=0,fx=0,call=0;
 //	用户名
+	$('#tell').blur(function(){
+		tel();
+	})
 	$('#user_name').blur(function(){
 		unDecide();
 	})
@@ -16,12 +19,13 @@ $(function(){
 		pwDecide();
 		cdDecide();
 		fxDecide();
+		tel();
 
-		if($('.un .msg_red').hasClass('true')){
-			aa =true
+		if($('.tt .msg_red').hasClass('true')){
+			call =true
 		}
 
-		if(aa&&pw&&cd&&fx){
+		if(aa&&pw&&cd&&fx&&call){
 			 $('form').submit()
 
 		}
@@ -39,7 +43,37 @@ $(function(){
 	
 	
 	
-	
+	function tel(){
+//		手机号
+		call=0;
+		sMobile = $('#tell').val()
+		if(!(/^1[3|4|5|8][0-9]\d{8,8}$/.test(sMobile))){
+			$('.tt .msg_red').css('display','block').html('手机号格式不对');
+		}else{
+
+			data= {
+				'tel':$('#tell').val()
+			}
+			$.get('/checkename/',data,function (response) {
+				if(response.status == '0'){
+					$('.tt .msg_red').css('display','block').html(response.msg)
+					$('.tt .msg_red').css('color','red')
+					$('.un .msg_red').removeClass('true').addClass('false')
+				}else if(response.status == '1'){
+					$('.tt .msg_red').css('display','block').html(response.msg)
+					$('.tt .msg_red').css('color','blue')
+					$('.tt .msg_red').removeClass('false').addClass('true')
+
+
+				}
+			})
+
+
+
+
+
+		}
+	}
 	
 	
 	
@@ -52,27 +86,10 @@ $(function(){
 		
 		if($('#user_name').val()==""){
 			$('.un .msg_red').css('display','block').html('用户名不能为空');
-		}
-		else if($('#user_name').val()==""){
-			$('.un .msg_red').css('display','block').html('用户名不能为空');
 		} else{
 
-			data= {
-				'username':$('#user_name').val()
-			}
-			$.get('/checkename/',data,function (response) {
-				if(response.status == '0'){
-					$('.un .msg_red').css('display','block').html(response.msg)
-					$('.un .msg_red').css('color','red')
-					$('.un .msg_red').removeClass('true').addClass('false')
-				}else if(response.status == '1'){
-					$('.un .msg_red').css('display','block').html(response.msg)
-					$('.un .msg_red').css('color','blue')
-					$('.un .msg_red').removeClass('false').addClass('true')
-
-
-				}
-			})
+			$('.un .msg_red').css('display','none');
+			aa=true;
 
 		}
 

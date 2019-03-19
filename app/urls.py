@@ -25,6 +25,8 @@ urlpatterns = [
     url(r'^returnurl/$', views.returnurl, name='returnurl'),  # 支付成功后，客户端的显示
     url(r'^appnotifyurl/$', views.appnotifyurl, name='appnotifyurl'),  # 支付成功后，订单的处理
     url(r'^pay/$', views.pay, name='pay'),
-
+    url(r'^userinfo/$', views.userinfo, name='userinfo'),
+    url(r'^getuserinfo/$', views.getuserinfo, name='getuserinfo'),
+    url(r'^upfile/$', views.upfile, name='upfile')
 
 ]

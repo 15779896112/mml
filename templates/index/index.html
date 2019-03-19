@@ -43,6 +43,7 @@
             <div class="hd_login">
                 {% if user %}
                     <a href=‘#’><i>欢迎！{{ user.username }}</i></a>
+                    <a href="#"><img src="/static/mine/img/{{ user.img }}"  alt=""></a>
                     <a href={% url 'app:logout' %}><i style="color:black"> 退出</i></a>
                 {% else %}
                     <a href={% url 'app:login' %}><i>登录</i></a>
@@ -82,13 +83,13 @@
 
                 <li><a href="#">用户中心 <i class="spinner"></i></a>
                     <ul class="subNav">
-                        <li><a href="#">商品收藏</a></li>
-                        <li><a href="#">店铺收藏</a></li>
-                        <li><a href="#">收藏米米乐</a></li>
+                        <li><a href="{% url 'app:userinfo' %}">用户信息</a></li>
+                        <li><a href="{% url 'app:upfile' %}">用户头像修改</a></li>
+                        <li><a href="#">收货地址</a></li>
                     </ul>
                 </li>
 
-                <li><a href={% url 'app:myorder' %}>我的订单 <i class="spinner"></i></a>
+                <li><a href={% url 'app:myorder' %}>我的订单<i class="spinner"></i></a>
                     <ul class="subNav">
                         <li><a href="{% url 'app:myorders' 1 %}">待付款<span style="color: red">{{ num1 }}</span></a></li>
                         <li><a href="{% url 'app:myorders' 2 %}">待收货<span style="color: red">{{ num2 }}</span></a></li>

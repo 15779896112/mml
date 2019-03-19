@@ -1,4 +1,5 @@
 import hashlib
+import os
 import random
 import time
 
@@ -13,6 +14,7 @@ from django_redis.serializers import json
 
 from app.alipay import alipay
 from app.models import Wheel, Classify, Goods, User, Cart, Order, OrderGoods, Comment
+from mml import settings
 
 
 def index(request, fatherid='0'):
@@ -141,9 +143,9 @@ def login(request):
     if request.method == 'GET':
         return render(request, 'mine/login.html')
     elif request.method == 'POST':
-        username = request.POST.get('username')
+        tel = request.POST.get('username')
         password = request.POST.get('password')
-        users = User.objects.filter(username=username)
+        users = User.objects.filter(tel=tel)
         if users.exists():
             user = users.first()
             if user.password == generate_password(password):  # 验证通过
@@ -184,9 +186,11 @@ def register(request):
     elif request.method == 'POST':
         username = request.POST.get('username')
         passoword = generate_password(request.POST.get('password'))
+        tel = request.POST.get('tel')
         user = User()
         user.password = passoword
         user.username = username
+        user.tel = tel
         user.save()
         token = generate_token()
         cache.set(token, user.id, 60 * 60 * 24 * 3)
@@ -197,8 +201,8 @@ def register(request):
 
 
 def checkename(request):
-    username = request.GET.get('username')
-    users = User.objects.filter(username=username)
+    tel = request.GET.get('tel')
+    users = User.objects.filter(tel=tel)
     if users.exists():
         response_data = {
             'status': 0,
@@ -476,14 +480,15 @@ def pay(request):
 
     orderid = request.GET.get('orderid')
     order = Order.objects.get(pk=orderid)
-
+    stri = ''
     sum = 0
     for orderGoods in order.ordergoods_set.all():
         sum += float(orderGoods.goods.price[1:]) * orderGoods.num
+        stri += orderGoods.goods.name + '  '
 
     # 支付地址信息
     data = alipay.direct_pay(
-        subject='iphone8 plus [256G 8G 灰色]',
+        subject=stri,
         out_trade_no=order.identifier,    # 订单号
         total_amount=str(sum),   # 支付金额
         return_url='http://47.101.216.171/returnurl/'
@@ -516,3 +521,80 @@ def getgoods(request):
 
     return JsonResponse(datas)
 
+
+def userinfo(request):
+    token = request.session.get('token')
+    userid = cache.get(token)
+    if userid:
+        user = User.objects.get(pk=userid)
+
+        if request.method == 'GET':
+            return render(request, 'mine/userinfo.html',context={'user':user})
+        elif request.method == 'POST':
+            username = request.POST.get('username')
+            passoword = request.POST.get('password')
+
+            sex = request.POST.get('sex')
+            old = request.POST.get('old')
+
+            # file = request.FILES['file']
+            #
+            # if file:
+            #     file.name = str(time.time()) + str(file.name)
+            #     filepath = os.path.join(settings.MDEIA_ROOT, file.name)
+            #     with open(filepath, 'wb') as fp:
+            #         for info in file.chunks():
+            #             fp.write(info)
+            #     user.img = file.name
+            if passoword:
+                user.password=passoword = generate_password(passoword)
+            user.sex = sex
+            user.username = username
+            user.old = old
+            user.save()
+
+            return redirect('app:index')
+    else:
+        return redirect('app:login')
+
+
+def getuserinfo(request):
+    token = request.session.get('token')
+    userid = cache.get(token)
+    user = User.objects.get(pk=userid)
+    data = {
+        'name':user.username,
+        'sex':user.sex,
+        'old':user.old,
+        'add':user.add,
+    }
+    return  JsonResponse(data)
+
+
+def upfile(request):
+    token = request.session.get('token')
+    userid = cache.get(token)
+    if userid:
+        user = User.objects.get(pk=userid)
+
+        if request.method == 'GET':
+            return render(request, 'mine/upfile.html')
+        elif request.method == 'POST':
+
+            file = request.FILES['file']
+
+
+            file.name = str(time.time()) + str(file.name)
+            filepath = os.path.join(settings.MDEIA_ROOT, file.name)
+            with open(filepath, 'wb') as fp:
+                for info in file.chunks():
+                    fp.write(info)
+            user.img = file.name
+
+
+
+            user.save()
+
+            return redirect('app:index')
+    else:
+        return redirect('app:login')
