@@ -13,7 +13,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django_redis.serializers import json
 
 from app.alipay import alipay
-from app.models import Wheel, Classify, Goods, User, Cart, Order, OrderGoods, Comment
+from app.models import Wheel, Classify, Goods, User, Cart, Order, OrderGoods, Comment, Publish
 from mml import settings
 
 
@@ -536,16 +536,6 @@ def userinfo(request):
 
             sex = request.POST.get('sex')
             old = request.POST.get('old')
-
-            # file = request.FILES['file']
-            #
-            # if file:
-            #     file.name = str(time.time()) + str(file.name)
-            #     filepath = os.path.join(settings.MDEIA_ROOT, file.name)
-            #     with open(filepath, 'wb') as fp:
-            #         for info in file.chunks():
-            #             fp.write(info)
-            #     user.img = file.name
             if passoword:
                 user.password=passoword = generate_password(passoword)
             user.sex = sex
@@ -590,11 +580,68 @@ def upfile(request):
                 for info in file.chunks():
                     fp.write(info)
             user.img = file.name
-
-
-
             user.save()
 
+            return redirect('app:index')
+    else:
+        return redirect('app:login')
+
+
+def upadd(request):
+    token = request.session.get('token')
+    userid = cache.get(token)
+    if userid:
+        user = User.objects.get(pk=userid)
+
+        if request.method == 'GET':
+            return render(request, 'mine/upadd.html',context={'user':user})
+        elif request.method == 'POST':
+
+            addr = request.POST.get('addr')
+
+            if addr:
+
+                user.add = addr
+                user.save()
+
+            return redirect('app:index')
+    else:
+        return redirect('app:login')
+
+
+def goodsup(request):
+    token = request.session.get('token')
+    userid = cache.get(token)
+    if userid:
+        user = User.objects.get(pk=userid)
+
+        if request.method == 'GET':
+            return render(request, 'mine/goodsup.html')
+        elif request.method == 'POST':
+            goods = Goods()
+            goodsname = request.POST.get('goodsname')
+            price = request.POST.get('price')
+            title = request.POST.get('title')
+            num = request.POST.get('num')
+            type = request.POST.get('type')
+            file = request.FILES['file']
+            file.name = str(time.time()) + str(file.name)
+            filepath = os.path.join(settings.GOODSIMG_ROOT, file.name)
+            with open(filepath, 'wb') as fp:
+                for info in file.chunks():
+                    fp.write(info)
+            goods.img = 'img/' + file.name
+            goods.bigimg = 'img/' + file.name
+            goods.name = goodsname
+            goods.price = "￥"+price
+            goods.num = num
+            goods.title = title
+            goods.fatherid = type
+            goods.save()
+            publish = Publish()
+            publish.goods = goods
+            publish.user = user
+            publish.save()
             return redirect('app:index')
     else:
         return redirect('app:login')

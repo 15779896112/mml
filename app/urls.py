@@ -26,7 +26,10 @@ urlpatterns = [
     url(r'^appnotifyurl/$', views.appnotifyurl, name='appnotifyurl'),  # 支付成功后，订单的处理
     url(r'^pay/$', views.pay, name='pay'),
     url(r'^userinfo/$', views.userinfo, name='userinfo'),
-    url(r'^getuserinfo/$', views.getuserinfo, name='getuserinfo'),
-    url(r'^upfile/$', views.upfile, name='upfile')
+    url(r'^getuserinfo/$', views.getuserinfo, name='getuserinfo'), # 修改信息
+    url(r'^upfile/$', views.upfile, name='upfile'), # 头像（文件）上传
+    url(r'^upadd/$', views.upadd, name='upadd'), # 更新地址
+    url(r'^goodsup/$', views.goodsup, name='goodsup'),# 商品发布
+
 
 ]

@@ -132,3 +132,4 @@ STATICFILES_DIRS = [
 
 
 MDEIA_ROOT = os.path.join(BASE_DIR,'static/mine/img')
+GOODSIMG_ROOT = os.path.join(BASE_DIR,'static/img')

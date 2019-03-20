@@ -26,7 +26,7 @@
         <!--登录----注册-->
         <div class="hd_login">
             {% if user %}
-                <span>您好<a href="#"><i>{{ user.username }}</i></a>，来到米米乐商城
+                <span>您好<a href="#"><i>{{ user.username }}</i></a>，欢迎来到江西理工大学交易平台！
 
             {% else %}
                 <span><a href={% url 'app:login' %}>登录</a></span>
@@ -63,11 +63,6 @@
         </li>
 
         <li><a href="#">用户中心 <i class="spinner"></i></a>
-            <ul class="subNav">
-                <li><a href="#">商品收藏</a></li>
-                <li><a href="#">店铺收藏</a></li>
-                <li><a href="#">收藏米米乐</a></li>
-            </ul>
         </li>
 
         <li><a href={% url 'app:myorder' %}>我的订单 <i class="spinner"></i></a>
@@ -163,7 +158,7 @@
                     <ul>
 
                         {#							<li></li>#}
-                        <img src="{% static goods.bigimg %}"/>
+                        <img src="{% static goods.bigimg %}" style="width: 350px;"/>
                         <div>{{ goods.title }}</div>
                     </ul>
                 </div>
@@ -222,7 +217,8 @@
                         <div class="dmtbl_b">
                             <div class="dmtblb_em">
                                 <dd>
-                                    <p style="color: red">{{ goods.price }}</p>
+                                     <p style="color:red">库存：{{ goods.num }}</p>
+                                    <p style="color: red">价格：{{ goods.price }}</p>
                                     <span>购买数量：</span>
                                     <input type="text" id="count" value="1"/>
                                     <span class="count_sum">
@@ -513,7 +509,7 @@
                     <dd><img src='#'/>1398828642</dd>
                 </dl>
                 <dl>
-                    <dt>关于米米乐商城</dt>
+                    <dt>关于江理交易</dt>
                     <dd class="wx"><img src="{% static 'img/scmmloo.png' %}"/></dd>
                     <dd class="xd">手机下单更优惠<br/>
                         快乐网购 轻松拥有

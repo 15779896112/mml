@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>注册-米米乐商城</title>
+    <link rel="stylesheet" href={% static 'index/css/base.css' %}>
+    <link rel="stylesheet" href={% static 'index/css/publicFooter.css' %}>
+    <link rel="stylesheet" href={% static 'mine/css/register.css' %}>
+    <link rel="stylesheet" href={% static 'mine/css/goodsup.css' %}>
+    <script src={% static 'index/js/jquery-1.12.3.js' %}></script>
+    <script src="{% static 'index/js/Swiper3.4.2.min.js' %}"></script>
+
+
+
+</head>
+<body>
+<!--登录--><!--广告-->
+<div id="banner">
+    <!--以背景的方式-->
+    <a href="{% url 'app:index' %}">
+        <div></div>
+    </a>
+</div>
+
+
+<form method="post" action={% url 'app:goodsup' %} enctype="multipart/form-data">
+    {% csrf_token %}
+    <div id="main">
+        <div class="logo">
+            <div class="logo_left">
+                <img src="{% static 'img/05053060183653829.png' %}"/>
+                <span>发布宝贝</span>
+            </div>
+            <div class="logo_right">
+                <span>不发布，<a href={% url 'app:login' %}>返回？</a></span>
+            </div>
+        </div>
+        <div class="shop">
+            <div class="shop_tle">
+                <h2>发布宝贝</h2>
+            </div>
+            <ul>
+
+                <br>
+
+                <li>
+                    <div class="ssx">
+                        名字: <input type="text" name="goodsname" placeholder="请输入商品名字">
+                    </div>
+                </li>
+
+                <li>
+                    <div class="ssx">
+                       价格: <input type="text" name="price" placeholder="单位（元）">
+                    </div>
+                </li>
+                <li>
+                    <div class="ssx">
+                        介绍: <input type="text" name="title" placeholder="简短介绍你发布的商品">
+                    </div>
+                </li>
+                <li>
+                    <div class="ssx">
+                        数目: <input type="text" name="num" placeholder="商品数目">
+                    </div>
+                </li>
+                 <li>
+                    <div >
+                        产品类型: <input type="radio" name="type" value="00200">书籍
+                        <input type="radio" name="type" value="00201">服饰
+                        <input type="radio" name="type" value="00202">办公
+                        <input type="radio" name="type" value="00203">生活用品
+
+                    </div>
+                </li>
+                <li class="input-group">
+                    选择头像:<input type="file" value="上传文件" name="file">
+                </li>
+                <li style="color: red;font-size: 16px">注意：图片一定要上传</li>
+
+                <input type="submit" name="nowReg" id="nowReg" value="上架"/>
+
+
+            </ul>
+        </div>
+
+    </div>
+</form>
+
+<div class="copyright">
+    <a href="#">电脑节 </a>|
+    <a href="#"> 年货节 </a>|
+    <a href="#"> 批发商城 </a>|
+    <a href="#"> 合作及洽谈 </a>|
+    <a href="#"> 联系我们 </a>|
+    <a href="#"> 商家登录</a>|
+    <a href="#"> 开店协议</a>|
+    <a href="#"> 商家入驻</a>|
+    <a href="#"> 手机版</a>|
+    <a href="#"> 友情链接</a>|
+    <a href="#"> 招聘英才</a>|
+    <a href="#"> 米商</a>|
+    <a href="#"> 8.8包邮</a>|
+    <p>&copy; 2016 米米乐商城 www.mmloo.com 版权所有 蜀ICP备06015925号-1</p>
+    {#    <p><img src={% static '/img/cxlogo.png' %}/></p>#}
+    <span class="backTop">返回顶部</span>
+</div>
+
+
+</body>
+</html>
+
+

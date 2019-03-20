@@ -34,9 +34,13 @@ class Goods(models.Model):
     bigimg = models.CharField(max_length=100)
     title = models.CharField(max_length=255)
     intro = models.CharField(max_length=255)
+    num = models.CharField(max_length=100,default='1')
 
     class Meta:
         db_table = 'mml_goods'
+
+
+
 
 class User(models.Model):
     username = models.CharField(max_length=20)
@@ -48,6 +52,13 @@ class User(models.Model):
     old = models.CharField(max_length=10,default='')
     class Meta:
         db_table = 'mml_user'
+
+class Publish(models.Model):    # 用户发布商品
+    goods = models.ForeignKey(Goods)
+    user = models.ForeignKey(User)
+    isdelete = models.BooleanField(default=False)  # 是否下架
+    createtime = models.DateTimeField(auto_now_add=True) # 创建时间
+
 
 
 class Cart(models.Model):

@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>购物车-米米乐商城</title>
+    <title>购物车-江理交易</title>
 
     <link rel="stylesheet" href="{% static 'index/css/base.css' %}">
     <link rel="stylesheet" href="{% static 'index/css/publicHead.css' %}">
@@ -22,23 +22,12 @@
     {% block js %}
 
     {% endblock %}
-    {#		<link rel="stylesheet" type="text/css" href="../css/base.css"/>#}
-    {#		<link rel="stylesheet" type="text/css" href="../css/publicHead.css"/>#}
-    {#		<link rel="stylesheet" type="text/css" href="../css/publicFooter.css"/>#}
-    {#		<link rel="stylesheet" type="text/css" href="../css/cart.css"/>#}
-    {#			#}
-    {#		<script src="../js/jquery-1.12.3.js" type="text/javascript" charset="utf-8"></script>#}
-    {#		<script src="../js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>#}
-    {#		<script src="../js/move.js" type="text/javascript" charset="utf-8"></script>#}
-    {#		<script src="../js/pack.js" type="text/javascript" charset="utf-8"></script>#}
-    {#		<script src="../js/_public.js" type="text/javascript" charset="utf-8"></script>#}
-    {#		<script src="../js/cart.js" type="text/javascript" charset="utf-8"></script>#}
-</head>
+   </head>
 <body>
 <div id="header">
     <!--登录----注册-->
     <div class="hd_login">
-        <a>您好{{ username }}，欢迎来到米米乐商城</a>
+        <a>您好{{ username }}，欢迎来到江理交易平台</a>
     </div>
     <!--右侧导航-->
     <ul class="list">
@@ -70,11 +59,7 @@
             </li>
         {% endblock %}
         <li><a href="#">用户中心 <i class="spinner"></i></a>
-            <ul class="subNav">
-                <li><a href="#">商品收藏</a></li>
-                <li><a href="#">店铺收藏</a></li>
-                <li><a href="#">收藏米米乐</a></li>
-            </ul>
+
         </li>
 
         <li><a href={% url 'app:myorder' %}>我的订单 <i class="spinner"></i></a>
@@ -234,7 +219,7 @@
                 <dd><img src="{% static 'img/qq_index.gif' %}"/>1398828642</dd>
             </dl>
             <dl>
-                <dt>关于米米乐商城</dt>
+                <dt>关于江理交易</dt>
                 <dd class="wx"><img src="{% static 'img/scmmloo.png' %}"/></dd>
                 <dd class="xd">手机下单更优惠<br/>
                     快乐网购 轻松拥有
