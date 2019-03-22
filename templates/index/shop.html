@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>米米乐商城</title>
+    <title>江理交易平台</title>
     <link rel="stylesheet" href="{% static 'index/css/base.css' %}">
     <link rel="stylesheet" href="{% static 'index/css/publicHead.css' %}">
     <link rel="stylesheet" href="{% static 'index/css/publicFooter.css' %}">
@@ -37,6 +37,8 @@
     </div>
     <!--右侧导航-->
     <ul class="list">
+        <li><a href="{% url 'app:index' %}">首页 <i class="spinner"></i></a>
+        </li>
         <li class="gwc"><a href={% url 'app:cart' %}> <span id="shopNum" class="num">{{ num }}</span> <i
                 class="gwc_bg"></i>购物车<em
                 class="num">{{ num }}</em>件 <i class="spinner"></i></a>
@@ -62,8 +64,7 @@
             </ul>
         </li>
 
-        <li><a href="#">用户中心 <i class="spinner"></i></a>
-        </li>
+
 
         <li><a href={% url 'app:myorder' %}>我的订单 <i class="spinner"></i></a>
             <ul class="subNav">
@@ -73,20 +74,6 @@
             </ul>
         </li>
 
-        <li><a href="#">客户服务 <i class="spinner"></i></a>
-            <ul class="subNav">
-                <li><a href="#">帮助中心</a></li>
-                <li><a href="#">售后服务</a></li>
-                <li><a href="#">客服中心</a></li>
-                <li><a href="#">在线客服</a></li>
-                <li><a href="#">QQ客服</a></li>
-            </ul>
-        </li>
-        <li><a href="#"><i class="nav_menu"></i>网站导航<i class="spinner"></i></a>
-            <ul class="subNav">
-                <li><a href="#">导购频道</a></li>
-            </ul>
-        </li>
     </ul>
 </div>
 

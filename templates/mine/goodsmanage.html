@@ -3,13 +3,16 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>文件上传-江理交易平台</title>
-    <link rel="stylesheet"  href={% static 'index/css/base.css' %}>
-    <link rel="stylesheet"  href={% static 'index/css/publicFooter.css' %}>
-    <link rel="stylesheet"  href={% static 'mine/css/register.css' %}>
-    <link rel="stylesheet"  href={% static 'mine/css/userinfo.css' %}>
+    <title>商品管理</title>
+    <link rel="stylesheet" href={% static 'index/css/base.css' %}>
+    <link rel="stylesheet" href={% static 'index/css/publicFooter.css' %}>
+    <link rel="stylesheet" href={% static 'mine/css/register.css' %}>
+    <link rel="stylesheet" href={% static 'mine/css/goodsmanage.css' %}>
     <script src={% static 'index/js/jquery-1.12.3.js' %}></script>
     <script src="{% static 'index/js/Swiper3.4.2.min.js' %}"></script>
+    <script src="{% static 'mine/js/goodsmanage.js' %}"></script>
+
+
 
 </head>
 <body>
@@ -22,38 +25,51 @@
 </div>
 
 
-<form method="post" action={% url 'app:upfile' %}  enctype="multipart/form-data">
-    {% csrf_token %}
+
+
     <div id="main">
         <div class="logo">
             <div class="logo_left">
                 <img src="{% static 'img/05053060183653829.png' %}"/>
-                <span>用户头像修改</span>
+                <span>我的发布</span>
             </div>
             <div class="logo_right">
-                <span>不修改，<a href={% url 'app:login' %}>返回？</a></span>
+                <span>不看了，<a href={% url 'app:index' %}>返回？</a></span>
             </div>
         </div>
         <div class="shop">
             <div class="shop_tle">
-                <h2>修改头像</h2>
+                <h2>我的发布</h2>
             </div>
+
             <ul>
+            <br>
+                {% for publish in publishs %}
 
 
-                <li class="input-group">
-                    选择头像:<input type="file" value="上传文件" name="file">
+
+                <li><p>商品名：{{ publish.goods.name }}</p>
+                    <p>发布时间：{{ publish.createtime }}</p>
+                    <p>商品图片：</p>
+                   <img src="{% static publish.goods.img %}" alt=""><br>
+                    {% if publish.isdelete %}
+                        <p>已经下架，下架时间:{{ publish.updatetime }}</p>
+                        <button goodsid={{ publish.goods.id }}>重新上架</button>
+                    {% else %}
+                    <button goodsid={{ publish.goods.id }}>下架</button>
+                    {% endif %}
+                
                 </li>
 
 
-            <input type="submit"  name="nowReg" id="nowReg" value="上传头像"/>
+               {% endfor %}
 
 
             </ul>
         </div>
 
     </div>
-</form>
+
 
 <div class="copyright">
     <a href="#">电脑节 </a>|
@@ -70,10 +86,12 @@
     <a href="#"> 米商</a>|
     <a href="#"> 8.8包邮</a>|
     <p>&copy; 2016 米米乐商城 www.mmloo.com 版权所有 蜀ICP备06015925号-1</p>
-{#    <p><img src={% static '/img/cxlogo.png' %}/></p>#}
+    {#    <p><img src={% static '/img/cxlogo.png' %}/></p>#}
     <span class="backTop">返回顶部</span>
 </div>
 
 
 </body>
 </html>
+
+

@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>注册-米米乐商城</title>
+    <title>商品上架</title>
     <link rel="stylesheet" href={% static 'index/css/base.css' %}>
     <link rel="stylesheet" href={% static 'index/css/publicFooter.css' %}>
     <link rel="stylesheet" href={% static 'mine/css/register.css' %}>
@@ -33,7 +33,7 @@
                 <span>发布宝贝</span>
             </div>
             <div class="logo_right">
-                <span>不发布，<a href={% url 'app:login' %}>返回？</a></span>
+                <span>不发布，<a href={% url 'app:index' %}>返回？</a></span>
             </div>
         </div>
         <div class="shop">
@@ -67,7 +67,12 @@
                 </li>
                  <li>
                     <div >
-                        产品类型: <input type="radio" name="type" value="00200">书籍
+                        产品类型:
+                        <input type="radio" name="type" value="00000">电脑
+                        <input type="radio" name="type" value="00001">笔记本
+                        <input type="radio" name="type" value="00100">苹果手机
+                        <input type="radio" name="type" value="00101">其他手机<br>
+                        <input type="radio" name="type" value="00200">书籍
                         <input type="radio" name="type" value="00201">服饰
                         <input type="radio" name="type" value="00202">办公
                         <input type="radio" name="type" value="00203">生活用品
@@ -75,7 +80,7 @@
                     </div>
                 </li>
                 <li class="input-group">
-                    选择头像:<input type="file" value="上传文件" name="file">
+                    上传图片:<input type="file" value="上传文件" name="file">
                 </li>
                 <li style="color: red;font-size: 16px">注意：图片一定要上传</li>
 

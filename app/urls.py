@@ -30,6 +30,9 @@ urlpatterns = [
     url(r'^upfile/$', views.upfile, name='upfile'), # 头像（文件）上传
     url(r'^upadd/$', views.upadd, name='upadd'), # 更新地址
     url(r'^goodsup/$', views.goodsup, name='goodsup'),# 商品发布
-
+    url(r'^goodsmanage/$', views.goodsmanage, name='goodsmanage'),# 商品发布
+    url(r'^goodsdown/$', views.goodsdown, name='goodsdown'),# 商品下架
+    url(r'^customerorder/$', views.customerorder, name='customerorder'),
+    url(r'^sendgoods/$', views.sendgoods, name='sendgoods'),
 
 ]

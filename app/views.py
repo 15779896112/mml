@@ -13,7 +13,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django_redis.serializers import json
 
 from app.alipay import alipay
-from app.models import Wheel, Classify, Goods, User, Cart, Order, OrderGoods, Comment, Publish
+from app.models import Wheel, Classify, Goods, User, Cart, Order, OrderGoods, Comment, Publish, Customerorder
 from mml import settings
 
 
@@ -46,7 +46,8 @@ def index(request, fatherid='0'):
         if index:
             fatherid = "00"+ index +'00'
         else:fatherid = '00000'
-    goods_list = Goods.objects.filter(fatherid=fatherid)
+    goods_list = Goods.objects.filter(fatherid=fatherid).filter(isdelete=False)
+
     data = {
         'wheels': wheels,
         'classifys': classifys,
@@ -381,7 +382,9 @@ def createorder(request):
         order.user = user
         order.identifier = create_identifier()
 
+
         order.save()
+
         for cart in carts:
             ordergoods = OrderGoods()
             ordergoods.order = order
@@ -390,6 +393,13 @@ def createorder(request):
             ordergoods.total = float(cart.goods.price[1:]) * int(cart.number)
             ordergoods.save()
             cart.delete()
+
+            # 商家订单
+            customerorder = Customerorder()
+            customerorder.user = cart.goods.publish.user
+            customerorder.order =order
+            customerorder.save()
+
 
         return render(request, 'order/order.html', context={'order': order})
     return redirect('app:cart')
@@ -476,7 +486,7 @@ def appnotifyurl(request):
 
 
 def pay(request):
-    # print(request.GET.get('orderid'))
+    # print(request.GET.get('orderid'))update(status=1)
 
     orderid = request.GET.get('orderid')
     order = Order.objects.get(pk=orderid)
@@ -507,7 +517,7 @@ def pay(request):
 
 
 def returnurl(request):
-    return redirect('app:index')
+    return redirect('app:myorder')
 
 
 def getgoods(request):
@@ -574,7 +584,7 @@ def upfile(request):
             file = request.FILES['file']
 
 
-            file.name = str(time.time()) + str(file.name)
+            file.name = str(time.time())
             filepath = os.path.join(settings.MDEIA_ROOT, file.name)
             with open(filepath, 'wb') as fp:
                 for info in file.chunks():
@@ -607,6 +617,7 @@ def upadd(request):
             return redirect('app:index')
     else:
         return redirect('app:login')
+
 
 
 def goodsup(request):
@@ -645,3 +656,57 @@ def goodsup(request):
             return redirect('app:index')
     else:
         return redirect('app:login')
+
+
+def goodsmanage(request):
+    token = request.session.get('token')
+    userid = cache.get(token)
+    if userid:
+        user = User.objects.get(pk=userid)
+        publishs = user.publish_set.all()
+        data = {
+            'publishs':publishs
+        }
+        return render(request,'mine/goodsmanage.html',context=data)
+    else:
+        return redirect('app:login')
+
+# 商品下架
+def goodsdown(request):
+
+    goodsid = request.GET.get('goodsid')
+    print(goodsid)
+    goods = Goods.objects.get(pk=goodsid)
+    publish = goods.publish
+    publish.isdelete = not publish.isdelete
+    goods.isdelete = not goods.isdelete
+    publish.save()
+    goods.save()
+    data = {
+        'states':'1'
+    }
+    return JsonResponse(data)
+
+# 顾客订单
+def customerorder(request):
+    token = request.session.get('token')
+    userid = cache.get(token)
+    if userid:
+        user = User.objects.get(pk=userid)
+        publishes = user.customerorder_set.all()
+        return render(request, 'mine/customerorder.html', context={'publishes': publishes})
+    else:
+        return redirect('app:login')
+
+
+def sendgoods(request):
+    identifier = request.GET.get('identifier')
+    order = Order.objects.filter(identifier=identifier).first()
+    # print(identifier)
+    order.status = 2
+    order.save()
+    datas = {
+        'status': 1
+    }
+
+    return JsonResponse(datas)

@@ -873,7 +873,7 @@
     }
     #main .showgoods {
         width: 760px;
-        height: 710px;
+        /*height: 710px;*/
         position:relative;
         left: 240px;
         /*background: red;*/
@@ -901,6 +901,18 @@
          color: red;
          margin:20px 20px;
      }
+     .img{
+         width: 30px;
+         height: 30px;
+     }
+
+    /*.img #img{*/
+        /*!*width: 26px;*!*/
+        /*height: 26px;*/
+        /*width: 26px;*/
+         /*border-radius: 50%;*/
+    /*}*/
+
 
 
 

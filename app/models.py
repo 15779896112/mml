@@ -35,6 +35,7 @@ class Goods(models.Model):
     title = models.CharField(max_length=255)
     intro = models.CharField(max_length=255)
     num = models.CharField(max_length=100,default='1')
+    isdelete = models.BooleanField(default=False)  # 是否下架
 
     class Meta:
         db_table = 'mml_goods'
@@ -54,11 +55,12 @@ class User(models.Model):
         db_table = 'mml_user'
 
 class Publish(models.Model):    # 用户发布商品
-    goods = models.ForeignKey(Goods)
+    goods = models.OneToOneField(Goods)
     user = models.ForeignKey(User)
     isdelete = models.BooleanField(default=False)  # 是否下架
     createtime = models.DateTimeField(auto_now_add=True) # 创建时间
-
+    updatetime = models.DateTimeField(auto_now=True)
+    # states = 0   # 状态
 
 
 class Cart(models.Model):
@@ -86,6 +88,12 @@ class Order(models.Model):
     # 4 已评价
     status = models.IntegerField(default=0)
     identifier = models.CharField(max_length=256)
+
+class Customerorder(models.Model):
+    user = models.ForeignKey(User)
+    order = models.OneToOneField(Order)
+
+
 
 class OrderGoods(models.Model):
     order = models.ForeignKey(Order)

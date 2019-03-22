@@ -1,13 +1,13 @@
 {% extends 'cart/cart.html' %}
 {% load static %}
   {% block title %}
-         <title>我的订单-江理交易</title>
+         <title>顾客订单-江理交易</title>
     {% endblock %}
 {% block cart %}
 
     {% block js %}
         {#        <script src={% static 'order/js/order.js' %}></script>#}
-        <script src={% static 'order/js/myorder.js' %}></script>
+        <script src={% static 'index/js/customerorder.js' %}></script>
 
     {% endblock %}
 
@@ -20,21 +20,17 @@
 {% endblock %}
 
 {% block subNav %}
-
 {% endblock %}
-
-
-
-{% block content %}
+    {% block content %}
     <!--页面主体-->
     <div id="myCart">
-        {% for order in orders %}
+        {% for publish in publishes %}
 
 
 
             <div class="mc_top">
-                <h2 identifier={{ order.identifier }}>订单号：{{ order.identifier }}</h2>
-                <i>下单时间：{{ order.createtime }}</i>
+                <h2 identifier={{ publish.order.identifier }}>订单号：{{ publish.order.identifier }}</h2>
+                <i>下单时间：{{ publish.order.createtime }}</i>
             </div>
             <tltle class="mc_btm">
             <dl>
@@ -45,7 +41,7 @@
                     <span>数量</span>
                     <span>小计</span>
                 </dd>
-                {% for ordergoods in order.ordergoods_set.all %}
+                {% for ordergoods in publish.order.ordergoods_set.all %}
 
 
 
@@ -56,15 +52,9 @@
                         <span class="num" n={{ ordergoods.num }}>{{ ordergoods.num }}</span>
                         <span style="color: red" class="total"
                               price={{ ordergoods.total }}>￥{{ ordergoods.total }}</span>
-                        {% if order.status == 0 %}
-                            <a href={% url 'app:startpay'  order.id %}>去付款</a>
-                        {% elif order.status == 1 %}
-                            <button identifier={{ order.identifier }}>确认收货</button>
-                        {% elif order.status == 2 %}
-                            <button identifier={{ order.identifier }}>确认收货</button>
-                        {% elif order.status == 3 %}
-                            <div class="ping" goods={{ ordergoods.goods.id }}>评价<span
-                                    identifier={{ order.identifier }}></span></div>
+                        {% if publish.order.status == 1 %}
+                            <button identifier={{ publish.order.identifier }}>发货</button>
+
                         {% endif %}
 
 
@@ -75,15 +65,15 @@
                     <span>状态</span>
                     <span>--</span>
                     <span>--</span>
-                    {% if order.status == 0 %}
+                    {% if publish.order.status == 0 %}
                         <span>未付款</span>
-                    {% elif order.status == 1 %}
+                    {% elif publish.order.status == 1 %}
                         <span>已付款，待发货</span>
-                    {% elif order.status == 2 %}
+                    {% elif publish.order.status == 2 %}
                         <span>已发货，待收货</span>
-                    {% elif order.status == 3 %}
+                    {% elif publish.order.status == 3 %}
                         <span>已收货，待评价</span>
-                    {% elif order.status == 4 %}
+                    {% elif publish.order.status == 4 %}
                         <span>已评价</span>
                     {% endif %}
                 </dd>
@@ -115,3 +105,4 @@
 
 
 {% endblock %}
+

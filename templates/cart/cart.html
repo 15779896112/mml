@@ -3,7 +3,10 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>购物车-江理交易</title>
+    {% block title %}
+        <title>购物车-江理交易</title>
+    {% endblock %}
+
 
     <link rel="stylesheet" href="{% static 'index/css/base.css' %}">
     <link rel="stylesheet" href="{% static 'index/css/publicHead.css' %}">
@@ -22,7 +25,7 @@
     {% block js %}
 
     {% endblock %}
-   </head>
+</head>
 <body>
 <div id="header">
     <!--登录----注册-->
@@ -32,7 +35,9 @@
     <!--右侧导航-->
     <ul class="list">
         {% block cart %}
-
+{#              <li><a href="{% url 'app:index' %}">首页 <i class="spinner"></i></a>#}
+{##}
+{#        </li>#}
 
             <li class="gwc"><a href="#"> <span id="shopNum" class="num">{{ num }}</span> <i class="gwc_bg"></i>购物车<em
                     class="num">{{ num }}</em>件 <i class="spinner"></i></a>
@@ -58,9 +63,7 @@
                 </ul>
             </li>
         {% endblock %}
-        <li><a href="#">用户中心 <i class="spinner"></i></a>
 
-        </li>
 
         <li><a href={% url 'app:myorder' %}>我的订单 <i class="spinner"></i></a>
             {% block subNav %}
@@ -81,10 +84,10 @@
                 <li><a href="#">QQ客服</a></li>
             </ul>
         </li>
-        <li><a href="#"><i class="nav_menu"></i>网站导航<i class="spinner"></i></a>
-            <ul class="subNav">
-                <li><a href="#">导购频道</a></li>
-            </ul>
+        <li><a href="{% url 'app:index' %}"><i class="nav_menu"></i>返回首页<i class="spinner"></i></a>
+{#            <ul class="subNav">#}
+{#                <li><a href="#">导购频道</a></li>#}
+{#            </ul>#}
         </li>
     </ul>
 </div>

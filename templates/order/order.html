@@ -1,7 +1,12 @@
 {% extends 'cart/cart.html' %}
 {% load static %}
+{% block title %}
+         <title>订单-江理交易</title>
+    {% endblock %}
 {% block cart %}
-
+{% block css %}
+    <link rel="stylesheet" href="{% static 'order/css/order.css' %}">
+{% endblock %}
 {% block js %}
      <script src={% static 'order/js/order.js' %}></script>
 {% endblock %}
@@ -51,8 +56,37 @@
 
 				<div class="nextStep">
 					<a orderid={{ order.id }}> 支付:<span class="all"></span></a>
+
 				</div>
+
+                    <div id="tip">提示：支付账号：<input type="text" id="input" value="jitaxh7926@sandbox.com"><button type="button" id="button">复制账号</button>；登录密码：111111:；支付密码：111111</div>
+
+
+                    <br><br><br><br>
+
+
+
+
+
+<script>
+
+    (function(){
+
+        button.addEventListener('click', function(){
+
+            input.select();
+
+            document.execCommand('copy');
+
+            alert('复制成功');
+
+        })
+
+    })()
+
+</script>
 			</div>
+
 
 
 

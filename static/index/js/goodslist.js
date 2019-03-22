@@ -12,6 +12,7 @@ $(function () {
     //     }
     // })
     var index = $.cookie('index')
+
     if (index) {
         $('.menu ul li').eq(index).addClass('showtype')
     } else {
