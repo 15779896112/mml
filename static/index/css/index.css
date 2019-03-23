@@ -893,7 +893,7 @@
     }
 
     #main .showgoods .goods .title{
-        width: 260px;
+        width: 200px;
         padding-left:20px;
         line-height: 20px;
     }
@@ -901,17 +901,28 @@
          color: red;
          margin:20px 20px;
      }
-     .img{
-         width: 30px;
+     .showgoods .goods  #img{
          height: 30px;
+         line-height: 30px;
+
+     }
+     .showgoods .goods  #img img{
+         height: 24px;
+         width: 24px;
+         border-radius: 50%;
+         /*font-size: 12px;*/
      }
 
-    /*.img #img{*/
-        /*!*width: 26px;*!*/
-        /*height: 26px;*/
+    #user_Img img{
         /*width: 26px;*/
-         /*border-radius: 50%;*/
-    /*}*/
+        height: 26px;
+        width: 26px;
+         border-radius: 50%;
+    }
+    .goodstime{
+        margin: 10px 10px;
+        font-size: 14px;
+    }
 
 
 

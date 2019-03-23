@@ -107,10 +107,6 @@
                 <li><a href="#">新闻中心 <i class="spinner"></i></a>
                     <ul class="subNav">
                         <li><a href="http://www.jxust.cn/index/jlxw1.htm">校园新闻</a></li>
-{#                        <li><a href="#">售后服务</a></li>#}
-{#                        <li><a href="#">客服中心</a></li>#}
-{#                        <li><a href="#">在线客服</a></li>#}
-{#                        <li><a href="#">QQ客服</a></li>#}
                     </ul>
                 </li>
 
@@ -132,13 +128,13 @@
     <div class="main_top">
         <!--logo-->
         <div class="logo">
-            <a href="http://www.mmloo.com/"><img src="{% static 'img/05053060183653829.png' %}"></a>
+            <a href="http://www.jxust.cn/"><img src="{% static 'img/05053060183653829.png' %}"></a>
         </div>
         <!--搜索-->
         <div class="main_search">
             <form action="#" method="get">
                 <input type="text" name="search_txt" id="search_txt" value="" placeholder=" 搜索 内部链接 试试^.^">
-                <input type="submit" name="" id="" value="搜索">
+                <input type="submit" name="" id="search_btn" value="搜索">
             </form>
             <ul id="recommend">
                 <!--示例-->
@@ -148,14 +144,14 @@
         <!--认证--招商--需求-->
         <div class="top_menu">
             <ul>
-                <li><img src="{% static 'img/baoyou.png' %}"><span>认证包邮</span></li>
+                <li><img src="{% static 'img/baoyou.png' %}"><span>送货上寝</span></li>
                 <li><img src="{% static 'img/jiameng.png' %}"><span>招商加盟</span></li>
                 <li><img src="{% static 'img/xuqiu.png' %}"><span>需求发布</span></li>
             </ul>
         </div>
     </div>
 
-    {#{% block goods %}#}
+
     <!--分类导航-->
     {% block layout %}
         <div class="top_layout">
@@ -165,13 +161,12 @@
                     <i class="arrow"></i>
                 </div>
                 <ul>
-                    <li><a href="#" class="current">首页</a></li>
-                    <li><a href="#">米活动</a></li>
-                    <li><a href="#">乐社区</a></li>
-                    <li><a href="#">商家入驻</a></li>
-                    <li><a href="#">8.8天天抢</a></li>
-                    <li><a href="#">团购</a></li>
-                    <li><a href="#">米金融</a></li>
+                     <li><a href={% url 'app:index' %} class="current">首页</a></li>
+                    <li><a href="http://www.jxust.cn/xxgk/xydy/1.htm">学校概况</a></li>
+                     <li><a href="http://cxcyxy.jxust.edu.cn/">创业</a></li>
+                    <li><a href="#">活动</a></li>
+                    <li><a href="#">理工二手社区</a></li>
+                    <li><a href="#">联系我们</a></li>
                 </ul>
             </div>
 
@@ -203,31 +198,22 @@
         </ul>
 
 
-    </div> <!-- class="menu"-->
+    </div>
     <!-------------------------------分隔线------------------------------------->
 
 
 
     {% block content %}
 
-
-
-        <!--轮播区-->
         <div class="showgoods">
             {% for goods in goods_list %}
-
                 <div class="goods">
                     {% if not goods.publish.isdelete %}
-{#                        <div class="img">#}
-{#                        <img src="/static/mine/img/{{ goods.publish.user.img }}" id="myimg">#}
-{#                        </div>#}
-                        <p>发布者:{{ goods.publish.user.username }}</p>
-                        <p>时间:{{ goods.publish.updatetime }}</p>
+                        <div id="img"><img src="/static/mine/img/{{ goods.publish.user.img }}" alt="">发布者:{{ goods.publish.user.username }}</div>
+                        <div class="goodstime">{{ goods.publish.updatetime|date:'Y-m-d H:i:s' }}</div>
                         <a href="{% url 'app:shop' goods.id %}">
                             <div class="img">
-
                                 <img src="{% static goods.img %}" alt="">
-
                             </div>
                             <div class="title">{{ goods.name }} &nbsp;&nbsp;{{ goods.price }}</div>
 
@@ -236,11 +222,9 @@
                     {% endif %}
                 </div>
 
-
             {% endfor %}
         </div>
-        {#    <div class="carouselArea">#}
-        <!--图-->
+
 
 
 
@@ -256,19 +240,23 @@
 
             <div class="user_Status">
                 <div id="user_Img">
+                    {% if user %}
+
+
+                    <img src="/static/mine/img/{{ user.img }}" alt="">
+                    {% else %}
                     <img src="{% static 'img/person.png' %}">
+                     {% endif %}
                 </div>
                 <div class="user_Name">
                     <span class="username">Hi,您好</span>
                     <span class="username" style="color: red">{{ user.username }}</span>
                     <br>
-                    <span class="memberinfo">欢迎来到米米乐商城</span>
-                    <span style="color: red;">银米会员</span>
+                    <span class="memberinfo">欢迎来到江理交易</span>
+                    <span style="color: red;">普通会员</span>
                 </div>
                 <div class="login">
 
-
-                    <!--已登录-->
                     {% if user %}
 
 
@@ -289,11 +277,11 @@
             <ul class="proclamation">
                 <li>
                     <a href="#">【通知】签到红包活动取消</a>
-                    <time>(2016-08-16)</time>
+                    <time>(2019-03-16)</time>
                 </li>
                 <li>
                     <a href="#">【通知】签到红包活动取消</a>
-                    <time>(2016-08-31)</time>
+                    <time>(2019-03-08)</time>
                 </li>
             </ul>
             <!--生活充值-->

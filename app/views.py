@@ -1,3 +1,4 @@
+import datetime
 import hashlib
 import os
 import random
@@ -47,7 +48,7 @@ def index(request, fatherid='0'):
             fatherid = "00"+ index +'00'
         else:fatherid = '00000'
     goods_list = Goods.objects.filter(fatherid=fatherid).filter(isdelete=False)
-
+    goods_list = goods_list.order_by('-id')
     data = {
         'wheels': wheels,
         'classifys': classifys,
@@ -62,7 +63,6 @@ def index(request, fatherid='0'):
         'num1':num1,
         'num2':num2,
         'num3':num3,
-
     }
 
     return render(request, 'index/index.html', context=data)
@@ -708,5 +708,5 @@ def sendgoods(request):
     datas = {
         'status': 1
     }
-
     return JsonResponse(datas)
+

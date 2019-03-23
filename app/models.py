@@ -22,6 +22,8 @@ class Classify(models.Model):
 
     class Meta:
         db_table = 'mml_types'
+    def __str__(self):
+        return self.typename
 
 
 
@@ -39,6 +41,8 @@ class Goods(models.Model):
 
     class Meta:
         db_table = 'mml_goods'
+    def __str__(self):
+        return self.name
 
 
 
@@ -54,6 +58,9 @@ class User(models.Model):
     class Meta:
         db_table = 'mml_user'
 
+    def __str__(self):
+        return self.username
+
 class Publish(models.Model):    # 用户发布商品
     goods = models.OneToOneField(Goods)
     user = models.ForeignKey(User)
@@ -61,6 +68,10 @@ class Publish(models.Model):    # 用户发布商品
     createtime = models.DateTimeField(auto_now_add=True) # 创建时间
     updatetime = models.DateTimeField(auto_now=True)
     # states = 0   # 状态
+
+
+    def __str__(self):
+        return self.createtime
 
 
 class Cart(models.Model):
@@ -74,6 +85,9 @@ class Cart(models.Model):
 
     class Meta:
         db_table = 'mml_cart'
+
+    def __str__(self):
+        return self.user
 
 
 class Order(models.Model):
@@ -89,9 +103,15 @@ class Order(models.Model):
     status = models.IntegerField(default=0)
     identifier = models.CharField(max_length=256)
 
+    def __str__(self):
+        return self.identifier
+
 class Customerorder(models.Model):
     user = models.ForeignKey(User)
     order = models.OneToOneField(Order)
+
+    def __str__(self):
+        return self.order
 
 
 
@@ -102,11 +122,14 @@ class OrderGoods(models.Model):
     total = models.FloatField(default=0)
 
 
+
 class Comment(models.Model):
     createtime = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User)
     goods = models.ForeignKey(Goods)
     comment = models.TextField()
     time = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.createtime
 
 

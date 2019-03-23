@@ -32,7 +32,8 @@ urlpatterns = [
     url(r'^goodsup/$', views.goodsup, name='goodsup'),# 商品发布
     url(r'^goodsmanage/$', views.goodsmanage, name='goodsmanage'),# 商品发布
     url(r'^goodsdown/$', views.goodsdown, name='goodsdown'),# 商品下架
-    url(r'^customerorder/$', views.customerorder, name='customerorder'),
-    url(r'^sendgoods/$', views.sendgoods, name='sendgoods'),
+    url(r'^customerorder/$', views.customerorder, name='customerorder'), # 顾客商品
+    url(r'^sendgoods/$', views.sendgoods, name='sendgoods'), # 发货
+
 
 ]
