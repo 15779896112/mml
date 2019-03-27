@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e0230edd-e6b8-4f07-a442-63a7bae40863" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mml/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mml/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img/cartlogin.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/img/cartlogin.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img/web-603-210-1-7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/index/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/index/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/index/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/index/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="e0230edd-e6b8-4f07-a442-63a7bae40863" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,7 +222,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="394" />
     <option name="y" value="89" />
     <option name="width" value="1217" />
@@ -351,12 +339,12 @@
       <workItem from="1553174290181" duration="3704000" />
       <workItem from="1553215768099" duration="21637000" />
       <workItem from="1553257575132" duration="3094000" />
-      <workItem from="1553321995906" duration="12903000" />
+      <workItem from="1553321995906" duration="12945000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="262682000" />
+    <option name="totallyTimeSpent" value="262724000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -368,7 +356,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1855" height="1084" extended-state="7" />
+    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10392482" />
